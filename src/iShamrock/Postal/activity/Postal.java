@@ -1,7 +1,8 @@
-package iShamrock.Postal;
+package iShamrock.Postal.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import iShamrock.Postal.R;
 
 public class Postal extends Activity {
     /**
