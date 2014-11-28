@@ -2,6 +2,7 @@ package iShamrock.Postal.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -37,6 +38,13 @@ public class Timeline extends Activity{
         initListView();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        System.out.println("on resume");
+    }
+
     private void initLocationManager(){
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -69,7 +77,6 @@ public class Timeline extends Activity{
         listView.setAdapter(new SimpleAdapter(this, getListViewData(), R.id.listView_timeline,
                 new String[]{"postal", "contents", "time", "location"},
                 new int[]{R.id.imageView, R.id.contents_timelineitem, R.id.time_timelineitem, R.id.location_timelineitem}));
-
     }
 
     private List<Map<String, Object>> getListViewData(){
