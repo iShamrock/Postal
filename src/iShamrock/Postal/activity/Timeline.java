@@ -8,9 +8,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.*;
 import iShamrock.Postal.LocalData.PostalData;
 import iShamrock.Postal.LocalData.PostalDataItem;
 import iShamrock.Postal.R;
@@ -23,11 +23,11 @@ import java.util.Map;
 /**
  * Created by lifengshuang on 11/27/14.
  */
-public class Timeline extends Activity{
+public class Timeline extends Activity {
 
-    private ActionBarDrawerToggle toggle;
     private LocationManager locationManager;
     private Location currentLocation;
+
     private Activity timeline = this;
 
     @Override
@@ -36,17 +36,19 @@ public class Timeline extends Activity{
         setContentView(R.layout.timeline);
         initLocationManager();
         initListView();
+        initButtons();
+        initLeftDrawer();
     }
 
     @Override
     protected void onResume() {
-        super.onResume();
-        Intent intent = getIntent();
         System.out.println("on resume");
+
+        super.onResume();
     }
 
-    private void initLocationManager(){
-        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+    private void initLocationManager() {
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, new LocationListener() {
             @Override
@@ -72,14 +74,14 @@ public class Timeline extends Activity{
         });
     }
 
-    private void initListView(){
+    private void initListView() {
         ListView listView = (ListView) findViewById(R.id.listView_timeline);
         listView.setAdapter(new SimpleAdapter(this, getListViewData(), R.id.listView_timeline,
                 new String[]{"postal", "contents", "time", "location"},
                 new int[]{R.id.imageView, R.id.contents_timelineitem, R.id.time_timelineitem, R.id.location_timelineitem}));
     }
 
-    private List<Map<String, Object>> getListViewData(){
+    private List<Map<String, Object>> getListViewData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map;
         for (PostalDataItem item : PostalData.dataItemList) {
@@ -91,5 +93,53 @@ public class Timeline extends Activity{
             list.add(map);
         }
         return list;
+    }
+
+    private void initButtons() {
+        Button addPostal = (Button) findViewById(R.id.add_timeline);
+        addPostal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(timeline, AddPostal_kind.class);
+                timeline.startActivity(intent);
+            }
+        });
+    }
+
+    private void initLeftDrawer() {
+        String[] titles = new String[]{"Timeline", "In the map", "Make postal", "back to some day"};
+        ListView drawerList = (ListView) findViewById(R.id.left_drawer_timeline);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, titles));
+        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                drawerItemOnClickAction(i);
+            }
+        });
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                invalidateOptionsMenu();
+            }
+        };
+        drawerLayout.setDrawerListener(toggle);
+    }
+
+    private void drawerItemOnClickAction(int i) {
+        if (i == 1) {
+
+        } else if (i == 2) {
+
+        } else if (i == 3) {
+
+        }
     }
 }

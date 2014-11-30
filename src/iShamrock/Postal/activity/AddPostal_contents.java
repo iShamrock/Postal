@@ -37,13 +37,16 @@ public class AddPostal_contents extends Activity{
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            /*
                 Intent intent = new Intent();
                 intent.setClass(activity, Timeline.class);
                 intent.putExtra("postal_kind", postalKind);
                 intent.putExtra("contents", contents);
                 intent.putExtra("time", time);
                 intent.putExtra("location", location);
-                activity.startActivity(intent);
+                activity.startActivity(intent);*/
+                PostalData.addPostal(postalKind, contents, time, location);
+                activity.finish();
             }
         });
     }

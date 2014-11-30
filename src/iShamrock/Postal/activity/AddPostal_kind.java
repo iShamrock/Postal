@@ -23,6 +23,11 @@ public class AddPostal_kind extends Activity {
         initButtonListeners();
     }
 
+    @Override
+    protected void onRestart() {
+        finish();
+    }
+
     private void initButtonListeners(){
         Button postal = (Button)findViewById(R.id.postal_addpostal_kind);
         postal.setOnClickListener(new View.OnClickListener() {

@@ -36,7 +36,7 @@
     </LinearLayout>
     <!-- The navigation drawer -->
     <ListView
-            android:id="@+id/left_drawer"
+            android:id="@+id/left_drawer_timeline"
             android:layout_width="230dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
