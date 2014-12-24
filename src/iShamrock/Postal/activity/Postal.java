@@ -14,7 +14,8 @@ public class Postal extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         Intent intent = new Intent();
-        intent.setClass(this, Timeline.class);
+//        intent.setClass(this, Timeline.class);
+        intent.setClass(this, AddPostal.class);
         startActivity(intent);
     }
 }
