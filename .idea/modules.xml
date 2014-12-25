@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Postal.iml" filepath="$PROJECT_DIR$/Postal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MaterialDesign/app/src/androidTest/java/com/gc/gc.iml" filepath="$PROJECT_DIR$/../MaterialDesign/app/src/androidTest/java/com/gc/gc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MaterialDesign/app/src/main/main.iml" filepath="$PROJECT_DIR$/../MaterialDesign/app/src/main/main.iml" />
     </modules>
   </component>
 </project>

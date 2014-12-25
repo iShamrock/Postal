@@ -3,4 +3,6 @@
     <string name="app_name">Postal</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
+    <string name="image">Image</string>
+    <string name="take_photo">Take</string>
 </resources>
