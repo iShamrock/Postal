@@ -8,9 +8,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.ImageView;
 import iShamrock.Postal.R;
 
@@ -26,7 +23,7 @@ public class AddPostal extends Activity {
     private final int TAKE_PHOTO = 1;
     private final int PHOTO_RESULT = 2;
     private final String IMAGE_UNSPECIFIED = "image/*";
-    private String imageDir = "";
+    private String imageDir;
     private ImageView imageView;
 
     @Override
@@ -34,9 +31,9 @@ public class AddPostal extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addpostal);
 
-        WebView postalContainer = (WebView) findViewById(R.id.postal_container);
+        /*WebView postalContainer = (WebView) findViewById(R.id.postal_container);
 
-        /* Add javascript support.*/
+        *//* Add javascript support.*//*
         WebSettings webSettings = postalContainer.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(false);
@@ -46,9 +43,9 @@ public class AddPostal extends Activity {
         postalContainer.setHapticFeedbackEnabled(true);
         postalContainer.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
-        postalContainer.loadUrl("file:///android_asset/web/content.html");
+        postalContainer.loadUrl("file:///android_asset/web/content.html");*/
 
-        Button btnImage = (Button) findViewById(R.id.btn_img);
+        com.gc.materialdesign.views.ButtonRectangle btnImage = (com.gc.materialdesign.views.ButtonRectangle) findViewById(R.id.btn_img);
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +58,7 @@ public class AddPostal extends Activity {
 
         imageView = (ImageView) findViewById(R.id.imageView2);
 
-        Button btnTake = (Button) findViewById(R.id.btn_take_photo);
+        com.gc.materialdesign.views.ButtonRectangle btnTake = (com.gc.materialdesign.views.ButtonRectangle) findViewById(R.id.btn_take_photo);
         btnTake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,10 +87,12 @@ public class AddPostal extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PHOTO_ZOOM) {
             photoZoom(data.getData());
+            return;
         }
         if (requestCode == TAKE_PHOTO) {
             File picture = new File(Environment.getExternalStorageDirectory() + "/" + imageDir);
             photoZoom(Uri.fromFile(picture));
+            return;
         }
         if (requestCode == PHOTO_RESULT) {
             Bundle extras = data.getExtras();
@@ -106,6 +105,6 @@ public class AddPostal extends Activity {
 
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
+//        super.onActivityResult(requestCode, resultCode, data);
     }
 }
