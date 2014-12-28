@@ -104,12 +104,13 @@ public class AddPostal extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PHOTO_ZOOM) photoZoom(data.getData());
+        if (data == null)
+            return;
+            if (requestCode == PHOTO_ZOOM) photoZoom(data.getData());
         if (requestCode == TAKE_PHOTO)
             photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/" + imageDir)));
         if (requestCode == PHOTO_RESULT) {
-            Bundle extras = null;
-            if (data != null) extras = data.getExtras();
+            Bundle extras = data.getExtras();
             if (extras != null) {
                 Bitmap photo = extras.getParcelable("data");
                 photo.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());

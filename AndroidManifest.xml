@@ -9,13 +9,31 @@
             android:targetSdkVersion="21"/>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
             android:label="@string/app_name"
             android:icon="@drawable/ic"
             android:allowBackup="true"
             android:theme="@android:style/Theme.Holo.Light">
+        <!--value tag in meta-tag is API key for Baidu Map-->
+        <meta-data
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="nu7qtKnq5lmoxgFsej7UH4dC"/>
+
         <activity
                 android:name=".activity.Postal"
                 android:label="@string/app_name">
@@ -29,6 +47,7 @@
         </activity>
         <activity android:name=".activity.AddPostal_kind"/>
         <activity android:name=".activity.AddPostal_contents"/>
+        <activity android:name=".activity.PostalInMap"/>
         <activity
                 android:name=".activity.AddPostal"
                 android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">>
