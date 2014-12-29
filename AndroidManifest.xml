@@ -53,11 +53,11 @@
         <activity android:name=".activity.Timeline">
 
         </activity>
-        <activity android:name=".activity.AddPostal_kind"/>
-        <activity android:name=".activity.AddPostal_contents"/>
+        <activity android:name=".luanqibazao.AddPostal_kind"/>
+        <activity android:name=".luanqibazao.AddPostal_contents"/>
         <activity android:name=".activity.PostalNearby"/>
         <activity
-                android:name=".activity.AddPostal"
+                android:name=".activity.PostalEditor"
                 android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">>
 
         </activity>

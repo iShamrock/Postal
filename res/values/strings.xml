@@ -5,4 +5,5 @@
     <string name="drawer_close">close</string>
     <string name="image">Image</string>
     <string name="take_photo">Shoot</string>
+    <string name="back">←</string>
 </resources>

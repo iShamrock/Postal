@@ -14,6 +14,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import iShamrock.Postal.R;
 import iShamrock.Postal.entity.PostalDataItem;
@@ -25,7 +26,7 @@ import java.io.File;
  * Created by Tong on 12.24.
  * Add a new postal or show existed postal.
  */
-public class AddPostal extends Activity {
+public class PostalEditor extends Activity {
 
     private final int PHOTO_ZOOM = 0, TAKE_PHOTO = 1, PHOTO_RESULT = 2;
     private final String IMAGE_UNSPECIFIED = "image/*";
@@ -35,6 +36,7 @@ public class AddPostal extends Activity {
     private ImageView imageView;
     private EditText editText;
     private ButtonRectangle btnImage, btnTake;
+    private ButtonFloat btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class AddPostal extends Activity {
 
         imageView = (ImageView) findViewById(R.id.add_postal_imageView);
         editText = (EditText) findViewById(R.id.editText);
-
+        btnBack = (ButtonFloat) findViewById(R.id.btn_back);
         Intent intent = getIntent();
         PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
         if (data == null) {
@@ -68,6 +70,13 @@ public class AddPostal extends Activity {
             editText.setClickable(false);
             editText.setText(data.content);
         }
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*TODO implement intent here to callback PostalDataItem*/
+                finish();
+            }
+        });
     }
 
     private void initEditComponents() {
@@ -107,7 +116,7 @@ public class AddPostal extends Activity {
         ViewGroup.LayoutParams params = imageView.getLayoutParams();
         params.height = screenWidth / 4 * 3;
         imageView.setLayoutParams(params);
-        if (uri != null){
+        if (uri != null) {
             Bitmap photo = null;
             try {
                 photo = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);

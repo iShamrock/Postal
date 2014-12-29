@@ -31,17 +31,16 @@
         <com.gc.materialdesign.views.ButtonFloat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#eee"
+                android:background="#1E88E5"
                 materialdesign:animate="true"
                 materialdesign:iconDrawable="@drawable/ic_action_new"
-                android:id="@+id/btn_add"
+                android:id="@+id/btn_back"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/take_photo"
+                android:text="@string/back"
                 android:textColor="#eee"
-                android:alpha="0.6"
                 android:gravity="center"/>
     </RelativeLayout>
 
