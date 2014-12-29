@@ -1,4 +1,4 @@
-package iShamrock.Postal.LocalData;
+package iShamrock.Postal.entity;
 
 import iShamrock.Postal.R;
 
@@ -14,8 +14,10 @@ public class PostalData {
 
     public static final int TEST_TYPE = R.id.imageView;
 
-    public static void addPostal(int postalType, String contents, Calendar time, String location){
-        dataItemList.add(new PostalDataItem(postalType, contents ,time, location));
+    @Deprecated
+    /** see @AddPostal_PostalDataItem, fields and methods changed*/
+    public static void addPostal(int postalType, String contents, Calendar time, String location) {
+//        dataItemList.add(new PostalDataItem(postalType, contents ,time, location));
     }
 
 }

@@ -53,6 +53,7 @@
             android:id="@+id/btn_take_photo"
             android:layout_above="@+id/editText"
             android:layout_toLeftOf="@+id/btn_img"
+            android:visibility="invisible"
             />
 
     <com.gc.materialdesign.views.ButtonRectangle
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:background="#1E88E5"
             android:text="@string/image"
+            android:visibility="invisible"
             android:layout_alignTop="@+id/btn_take_photo"
             android:layout_alignParentRight="true"/>
 
@@ -77,6 +79,7 @@
             android:textColor="#666"
             android:background="@null"
             android:layout_margin="10dp"
+            android:editable="false"
             android:text="It seems that Christmas time is here once again, and it is time again to bring in the New Year.    This wonderful holiday is the time for us to harvest ,    to relax, to enjoy the happiness with our families, to thank all of our friends ………    We wish the merriest of Christmas to you and  your loved ones, and we wish you happiness and prosperity in the year ahead    It’s my honor to contact with you before, and my duty is to give you our best goods( XXX  产品) and excellent service.    Hope the next year is a prosperous and harvest year for both of us !      Merry Christmas and a happy new year.!    Best wishes for you-my dear friend!"
             />
 

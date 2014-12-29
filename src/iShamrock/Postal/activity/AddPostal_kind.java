@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import iShamrock.Postal.LocalData.PostalData;
+import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.R;
 
 /**

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import iShamrock.Postal.LocalData.PostalData;
+import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.R;
 
 import java.util.Calendar;
@@ -41,11 +41,11 @@ public class AddPostal_contents extends Activity{
                 Intent intent = new Intent();
                 intent.setClass(activity, Timeline.class);
                 intent.putExtra("postal_kind", postalKind);
-                intent.putExtra("contents", contents);
+                intent.putExtra("content", content);
                 intent.putExtra("time", time);
                 intent.putExtra("location", location);
                 activity.startActivity(intent);*/
-                PostalData.addPostal(postalKind, contents, time, location);
+//                PostalData.addPostal(postalKind, contents, time, location);
                 activity.finish();
             }
         });

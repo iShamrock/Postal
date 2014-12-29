@@ -14,11 +14,12 @@ import com.baidu.mapapi.model.LatLng;
  * Used to open the map in current location.
  */
 public class BaiduLocUtil {
-    public LocationClient mLocationClient = null;
+    public LocationClient mLocationClient;
     public BDLocationListener myListener;
+    public BDLocation location;
 
     /**
-     * @param context, recommend getApplicationContext() instead of this.
+     * @param context,   recommend getApplicationContext() instead of this.
      * @param mBaiduMap, the map to deal with. Dependency injection.
      */
     public void initialize(Context context, BaiduMap mBaiduMap) {
@@ -48,6 +49,7 @@ public class BaiduLocUtil {
 
         @Override
         public void onReceiveLocation(BDLocation loc) {
+            location = loc;
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(loc.getRadius())
                     .direction(100).latitude(loc.getLatitude())
