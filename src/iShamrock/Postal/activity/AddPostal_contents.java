@@ -46,6 +46,7 @@ public class AddPostal_contents extends Activity{
                 intent.putExtra("location", location);
                 activity.startActivity(intent);*/
                 PostalData.addPostal(postalKind, contents, time, location);
+                PostalData.changedUpdated = false;
                 activity.finish();
             }
         });
