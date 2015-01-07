@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import iShamrock.Postal.R;
+import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 
 import java.io.ByteArrayOutputStream;
@@ -36,7 +37,7 @@ public class PostalEditor extends Activity {
     private ImageView imageView;
     private EditText editText;
     private ButtonRectangle btnImage, btnTake;
-    private ButtonFloat btnBack;
+    private ButtonFloat btnBack, btnSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class PostalEditor extends Activity {
         imageView = (ImageView) findViewById(R.id.add_postal_imageView);
         editText = (EditText) findViewById(R.id.editText);
         btnBack = (ButtonFloat) findViewById(R.id.btn_back);
+        btnSend = (ButtonFloat) findViewById(R.id.btn_send);
+        btnSend.setBackgroundColor(0xff1bd411);
         Intent intent = getIntent();
         PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
         if (data == null) {
@@ -74,6 +77,14 @@ public class PostalEditor extends Activity {
             @Override
             public void onClick(View view) {
                 /*TODO implement intent here to callback PostalDataItem*/
+                finish();
+            }
+        });
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PostalData.dataItemList.add(new PostalDataItem(PostalDataItem.TYPE_IMAGE, "content://media/external/images/media/115219",
+                        4, editText.getText().toString(), "now", new float[]{31.14333f, 121.80528f}));
                 finish();
             }
         });

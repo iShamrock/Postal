@@ -37,8 +37,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ca57ca9-588e-4922-b083-fabddb995649" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="60646984-7466-4188-b0c7-8f0f847557e8" name="gitignore" comment="" />
@@ -1012,7 +1010,7 @@
       <workItem from="1420359664452" duration="37000" />
       <workItem from="1420565192477" duration="1798000" />
       <workItem from="1420636878377" duration="1443000" />
-      <workItem from="1420640121167" duration="2016000" />
+      <workItem from="1420640121167" duration="2039000" />
     </task>
     <task id="LOCAL-00001" summary="Modified project structure. Separated to several packages.">
       <created>1417012284879</created>
@@ -1074,11 +1072,17 @@
       <option name="project" value="LOCAL" />
       <updated>1420639511467</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary=".">
+      <created>1420642186645</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1420642186645</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105636000" />
+    <option name="totallyTimeSpent" value="105659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-84" width="1920" height="1080" extended-state="6" />

@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/textView"></TextView>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/drawer_list_item_TextView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:paddingLeft="16dp"
+          android:paddingRight="16dp"
+          android:minHeight="60sp"
+          android:textSize="20sp"
+          android:textColor="#2c7ed5" />
