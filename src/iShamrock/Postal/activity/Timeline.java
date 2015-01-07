@@ -14,7 +14,6 @@ import android.widget.*;
 import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.R;
-import iShamrock.Postal.luanqibazao.AddPostal_kind;
 
 import java.util.ArrayList;
 import java.util.HashMap;
