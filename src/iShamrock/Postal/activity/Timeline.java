@@ -11,9 +11,10 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.*;
-import iShamrock.Postal.LocalData.PostalData;
-import iShamrock.Postal.LocalData.PostalDataItem;
+import iShamrock.Postal.entity.PostalData;
+import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.R;
+import iShamrock.Postal.luanqibazao.AddPostal_kind;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,7 +77,7 @@ public class Timeline extends Activity {
     private void initListView() {
         ListView listView = (ListView) findViewById(R.id.listView_timeline);
         listView.setAdapter(new SimpleAdapter(this, getListViewData(), R.id.listView_timeline,
-                new String[]{"postal", "contents", "time", "location"},
+                new String[]{"postal", "content", "time", "location"},
                 new int[]{R.id.imageView, R.id.contents_timelineitem, R.id.time_timelineitem, R.id.location_timelineitem}));
     }
 
@@ -86,9 +87,9 @@ public class Timeline extends Activity {
         for (PostalDataItem item : PostalData.dataItemList) {
             map = new HashMap<String, Object>();
             map.put("postal", R.drawable.test_postal);
-            map.put("contents", item.getContents());
-            map.put("time", item.getTime());
-            map.put("location", item.getLocation());
+            map.put("content", item.content);
+            map.put("time", item.time);
+            map.put("location", item.location);
             list.add(map);
         }
         return list;

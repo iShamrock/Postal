@@ -2,7 +2,12 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android" name="Android">
-      <configuration />
+      <configuration>
+        <proGuardCfgFiles>
+          <file>file://D:/Program Files (x86)/Java/jdk1.7.0_01/tools/proguard/proguard-android.txt</file>
+        </proGuardCfgFiles>
+        <option name="UPDATE_PROPERTY_FILES" value="true" />
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
@@ -11,9 +16,14 @@
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="android-support-v41" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="module" module-name="gc" />
+    <orderEntry type="module" module-name="main" />
+    <orderEntry type="library" name="baidumapapi_v3_2_0" level="project" />
+    <orderEntry type="library" name="mapbox-android-sdk-0.5.1" level="project" />
+    <orderEntry type="library" name="BaiduLBS_Android" level="project" />
+    <orderEntry type="library" name="locSDK_5.0" level="project" />
   </component>
 </module>
-

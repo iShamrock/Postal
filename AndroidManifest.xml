@@ -3,10 +3,48 @@
           package="iShamrock.Postal"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="15"/>
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name=".activity.Postal"
-                  android:label="@string/app_name">
+
+    <uses-sdk
+            android:minSdkVersion="15"
+            android:targetSdkVersion="21"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+
+    <application
+            android:hardwareAccelerated="false"
+            android:label="@string/app_name"
+            android:icon="@drawable/ic"
+            android:allowBackup="true"
+            android:theme="@android:style/Theme.Holo.Light">
+        <!--the API key in that value tag belongs to Tong-->
+        <meta-data
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="nu7qtKnq5lmoxgFsej7UH4dC"/>
+        <service
+                android:name="com.baidu.location.f"
+                android:enabled="true"
+                android:process=":remote">
+        </service>
+
+        <activity
+                android:name=".activity.Postal"
+                android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -15,10 +53,16 @@
         <activity android:name=".activity.Timeline">
 
         </activity>
-        <activity android:name=".activity.AddPostal_kind"/>
-        <activity android:name=".activity.AddPostal_contents"/>
+        <activity android:name=".luanqibazao.AddPostal_kind"/>
+        <activity android:name=".luanqibazao.AddPostal_contents"/>
+        <activity android:name=".activity.PostalNearby"/>
+        <activity
+                android:name=".activity.PostalEditor"
+                android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">>
+
+        </activity>
 
     </application>
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 </manifest>

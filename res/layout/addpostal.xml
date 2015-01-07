@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:materialdesign="http://schemas.android.com/apk/main/res/com.gc.materialdesign"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:background="#eee">
+
+    <!--<WebView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="200dp"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:id="@+id/postal_container">-->
+
+    <!--</WebView>-->
+
+    <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_postal_imageView"
+            android:src="@drawable/default_postal_cover"
+            />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:materialdesign="http://schemas.android.com/apk/main/res-auto/"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+            >
+
+        <com.gc.materialdesign.views.ButtonFloat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#1E88E5"
+                materialdesign:animate="true"
+                materialdesign:iconDrawable="@drawable/ic_action_new"
+                android:id="@+id/btn_back"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/back"
+                android:textColor="#eee"
+                android:gravity="center"/>
+    </RelativeLayout>
+
+    <com.gc.materialdesign.views.ButtonRectangle
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/take_photo"
+            android:background="#1E88E5"
+            android:id="@+id/btn_take_photo"
+            android:layout_above="@+id/editText"
+            android:layout_toLeftOf="@+id/btn_img"
+            android:visibility="invisible"
+            />
+
+    <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#1E88E5"
+            android:text="@string/image"
+            android:visibility="invisible"
+            android:layout_alignTop="@+id/btn_take_photo"
+            android:layout_alignParentRight="true"/>
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_weight="1"
+            android:gravity="top|left"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/add_postal_imageView"
+            android:textColor="#666"
+            android:background="@null"
+            android:layout_margin="10dp"
+            android:editable="false"
+            android:text="It seems that Christmas time is here once again, and it is time again to bring in the New Year.    This wonderful holiday is the time for us to harvest ,    to relax, to enjoy the happiness with our families, to thank all of our friends ………    We wish the merriest of Christmas to you and  your loved ones, and we wish you happiness and prosperity in the year ahead    It’s my honor to contact with you before, and my duty is to give you our best goods( XXX  产品) and excellent service.    Hope the next year is a prosperous and harvest year for both of us !      Merry Christmas and a happy new year.!    Best wishes for you-my dear friend!"
+            />
+
+</RelativeLayout>
