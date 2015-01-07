@@ -41,12 +41,11 @@ public class Timeline extends Activity {
         initLeftDrawer();
     }
 
-    @Override
+    /*@Override
     protected void onResume() {
         System.out.println("on resume");
-
         super.onResume();
-    }
+    }*/
 
     private void initLocationManager() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

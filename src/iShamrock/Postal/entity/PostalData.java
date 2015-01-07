@@ -2,17 +2,19 @@ package iShamrock.Postal.entity;
 
 import iShamrock.Postal.R;
 
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by lifengshuang on 11/28/14.
  */
 public class PostalData {
-    public static List<PostalDataItem> dataItemList = new LinkedList<PostalDataItem>();
 
-    public static final int TEST_TYPE = R.id.imageView;
+    public static boolean changedUpdated = true;
+
+    public static List<PostalDataItem> dataItemList = new LinkedList<PostalDataItem>();
+    //public static List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+    public static final int TEST_TYPE = 0;
+
 
     @Deprecated
     /** see @AddPostal_PostalDataItem, fields and methods changed*/
