@@ -7,6 +7,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.util.BaiduLocUtil;
 import iShamrock.Postal.util.BaiduMapUtil;
@@ -37,9 +38,9 @@ public class PostalNearby extends Activity {
         baiduLocUtil.initialize(getApplicationContext(), mBaiduMap);
         baiduLocUtil.requestLocation();
 
-        Intent intent = getIntent();
-        ArrayList<PostalDataItem> data = (ArrayList<PostalDataItem>) intent.getSerializableExtra("data");
-        for (PostalDataItem each : data) {
+        //Intent intent = getIntent();
+        //ArrayList<PostalDataItem> data = (ArrayList<PostalDataItem>) intent.getSerializableExtra("data");
+        for (PostalDataItem each : PostalData.dataItemList) {
             baiduMapUtil.addMarker(each);
         }
     }
