@@ -43,18 +43,22 @@
         </service>
 
         <activity
-                android:name=".activity.Postal"
-                android:label="@string/app_name">
+                android:name=".activity.Splash"
+                android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+                android:name=".activity.Postal"
+                android:label="@string/app_name">
+
+        </activity>
         <activity android:name=".activity.Timeline">
 
         </activity>
-        <activity android:name=".luanqibazao.AddPostal_kind"/>
-        <activity android:name=".luanqibazao.AddPostal_contents"/>
         <activity android:name=".activity.PostalNearby"/>
         <activity
                 android:name=".activity.PostalEditor"
