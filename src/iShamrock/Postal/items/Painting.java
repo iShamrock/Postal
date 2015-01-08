@@ -1,8 +1,8 @@
-package com.alexvasilkov.foldablelayout.sample.items;
+package iShamrock.Postal.items;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import com.alexvasilkov.foldablelayout.sample.R;
+import iShamrock.Postal.R;
 
 public class Painting {
 

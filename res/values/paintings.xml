@@ -26,7 +26,7 @@
     </string-array>
 
     <array name="paintings_images">
-        <item>@drawable/starry_night</item>
+        <item>@drawable/default_postal_cover</item>
         <item>@drawable/cafe_terrace</item>
         <item>@drawable/starry_night_over_the_rhone</item>
         <item>@drawable/sunflowers</item>

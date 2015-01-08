@@ -53,8 +53,7 @@
         <activity android:name=".activity.Timeline">
 
         </activity>
-        <activity android:name=".luanqibazao.AddPostal_kind"/>
-        <activity android:name=".luanqibazao.AddPostal_contents"/>
+        <activity android:name=".activity.UnfoldableDetailsActivity"/>
         <activity android:name=".activity.PostalNearby"/>
         <activity
                 android:name=".activity.PostalEditor"

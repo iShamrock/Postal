@@ -1,68 +1,139 @@
 package iShamrock.Postal.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import com.gc.materialdesign.views.ButtonFlat;
+import android.widget.*;
+import com.alexvasilkov.android.commons.texts.SpannableBuilder;
+import com.alexvasilkov.android.commons.utils.Views;
+import com.alexvasilkov.foldablelayout.FoldableListLayout;
+import com.alexvasilkov.foldablelayout.UnfoldableView;
+import com.alexvasilkov.foldablelayout.shading.GlanceFoldShading;
 import com.gc.materialdesign.views.ButtonFloat;
 import iShamrock.Postal.R;
-import iShamrock.Postal.entity.PostalData;
-import iShamrock.Postal.entity.PostalDataItem;
-
-import java.io.ByteArrayOutputStream;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import iShamrock.Postal.items.Painting;
+import iShamrock.Postal.items.PaintingsAdapter;
 
 /**
  * Created by lifengshuang on 11/27/14.
  */
-public class Timeline extends Activity {
+public class Timeline extends BaseActivity {
 
     private LocationManager locationManager;
     private Location currentLocation;
 
     private Activity timeline = this;
-    private AnimationView animationView;
+    //private AnimationView animationView;
+    private ListView mListView;
+    private View mListTouchInterceptor;
+    private View mDetailsLayout;
+    private UnfoldableView mUnfoldableView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timeline);
-        animationView = new AnimationView(this);
+        //animationView = new AnimationView(this);
         //initLocationManager();
 
         Intent intent = getIntent();
         //this.dataItems = (ArrayList<PostalDataItem>)intent.getSerializableExtra("data");
 
-        initListView();
+//        initFoldableListLayout();
+        initUnfoldableDetailsActivity();
         initButtons();
         initLeftDrawer();
     }
 
-    private void initListView() {
+    private void initUnfoldableDetailsActivity(){
+        mListView = Views.find(this, R.id.list_view);
+        mListView.setAdapter(new PaintingsAdapter(this));
+
+        mListTouchInterceptor = Views.find(this, R.id.touch_interceptor_view);
+        mListTouchInterceptor.setClickable(false);
+
+        mDetailsLayout = Views.find(this, R.id.details_layout);
+        mDetailsLayout.setVisibility(View.INVISIBLE);
+
+        mUnfoldableView = Views.find(this, R.id.unfoldable_view);
+
+        Bitmap glance = BitmapFactory.decodeResource(getResources(), R.drawable.unfold_glance);
+        mUnfoldableView.setFoldShading(new GlanceFoldShading(this, glance));
+
+        mUnfoldableView.setOnFoldingListener(new UnfoldableView.SimpleFoldingListener() {
+            @Override
+            public void onUnfolding(UnfoldableView unfoldableView) {
+                mListTouchInterceptor.setClickable(true);
+                mDetailsLayout.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onUnfolded(UnfoldableView unfoldableView) {
+                mListTouchInterceptor.setClickable(false);
+            }
+
+            @Override
+            public void onFoldingBack(UnfoldableView unfoldableView) {
+                mListTouchInterceptor.setClickable(true);
+            }
+
+            @Override
+            public void onFoldedBack(UnfoldableView unfoldableView) {
+                mListTouchInterceptor.setClickable(false);
+                mDetailsLayout.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mUnfoldableView != null && (mUnfoldableView.isUnfolded() || mUnfoldableView.isUnfolding())) {
+            mUnfoldableView.foldBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public void openDetails(View coverView, Painting painting) {
+        ImageView image = Views.find(mDetailsLayout, R.id.details_image);
+        TextView title = Views.find(mDetailsLayout, R.id.details_title);
+        TextView description = Views.find(mDetailsLayout, R.id.details_text);
+
+        image.setImageBitmap(BitmapFactory.decodeResource(getResources(), painting.getImageId()));
+        title.setText(painting.getTitle());
+
+        SpannableBuilder builder = new SpannableBuilder(this);
+        builder
+                .createStyle().setFont(Typeface.DEFAULT_BOLD).apply()
+                .append(R.string.year).append(": ")
+                .clearStyle()
+                .append(painting.getYear()).append("\n")
+                .createStyle().setFont(Typeface.DEFAULT_BOLD).apply()
+                .append(R.string.location).append(": ")
+                .clearStyle()
+                .append(painting.getLocation());
+        description.setText(builder.build());
+
+        mUnfoldableView.unfold(coverView, mDetailsLayout);
+    }
+
+/*    private void initFoldableListLayout(){
+        FoldableListLayout foldableListLayout = (FoldableListLayout) findViewById(R.id.listView_timeline);
+        foldableListLayout.setAdapter(new PaintingsAdapter(this));
+
+    }*/
+
+
+
+/*    private void initFoldableListLayout() {
         ListView listView = (ListView) findViewById(R.id.listView_timeline);
         listView.setAdapter(new SimpleAdapter(this, getListViewData(), R.layout.timeline_item,
                 new String[]{"image"},
@@ -83,27 +154,18 @@ public class Timeline extends Activity {
                 timeline.startActivity(intent);
             }
         });
-    }
+    }*/
 
-    private void foldingAnimation(View view){
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-        addContentView(animationView, layoutParams);
-        Rect bound = new Rect();
-        view.getDrawingRect(bound);
-        animationView.folding(timeline, bound);
-    }
-
-    private List<Map<String, Object>> getListViewData() {
+/*    private List<Map<String, Object>> getListViewData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map;
 
         for (PostalDataItem item : PostalData.dataItemList) {
             map = new HashMap<String, Object>();
-            /*map.put("postal", R.drawable.test_postal);
+            *//*map.put("postal", R.drawable.test_postal);
             map.put("content", item.content);
             map.put("time", item.time);
-            map.put("location", item.location);*/
+            map.put("location", item.location);*//*
             Uri uri = Uri.parse(item.coverUrl);
             Bitmap photo = null;
             try {
@@ -116,7 +178,7 @@ public class Timeline extends Activity {
             list.add(map);
         }
         return list;
-    }
+    }*/
 
     private void initButtons() {
         ButtonFloat add = (ButtonFloat) findViewById(R.id.btn_add);
@@ -171,7 +233,7 @@ public class Timeline extends Activity {
         }
     }
 
-    private static class AnimationView extends View{
+/*    private static class AnimationView extends View{
 
         private Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_postal_cover);
 
@@ -183,7 +245,7 @@ public class Timeline extends Activity {
             Animation animation = AnimationUtils.loadAnimation(context, R.anim.scale_image);
             startAnimation(animation);
         }
-    }
+    }*/
 
 
 

@@ -6,4 +6,6 @@
     <string name="image">Image</string>
     <string name="take_photo">Shoot</string>
     <string name="back">←</string>
+    <string name="year">Year</string>
+    <string name="location">Location</string>
 </resources>
