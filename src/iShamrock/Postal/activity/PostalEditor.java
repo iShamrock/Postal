@@ -13,11 +13,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import com.baidu.location.BDLocation;
 import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import iShamrock.Postal.R;
 import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
+import iShamrock.Postal.util.BaiduLocUtil;
 import iShamrock.Postal.util.SysInfoUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -79,7 +81,15 @@ public class PostalEditor extends Activity {
             @Override
             public void onClick(View view) {
                 /*TODO implement intent here to callback PostalDataItem*/
-                dataItem.time(SysInfoUtil.getTimeString());
+                if (dataItem.coverUrl == null)
+                    finish();
+                BDLocation location = BaiduLocUtil.location;
+                dataItem.time(SysInfoUtil.getTimeString())
+                        .latitude(location.getLatitude())
+                        .longitude(location.getLongitude())
+                        .content(editText.getText().toString())
+                        .contentType(PostalDataItem.TYPE_TEXT);
+                PostalData.dataItemList.add(dataItem);
                 finish();
             }
         });
@@ -87,11 +97,10 @@ public class PostalEditor extends Activity {
             @Override
             public void onClick(View view) {
                 PostalData.dataItemList.add(new PostalDataItem(PostalDataItem.TYPE_IMAGE, "content://media/external/images/media/115219",
-                        4, editText.getText().toString(), "now", new float[]{31.14333f, 121.80528f}));
+                        4, editText.getText().toString(), "now", new double[]{31.14333, 121.80528}));
                 finish();
             }
         });
-
     }
 
     private void initEditComponents() {

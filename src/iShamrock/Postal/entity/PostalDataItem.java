@@ -18,9 +18,9 @@ public class PostalDataItem implements Serializable {
     public String coverUrl;
     public String content;
     public String time;
-    public float[] location;
+    public double[] location;
 
-    public PostalDataItem(int coverType, String coverUrl, int contentType, String content, String time, float[] location) {
+    public PostalDataItem(int coverType, String coverUrl, int contentType, String content, String time, double[] location) {
         this.coverType = coverType;
         this.coverUrl = coverUrl;
         this.contentType = contentType;
@@ -32,7 +32,7 @@ public class PostalDataItem implements Serializable {
     public PostalDataItem() {
         coverType = 0;
         contentType = 4;
-        location = new float[2];
+        location = new double[2];
     }
 
     public PostalDataItem coverType(int coverType) {
@@ -60,17 +60,17 @@ public class PostalDataItem implements Serializable {
         return this;
     }
 
-    public PostalDataItem content(float[] location) {
+    public PostalDataItem content(double[] location) {
         this.location = location;
         return this;
     }
 
-    public PostalDataItem latitude(float latitude) {
+    public PostalDataItem latitude(double latitude) {
         this.location[0] = latitude;
         return this;
     }
 
-    public PostalDataItem longitude(float longitude) {
+    public PostalDataItem longitude(double longitude) {
         this.location[1] = longitude;
         return this;
     }

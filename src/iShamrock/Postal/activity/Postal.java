@@ -6,7 +6,6 @@ import android.os.Bundle;
 import iShamrock.Postal.R;
 
 public class Postal extends Activity {
-    public static float[] userLoc;
 
     /**
      * Called when the activity is first created.

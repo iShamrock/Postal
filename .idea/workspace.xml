@@ -41,13 +41,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ca57ca9-588e-4922-b083-fabddb995649" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/util/SysInfoUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduLocUtil.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduLocUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduMapUtil.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduMapUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Postal.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Postal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalData.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalDataItem.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalDataItem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalNearby.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalNearby.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Splash.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Splash.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="60646984-7466-4188-b0c7-8f0f847557e8" name="gitignore" comment="" />
@@ -126,8 +123,8 @@
           <file leaf-file-name="Postal.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Postal.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
-                  <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+                  <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -145,11 +142,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Splash.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Splash.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Splash.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.31478772" vertical-offset="199" max-vertical-offset="900">
-                  <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="900">
+                  <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#751#1085#0" expanded="true" />
@@ -161,24 +158,34 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BaiduMapUtil.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduMapUtil.java">
+          <file leaf-file-name="PostalEditor.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1494">
-                  <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
+                <state vertical-scroll-proportion="1.0320911" vertical-offset="749" max-vertical-offset="3600">
+                  <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PostalDataItem.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalDataItem.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1584">
+                  <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BaiduLocUtil.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduLocUtil.java">
+          <file leaf-file-name="PostalData.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalData.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
-                  <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
+                  <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -213,8 +220,8 @@
           <file leaf-file-name="PostalNearby.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalNearby.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5552239" vertical-offset="96" max-vertical-offset="1062">
-                  <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+                <state vertical-scroll-proportion="0.19875777" vertical-offset="96" max-vertical-offset="1062">
+                  <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
                   <folding />
                 </state>
               </provider>
@@ -263,21 +270,21 @@
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalInMap.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/LocalData/PostalDataItem.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/util/ImageSelUtil.java" />
-        <option value="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalDataItem.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/AddPostal.java" />
         <option value="$PROJECT_DIR$/res/layout/addpostal.xml" />
-        <option value="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalData.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/Login.java" />
         <option value="$PROJECT_DIR$/res/layout/splash.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/util/SysInfoUtil.java" />
-        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduMapUtil.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduLocUtil.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalNearby.java" />
-        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/Postal.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/Splash.java" />
+        <option value="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalDataItem.java" />
+        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/Postal.java" />
+        <option value="$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalData.java" />
+        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java" />
       </list>
     </option>
   </component>
@@ -1086,7 +1093,7 @@
       <workItem from="1420565192477" duration="1798000" />
       <workItem from="1420636878377" duration="1443000" />
       <workItem from="1420640121167" duration="2039000" />
-      <workItem from="1420642457539" duration="14227000" />
+      <workItem from="1420642457539" duration="15107000" />
     </task>
     <task id="LOCAL-00001" summary="Modified project structure. Separated to several packages.">
       <created>1417012284879</created>
@@ -1172,11 +1179,17 @@
       <option name="project" value="LOCAL" />
       <updated>1420690896339</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="BaiduLocUtil API changement">
+      <created>1420695834318</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1420695834318</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119886000" />
+    <option name="totallyTimeSpent" value="120766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-84" width="1920" height="1080" extended-state="6" />
@@ -1203,7 +1216,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275194" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3221011" sideWeight="0.33963692" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29335976" sideWeight="0.5250533" order="7" side_tool="false" content_ui="tabs" x="-1969" y="682" width="1876" height="258" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29335976" sideWeight="0.5250533" order="7" side_tool="false" content_ui="tabs" x="-1969" y="682" width="1876" height="258" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15458423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28939545" sideWeight="0.4749467" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1277,14 +1290,15 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/geeeeeeeeek/Postal&#10;&#10;Conflicts:&#10;&#9;Postal.iml&#10;&#9;src/iShamrock/Postal/activity/Timeline.java&#10;" />
     <MESSAGE value="Merge branch 'master' of https://github.com/geeeeeeeeek/Postal&#10;&#10;Conflicts:&#10;&#9;Postal.iml&#10;&#9;src/iShamrock/Postal/activity/Timeline.java&#10;&#10;add splash" />
     <MESSAGE value="fix a bug that taking photo not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix a bug that taking photo not working" />
+    <MESSAGE value="BaiduLocUtil API changement" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaiduLocUtil API changement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java</url>
-          <line>183</line>
+          <line>192</line>
           <properties />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
@@ -1520,14 +1534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4311377" vertical-offset="0" max-vertical-offset="1002">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/adt-bundle-windows-x86_64-20131030/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-16/android.jar!/android/webkit/WebSettings.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="116" max-vertical-offset="5400">
@@ -1604,14 +1610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalDataItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9821428" vertical-offset="0" max-vertical-offset="1584">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/util/SysInfoUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
@@ -1649,31 +1647,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.95652175" vertical-offset="1524" max-vertical-offset="3438">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduMapUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1494">
           <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Postal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
-          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1685,24 +1663,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalNearby.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5552239" vertical-offset="96" max-vertical-offset="1062">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Splash.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31478772" vertical-offset="199" max-vertical-offset="900">
-          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="900">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#751#1085#0" expanded="true" />
             <element signature="e#1084#1085#0" expanded="true" />
             <element signature="e#1264#1421#0" expanded="true" />
             <element signature="e#1420#1421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalNearby.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19875777" vertical-offset="96" max-vertical-offset="1062">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Postal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/entity/PostalDataItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1584">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0320911" vertical-offset="749" max-vertical-offset="3600">
+          <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
