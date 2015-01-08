@@ -25,6 +25,7 @@ import iShamrock.Postal.util.SysInfoUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Tong on 12.24.
@@ -40,7 +41,7 @@ public class PostalEditor extends Activity {
     private ImageView imageView;
     private EditText editText;
     private ButtonRectangle btnImage, btnTake;
-    private ButtonFloat btnBack, btnSend;
+    private ImageView btnBack, btnSend;
     private PostalDataItem dataItem;
 
     @Override
@@ -52,9 +53,8 @@ public class PostalEditor extends Activity {
         initLeftDrawer();
         imageView = (ImageView) findViewById(R.id.add_postal_imageView);
         editText = (EditText) findViewById(R.id.editText);
-        btnBack = (ButtonFloat) findViewById(R.id.btn_back);
-        btnSend = (ButtonFloat) findViewById(R.id.btn_send);
-        btnSend.setBackgroundColor(0xff1bd411);
+        btnBack = (ImageView) findViewById(R.id.img_back);
+        btnSend = (ImageView) findViewById(R.id.img_send);
         Intent intent = getIntent();
         final PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
         if (data == null) {
@@ -79,34 +79,38 @@ public class PostalEditor extends Activity {
             editText.setClickable(false);
             editText.setText(data.content);
         }
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*TODO implement intent here to callback PostalDataItem*/
-                if (dataItem.coverUrl == null)
-                    finish();
-                BDLocation location = BaiduLocUtil.location;
-                dataItem.time(SysInfoUtil.getTimeString())
-                        .latitude(location.getLatitude())
-                        .longitude(location.getLongitude())
-                        .content(editText.getText().toString())
-                        .contentType(PostalDataItem.TYPE_TEXT);
-                PostalData.dataItemList.add(dataItem);
-                finish();
-            }
-        });
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PostalData.dataItemList.add(new PostalDataItem(PostalDataItem.TYPE_IMAGE, "content://media/external/images/media/115219",
-                        4, editText.getText().toString(), "now", new double[]{31.14333, 121.80528}));
+                if (dataItem.coverUrl == null)
+                    finish();
+                else {
+                    BDLocation location = BaiduLocUtil.location;
+                    dataItem.time(SysInfoUtil.getTimeString())
+                            .latitude(location.getLatitude())
+                            .longitude(location.getLongitude())
+                            .content(editText.getText().toString())
+                            .contentType(PostalDataItem.TYPE_TEXT)
+                            .title("My Postal");
+                    PostalData.dataItemList.add(dataItem);
+                    Intent intent = new Intent();
+                    intent.setClass(PostalEditor.this, Timeline.class);
+                    startActivity(intent);
+                    finish();
+                    finish();
+                }
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });
     }
 
     private void initLeftDrawer() {
-        String[] titles = new String[]{"Timeline", "In the map", "Make Postal", "My Posts"};
+        String[] titles = new String[]{"Postal Box", "In the map", "Edit Postal", "My Posts"};
         ListView drawerList = (ListView) findViewById(R.id.left_drawer_addpostal);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_addpostal);
         drawerList.setAdapter(new ArrayAdapter<String>(this,
@@ -143,7 +147,10 @@ public class PostalEditor extends Activity {
             startActivity(intent);
             finish();
         } else if (i == 3) {
-
+            Intent intent = new Intent();
+            intent.setClass(this, FoldableListActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -225,8 +232,7 @@ public class PostalEditor extends Activity {
         intent.putExtra("outputY", height);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, PHOTO_RESULT);
-        dataItem.coverType(PostalDataItem.TYPE_IMAGE)
-                .coverUrl(uri.toString());
+
     }
 
     @Override
@@ -242,7 +248,16 @@ public class PostalEditor extends Activity {
             if (extras != null) {
                 Bitmap photo = extras.getParcelable("data");
                 photo.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());
+                String tempDir="temp" + System.currentTimeMillis();
+                try {
+                    SysInfoUtil.saveBitmapToFile(photo, Environment.getExternalStorageDirectory() + "/" + tempDir);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                dataItem.coverType(PostalDataItem.TYPE_IMAGE)
+                        .coverUrl(Uri.fromFile(new File(Environment.getExternalStorageDirectory(), tempDir)).toString());
                 imageView.setImageBitmap(photo);
+
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

@@ -1,26 +1,28 @@
 package iShamrock.Postal.activity;
 
-import android.app.Activity;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
-import android.location.Location;
-import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import com.alexvasilkov.android.commons.texts.SpannableBuilder;
 import com.alexvasilkov.android.commons.utils.Views;
-import com.alexvasilkov.foldablelayout.FoldableListLayout;
 import com.alexvasilkov.foldablelayout.UnfoldableView;
 import com.alexvasilkov.foldablelayout.shading.GlanceFoldShading;
-import com.gc.materialdesign.views.ButtonFloat;
 import iShamrock.Postal.R;
 import iShamrock.Postal.items.Painting;
 import iShamrock.Postal.items.PaintingsAdapter;
+
+import java.io.IOException;
 
 
 /**
@@ -28,11 +30,6 @@ import iShamrock.Postal.items.PaintingsAdapter;
  */
 public class Timeline extends BaseActivity {
 
-    private LocationManager locationManager;
-    private Location currentLocation;
-
-    private Activity timeline = this;
-    //private AnimationView animationView;
     private ListView mListView;
     private View mListTouchInterceptor;
     private View mDetailsLayout;
@@ -42,16 +39,31 @@ public class Timeline extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timeline);
-        //animationView = new AnimationView(this);
-        //initLocationManager();
-
-        Intent intent = getIntent();
-        //this.dataItems = (ArrayList<PostalDataItem>)intent.getSerializableExtra("data");
-
-//        initFoldableListLayout();
+        getActionBar().setDisplayHomeAsUpEnabled(false);
+        getActionBar().setTitle("Postal Box");
         initUnfoldableDetailsActivity();
-        initButtons();
         initLeftDrawer();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuItem add = menu.add("");
+        add
+                .setIcon(R.drawable.plus)
+                .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent = new Intent();
+                        intent.setClass(Timeline.this, PostalEditor.class);
+                        startActivity(intent);
+                        finish();
+                        return false;
+                    }
+                })
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        return true;
     }
 
     private void initUnfoldableDetailsActivity(){
@@ -107,11 +119,19 @@ public class Timeline extends BaseActivity {
         ImageView image = Views.find(mDetailsLayout, R.id.details_image);
         TextView title = Views.find(mDetailsLayout, R.id.details_title);
         TextView description = Views.find(mDetailsLayout, R.id.details_text);
-
-        image.setImageBitmap(BitmapFactory.decodeResource(getResources(), painting.getImageId()));
+        if (painting.isLocal()) {
+            image.setImageBitmap(BitmapFactory.decodeResource(getResources(), painting.getImageId()));
+        }
+        else {
+            try {
+                image.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(painting.getUri())));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         title.setText(painting.getTitle());
 
-        SpannableBuilder builder = new SpannableBuilder(this);
+/*        SpannableBuilder builder = new SpannableBuilder(this);
         builder
                 .createStyle().setFont(Typeface.DEFAULT_BOLD).apply()
                 .append(R.string.year).append(": ")
@@ -120,8 +140,9 @@ public class Timeline extends BaseActivity {
                 .createStyle().setFont(Typeface.DEFAULT_BOLD).apply()
                 .append(R.string.location).append(": ")
                 .clearStyle()
-                .append(painting.getLocation());
-        description.setText(builder.build());
+                .append(painting.getLocation());*/
+
+        description.setText(painting.getContent() + "\n" + painting.getYear());
 
         mUnfoldableView.unfold(coverView, mDetailsLayout);
     }
@@ -132,70 +153,8 @@ public class Timeline extends BaseActivity {
 
     }*/
 
-
-
-/*    private void initFoldableListLayout() {
-        ListView listView = (ListView) findViewById(R.id.listView_timeline);
-        listView.setAdapter(new SimpleAdapter(this, getListViewData(), R.layout.timeline_item,
-                new String[]{"image"},
-                new int[]{R.id.image_list_item}));
-//                new String[]{"postal", "content", "time", "location"},
-//                new int[]{R.id.imageView, R.id.contents_timelineitem, R.id.time_timelineitem, R.id.location_timelineitem}));
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent();
-                intent.setClass(timeline, PostalEditor.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("data", PostalData.dataItemList.get(i));
-                intent.putExtras(bundle);
-                Animation animation = AnimationUtils.loadAnimation(timeline, R.anim.scale_image);
-                view.startAnimation(animation);
-                //foldingAnimation(view);
-                timeline.startActivity(intent);
-            }
-        });
-    }*/
-
-/*    private List<Map<String, Object>> getListViewData() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map;
-
-        for (PostalDataItem item : PostalData.dataItemList) {
-            map = new HashMap<String, Object>();
-            *//*map.put("postal", R.drawable.test_postal);
-            map.put("content", item.content);
-            map.put("time", item.time);
-            map.put("location", item.location);*//*
-            Uri uri = Uri.parse(item.coverUrl);
-            Bitmap photo = null;
-            try {
-                photo = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                photo.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            map.put("image", R.drawable.default_postal_cover);
-            list.add(map);
-        }
-        return list;
-    }*/
-
-    private void initButtons() {
-        ButtonFloat add = (ButtonFloat) findViewById(R.id.btn_add_timeline);
-        add.setBackgroundColor(0xff1bd411);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(timeline, PostalEditor.class);
-                timeline.startActivity(intent);
-            }
-        });
-    }
-
     private void initLeftDrawer() {
-        String[] titles = new String[]{"Timeline", "In the map", "Make postal", "back to some day"};
+        String[] titles = new String[]{"Postal Box", "In the map", "Edit Postal", "My Posts"};
         ListView drawerList = (ListView) findViewById(R.id.left_drawer_timeline);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_timeline);
         drawerList.setAdapter(new ArrayAdapter<String>(this,
@@ -232,51 +191,11 @@ public class Timeline extends BaseActivity {
             startActivity(intent);
             finish();
         } else if (i == 3) {
-
+            Intent intent = new Intent();
+            intent.setClass(this, FoldableListActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
-
-/*    private static class AnimationView extends View{
-
-        private Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_postal_cover);
-
-        private AnimationView(Context context) {
-            super(context);
-        }
-
-        public void folding(Context context, Rect location){
-            Animation animation = AnimationUtils.loadAnimation(context, R.anim.scale_image);
-            startAnimation(animation);
-        }
-    }*/
-
-
-
-/*    private void initLocationManager() {
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                currentLocation = location;
-                System.out.println("Location: (" + currentLocation.getLatitude() + ", " + currentLocation.getLongitude() + ")");
-            }
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String s) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String s) {
-                Toast.makeText(timeline, "GPS disabled", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }*/
 
 }

@@ -5,35 +5,11 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:materialdesign="http://schemas.android.com/apk/main/res/com.gc.materialdesign"
                   android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
 
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:gravity="center_horizontal">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:text="Title"
-                    android:id="@+id/title_timeline" android:layout_weight="1" android:gravity="center_horizontal"/>
-            <com.gc.materialdesign.views.ButtonFloat
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#31ee27"
-                    materialdesign:animate="true"
-                    materialdesign:iconDrawable="@drawable/ic_action_new"
-                    android:id="@+id/btn_add_timeline"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/back"
-                    android:textColor="#eee"
-                    android:gravity="center"/>
-        </LinearLayout>
+
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                      android:layout_width="match_parent"
                      android:layout_height="match_parent">

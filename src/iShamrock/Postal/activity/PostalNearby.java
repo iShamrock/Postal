@@ -48,7 +48,7 @@ public class PostalNearby extends Activity {
         }
     }
     private void initLeftDrawer() {
-        String[] titles = new String[]{"Timeline", "In the map", "Make postal", "back to some day"};
+        String[] titles = new String[]{"Postal Box", "In the map", "Edit Postal", "My Posts"};
         ListView drawerList = (ListView) findViewById(R.id.left_drawer_postalnearby);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_postalnearby);
         drawerList.setAdapter(new ArrayAdapter<String>(this,
@@ -85,7 +85,10 @@ public class PostalNearby extends Activity {
             startActivity(intent);
             finish();
         } else if (i == 3) {
-
+            Intent intent = new Intent();
+            intent.setClass(this, FoldableListActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 

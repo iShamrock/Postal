@@ -32,34 +32,27 @@
                         android:layout_height="match_parent"
                 >
 
-            <com.gc.materialdesign.views.ButtonFloat
+            <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#1E88E5"
-                    materialdesign:animate="true"
-                    materialdesign:iconDrawable="@drawable/ic_action_new"
-                    android:id="@+id/btn_back"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/back"
-                    android:textColor="#eee"
-                    android:gravity="center"/>
-            <com.gc.materialdesign.views.ButtonFloat
+                    android:id="@+id/img_back"
+                    android:background="@drawable/back"
+                    />
+            <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#31ee27"
-                    materialdesign:animate="true"
-                    materialdesign:iconDrawable="@drawable/ic_action_new"
-                    android:id="@+id/btn_send"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_marginTop="12dp"
-                    android:text="@string/back"
-                    android:textColor="#eee"
-                    android:gravity="center"/>
+                    android:id="@+id/img_send"
+                    android:background="@drawable/check"
+                    />
+
         </RelativeLayout>
 
         <com.gc.materialdesign.views.ButtonRectangle

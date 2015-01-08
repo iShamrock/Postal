@@ -27,13 +27,13 @@ public class Splash extends Activity {
             @Override
             public void run() {
                 /* Create an intent that will start the main activity*/
-                Intent mainIntent = new Intent(Splash.this, Postal.class);
+                Intent mainIntent = new Intent(Splash.this, Timeline.class);
                 Splash.this.startActivity(mainIntent);
                 Splash.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
         super.onCreate(savedInstanceState);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        ImageView imageView = (ImageView) findViewById(R.id.imageView_splash);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

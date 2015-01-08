@@ -59,13 +59,13 @@
         <activity android:name=".activity.Timeline">
 
         </activity>
-        <activity android:name=".activity.UnfoldableDetailsActivity"/>
-        <activity android:name=".activity.PostalNearby"/>
+        <activity android:name=".activity.PostalNearby"
+                  android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"/>
         <activity
                 android:name=".activity.PostalEditor"
-                android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">>
-
+                android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
         </activity>
+        <activity android:name=".activity.FoldableListActivity"/>
 
     </application>
 

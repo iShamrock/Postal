@@ -8,7 +8,7 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_splash"
             android:layout_gravity="bottom|center_horizontal"
             android:src="@drawable/splash"
             android:layout_marginBottom="0dp"/>

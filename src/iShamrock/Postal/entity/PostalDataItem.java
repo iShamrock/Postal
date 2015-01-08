@@ -18,11 +18,13 @@ public class PostalDataItem implements Serializable {
     public String coverUrl;
     public String content;
     public String time;
+    public String title;
     public double[] location;
 
-    public PostalDataItem(int coverType, String coverUrl, int contentType, String content, String time, double[] location) {
+    public PostalDataItem(int coverType, String coverUrl, String title, int contentType, String content, String time, double[] location) {
         this.coverType = coverType;
         this.coverUrl = coverUrl;
+        this.title = title;
         this.contentType = contentType;
         this.content = content;
         this.time = time;
@@ -72,6 +74,11 @@ public class PostalDataItem implements Serializable {
 
     public PostalDataItem longitude(double longitude) {
         this.location[1] = longitude;
+        return this;
+    }
+
+    public PostalDataItem title(String title) {
+        this.title = title;
         return this;
     }
     /*public String getFormattedTime() {

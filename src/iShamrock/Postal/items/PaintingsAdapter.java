@@ -17,17 +17,19 @@ import com.alexvasilkov.android.commons.utils.Views;
 //import com.squareup.picasso.Picasso;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
-import iShamrock.Postal.activity.UnfoldableDetailsActivity;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnClickListener {
 
     Resources resources;
+    ContentResolver contentResolver;
 
     public PaintingsAdapter(Context context) {
         super(context);
         resources = context.getResources();
+        contentResolver = context.getContentResolver();
         setItemsList(Arrays.asList(Painting.getAllPaintings(context.getResources())));
     }
 
@@ -39,7 +41,6 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
         vh.image.setOnClickListener(this);
         vh.title = Views.find(view, R.id.list_item_title);
         view.setTag(vh);
-
         return view;
     }
 
@@ -47,9 +48,19 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     protected void bindView(Painting item, int pos, View convertView) {
         ViewHolder vh = (ViewHolder) convertView.getTag();
         vh.image.setTag(item);
-        vh.image.setImageBitmap(BitmapFactory.decodeResource(resources, item.getImageId()));
-        //Picasso.with(convertView.getContext()).load(item.getImageId()).noFade().into(vh.image);
-        vh.title.setText(item.getTitle());
+        if (item.isLocal()) {
+            vh.image.setImageBitmap(BitmapFactory.decodeResource(resources, item.getImageId()));
+            //Picasso.with(convertView.getContext()).load(item.getImageId()).noFade().into(vh.image);
+            vh.title.setText(item.getTitle());
+        }
+        else {
+            try {
+                vh.image.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getUri())));
+                vh.title.setText(item.getTitle());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
