@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                        android:id="@+id/drawer_layout"
+                                        android:id="@+id/drawer_layout_timeline"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,7 +25,7 @@
                     android:background="#31ee27"
                     materialdesign:animate="true"
                     materialdesign:iconDrawable="@drawable/ic_action_new"
-                    android:id="@+id/btn_add"
+                    android:id="@+id/btn_add_timeline"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="12dp"

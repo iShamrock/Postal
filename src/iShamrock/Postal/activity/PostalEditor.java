@@ -7,18 +7,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.*;
+import com.baidu.location.BDLocation;
 import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import iShamrock.Postal.R;
 import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
+import iShamrock.Postal.util.BaiduLocUtil;
+import iShamrock.Postal.util.SysInfoUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -38,6 +41,7 @@ public class PostalEditor extends Activity {
     private EditText editText;
     private ButtonRectangle btnImage, btnTake;
     private ButtonFloat btnBack, btnSend;
+    private PostalDataItem dataItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +49,17 @@ public class PostalEditor extends Activity {
         setContentView(R.layout.addpostal);
 
 
+        initLeftDrawer();
         imageView = (ImageView) findViewById(R.id.add_postal_imageView);
         editText = (EditText) findViewById(R.id.editText);
         btnBack = (ButtonFloat) findViewById(R.id.btn_back);
         btnSend = (ButtonFloat) findViewById(R.id.btn_send);
         btnSend.setBackgroundColor(0xff1bd411);
         Intent intent = getIntent();
-        PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
+        final PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
         if (data == null) {
             /* add new postal*/
+            dataItem = new PostalDataItem();
             initImageCover(null);
             initEditComponents();
         } else {
@@ -77,6 +83,15 @@ public class PostalEditor extends Activity {
             @Override
             public void onClick(View view) {
                 /*TODO implement intent here to callback PostalDataItem*/
+                if (dataItem.coverUrl == null)
+                    finish();
+                BDLocation location = BaiduLocUtil.location;
+                dataItem.time(SysInfoUtil.getTimeString())
+                        .latitude(location.getLatitude())
+                        .longitude(location.getLongitude())
+                        .content(editText.getText().toString())
+                        .contentType(PostalDataItem.TYPE_TEXT);
+                PostalData.dataItemList.add(dataItem);
                 finish();
             }
         });
@@ -84,10 +99,52 @@ public class PostalEditor extends Activity {
             @Override
             public void onClick(View view) {
                 PostalData.dataItemList.add(new PostalDataItem(PostalDataItem.TYPE_IMAGE, "content://media/external/images/media/115219",
-                        4, editText.getText().toString(), "now", new float[]{31.14333f, 121.80528f}));
+                        4, editText.getText().toString(), "now", new double[]{31.14333, 121.80528}));
                 finish();
             }
         });
+    }
+
+    private void initLeftDrawer() {
+        String[] titles = new String[]{"Timeline", "In the map", "Make Postal", "My Posts"};
+        ListView drawerList = (ListView) findViewById(R.id.left_drawer_addpostal);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_addpostal);
+        drawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, titles));
+        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                drawerItemOnClickAction(i);
+            }
+        });
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                invalidateOptionsMenu();
+            }
+        };
+        drawerLayout.setDrawerListener(toggle);
+    }
+
+    private void drawerItemOnClickAction(int i) {
+        if (i == 1) {
+            Intent intent = new Intent();
+            intent.setClass(this, PostalNearby.class);
+            startActivity(intent);
+            finish();
+        } else if (i == 0) {
+            Intent intent = new Intent();
+            intent.setClass(this, Timeline.class);
+            startActivity(intent);
+            finish();
+        } else if (i == 3) {
+
+        }
     }
 
     private void initEditComponents() {
@@ -168,16 +225,18 @@ public class PostalEditor extends Activity {
         intent.putExtra("outputY", height);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, PHOTO_RESULT);
-        Log.d("uri", uri.toString());
+        dataItem.coverType(PostalDataItem.TYPE_IMAGE)
+                .coverUrl(uri.toString());
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == TAKE_PHOTO)
+            photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/" + imageDir)));
+
         if (data == null)
             return;
         if (requestCode == PHOTO_ZOOM) photoZoom(data.getData());
-        if (requestCode == TAKE_PHOTO)
-            photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/" + imageDir)));
         if (requestCode == PHOTO_RESULT) {
             Bundle extras = data.getExtras();
             if (extras != null) {

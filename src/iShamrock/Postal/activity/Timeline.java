@@ -22,6 +22,7 @@ import iShamrock.Postal.R;
 import iShamrock.Postal.items.Painting;
 import iShamrock.Postal.items.PaintingsAdapter;
 
+
 /**
  * Created by lifengshuang on 11/27/14.
  */
@@ -181,7 +182,7 @@ public class Timeline extends BaseActivity {
     }*/
 
     private void initButtons() {
-        ButtonFloat add = (ButtonFloat) findViewById(R.id.btn_add);
+        ButtonFloat add = (ButtonFloat) findViewById(R.id.btn_add_timeline);
         add.setBackgroundColor(0xff1bd411);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,7 +197,7 @@ public class Timeline extends BaseActivity {
     private void initLeftDrawer() {
         String[] titles = new String[]{"Timeline", "In the map", "Make postal", "back to some day"};
         ListView drawerList = (ListView) findViewById(R.id.left_drawer_timeline);
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_timeline);
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, titles));
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -224,10 +225,12 @@ public class Timeline extends BaseActivity {
             Intent intent = new Intent();
             intent.setClass(this, PostalNearby.class);
             startActivity(intent);
+            finish();
         } else if (i == 2) {
             Intent intent = new Intent();
             intent.setClass(this, PostalEditor.class);
             startActivity(intent);
+            finish();
         } else if (i == 3) {
 
         }
