@@ -1,4 +1,4 @@
-package com.alexvasilkov.foldablelayout;
+package iShamrock.Postal.foldablelayout;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -13,9 +13,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
-
-import com.alexvasilkov.foldablelayout.shading.FoldShading;
-import com.alexvasilkov.foldablelayout.shading.SimpleFoldShading;
+import iShamrock.Postal.foldablelayout.shading.FoldShading;
+import iShamrock.Postal.foldablelayout.shading.SimpleFoldShading;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,4 +1,4 @@
-package com.alexvasilkov.android.commons.texts;
+package iShamrock.Postal.commons.texts;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -9,7 +9,7 @@ import android.text.style.ClickableSpan;
 import android.text.style.MetricAffectingSpan;
 import android.util.TypedValue;
 import android.view.View;
-import com.alexvasilkov.android.commons.utils.AppContext;
+import iShamrock.Postal.commons.utils.AppContext;
 
 /**
  * SpannableStringBuilder wrapper that allows applying various text styles to single TextView.
@@ -158,14 +158,14 @@ public class SpannableBuilder {
         }
 
         /**
-         * For more details see {@link com.alexvasilkov.android.commons.texts.Fonts}
+         * For more details see {@link Fonts}
          */
         public Style setFont(String fontPath) {
             return setFont(Fonts.getTypeface(fontPath, context.getAssets()));
         }
 
         /**
-         * For more details see {@link com.alexvasilkov.android.commons.texts.Fonts}
+         * For more details see {@link Fonts}
          */
         public Style setFont(int fontStringId) {
             return setFont(context.getString(fontStringId));

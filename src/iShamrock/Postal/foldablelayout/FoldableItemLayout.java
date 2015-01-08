@@ -1,17 +1,12 @@
-package com.alexvasilkov.foldablelayout;
+package iShamrock.Postal.foldablelayout;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.Rect;
+import android.graphics.*;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import com.alexvasilkov.foldablelayout.shading.FoldShading;
+import iShamrock.Postal.foldablelayout.shading.FoldShading;
 
 /**
  * Provides basic functionality for fold animation: splitting view into 2 parts,

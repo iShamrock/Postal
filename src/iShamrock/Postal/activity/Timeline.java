@@ -14,11 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.alexvasilkov.android.commons.texts.SpannableBuilder;
-import com.alexvasilkov.android.commons.utils.Views;
-import com.alexvasilkov.foldablelayout.UnfoldableView;
-import com.alexvasilkov.foldablelayout.shading.GlanceFoldShading;
 import iShamrock.Postal.R;
+import iShamrock.Postal.commons.utils.Views;
+import iShamrock.Postal.foldablelayout.UnfoldableView;
+import iShamrock.Postal.foldablelayout.shading.GlanceFoldShading;
 import iShamrock.Postal.items.Painting;
 import iShamrock.Postal.items.PaintingsAdapter;
 

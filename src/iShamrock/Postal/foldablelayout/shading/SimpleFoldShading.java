@@ -1,4 +1,4 @@
-package com.alexvasilkov.foldablelayout.shading;
+package iShamrock.Postal.foldablelayout.shading;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

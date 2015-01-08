@@ -97,13 +97,15 @@ public class PostalEditor extends Activity {
                     intent.setClass(PostalEditor.this, Timeline.class);
                     startActivity(intent);
                     finish();
-                    finish();
                 }
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(PostalEditor.this, Timeline.class);
+                startActivity(intent);
                 finish();
             }
         });

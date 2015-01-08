@@ -1,11 +1,7 @@
-package com.alexvasilkov.foldablelayout.shading;
+package iShamrock.Postal.foldablelayout.shading;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.*;
 import android.view.Gravity;
 
 public class GlanceFoldShading implements FoldShading {

@@ -1,4 +1,4 @@
-package com.alexvasilkov.android.commons.adapters;
+package iShamrock.Postal.commons.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
- * Simple {@link BaseAdapter} implementation to use with any {@link List}.<br/>
+ * Simple {@link android.widget.BaseAdapter} implementation to use with any {@link java.util.List}.<br/>
  * {@link #getView(int, android.view.View, android.view.ViewGroup) getView} method is divided into
  * {@link #createView(Object, int, android.view.ViewGroup, android.view.LayoutInflater) createView} and
  * {@link #bindView(Object, int, android.view.View) bindView} methods.

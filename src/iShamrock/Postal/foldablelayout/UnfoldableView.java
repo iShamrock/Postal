@@ -1,4 +1,4 @@
-package com.alexvasilkov.foldablelayout;
+package iShamrock.Postal.foldablelayout;
 
 import android.content.Context;
 import android.graphics.Rect;

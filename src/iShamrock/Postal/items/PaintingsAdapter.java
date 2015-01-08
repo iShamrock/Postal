@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alexvasilkov.android.commons.adapters.ItemsAdapter;
-import com.alexvasilkov.android.commons.utils.Views;
 //import com.squareup.picasso.Picasso;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.commons.adapters.ItemsAdapter;
+import iShamrock.Postal.commons.utils.Views;
 
 import java.io.IOException;
 import java.util.Arrays;

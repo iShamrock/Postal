@@ -1,4 +1,4 @@
-package com.alexvasilkov.android.commons.utils;
+package iShamrock.Postal.commons.utils;
 
 import android.content.Context;
 

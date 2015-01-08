@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.alexvasilkov.android.commons.utils.Views;
-import com.alexvasilkov.foldablelayout.FoldableListLayout;
 import iShamrock.Postal.R;
+import iShamrock.Postal.commons.utils.Views;
+import iShamrock.Postal.foldablelayout.FoldableListLayout;
 import iShamrock.Postal.items.PaintingsAdapter;
 
 /**

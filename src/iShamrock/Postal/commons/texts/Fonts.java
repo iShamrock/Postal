@@ -1,4 +1,4 @@
-package com.alexvasilkov.android.commons.texts;
+package iShamrock.Postal.commons.texts;
 
 import android.app.Activity;
 import android.content.res.AssetManager;
