@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -19,6 +18,7 @@ import com.gc.materialdesign.views.ButtonRectangle;
 import iShamrock.Postal.R;
 import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
+import iShamrock.Postal.util.SysInfoUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -38,6 +38,7 @@ public class PostalEditor extends Activity {
     private EditText editText;
     private ButtonRectangle btnImage, btnTake;
     private ButtonFloat btnBack, btnSend;
+    private PostalDataItem dataItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,10 @@ public class PostalEditor extends Activity {
         btnSend = (ButtonFloat) findViewById(R.id.btn_send);
         btnSend.setBackgroundColor(0xff1bd411);
         Intent intent = getIntent();
-        PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
+        final PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
         if (data == null) {
             /* add new postal*/
+            dataItem = new PostalDataItem();
             initImageCover(null);
             initEditComponents();
         } else {
@@ -77,6 +79,7 @@ public class PostalEditor extends Activity {
             @Override
             public void onClick(View view) {
                 /*TODO implement intent here to callback PostalDataItem*/
+                dataItem.time(SysInfoUtil.getTimeString());
                 finish();
             }
         });
@@ -88,6 +91,7 @@ public class PostalEditor extends Activity {
                 finish();
             }
         });
+
     }
 
     private void initEditComponents() {
@@ -168,7 +172,8 @@ public class PostalEditor extends Activity {
         intent.putExtra("outputY", height);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, PHOTO_RESULT);
-        Log.d("uri", uri.toString());
+        dataItem.coverType(PostalDataItem.TYPE_IMAGE)
+                .coverUrl(uri.toString());
     }
 
     @Override

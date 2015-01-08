@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.*;
 import com.baidu.mapapi.model.LatLng;
 import iShamrock.Postal.R;
@@ -50,6 +51,21 @@ public class BaiduMapUtil {
         mBaiduMap.setOnMarkerClickListener(new MyOnMarkerClickListener(data));
     }
 
+    public void locateTo(BDLocation loc) {
+        MyLocationData locData = new MyLocationData.Builder()
+                .accuracy(loc.getRadius())
+                .direction(100).latitude(loc.getLatitude())
+                .longitude(loc.getLongitude()).build();
+        mBaiduMap.setMyLocationData(locData);
+        LatLng cenpt = new LatLng(locData.latitude, locData.longitude);
+        MapStatus mMapStatus = new MapStatus.Builder()
+                .target(cenpt)
+                .zoom(15)
+                .build();
+
+        MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+        mBaiduMap.setMapStatus(mMapStatusUpdate);
+    }
     class MyOnMarkerClickListener implements BaiduMap.OnMarkerClickListener {
         private PostalDataItem data;
 
@@ -64,12 +80,6 @@ public class BaiduMapUtil {
 
             Bundle bundle = new Bundle();
             bundle.putSerializable("data", data);
-//            intent.putExtra("cover_type", data.coverType);
-//            intent.putExtra("cover_url", data.coverUrl);
-//            intent.putExtra("content_type", data.contentType);
-//            intent.putExtra("content", data.content);
-//            intent.putExtra("time", data.time);
-//            intent.putExtra("location", data.location);
             intent.putExtras(bundle);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             context.startActivity(intent);

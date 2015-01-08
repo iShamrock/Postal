@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.util.BaiduLocUtil;
 
 /**
  * Created by Tong on 01.07.
+ * Splash.
  */
 public class Splash extends Activity {
     /*Duration of wait*/
@@ -17,7 +20,9 @@ public class Splash extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.splash);
-
+        BaiduLocUtil baiduLocUtil = new BaiduLocUtil();
+        baiduLocUtil.initialize(getApplicationContext());
+        baiduLocUtil.requestLocation();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -28,7 +33,12 @@ public class Splash extends Activity {
             }
         }, SPLASH_DISPLAY_LENGTH);
         super.onCreate(savedInstanceState);
-
-        ImageView imageView= (ImageView) findViewById(R.id.imageView);
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Splash.this.finish();
+            }
+        });
     }
 }
