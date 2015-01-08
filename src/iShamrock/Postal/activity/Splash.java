@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
 import iShamrock.Postal.R;
 
 /**
@@ -11,7 +12,7 @@ import iShamrock.Postal.R;
  */
 public class Splash extends Activity {
     /*Duration of wait*/
-    private static final int SPLASH_DISPLAY_LENGTH = 3000;
+    private static final int SPLASH_DISPLAY_LENGTH = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +28,7 @@ public class Splash extends Activity {
             }
         }, SPLASH_DISPLAY_LENGTH);
         super.onCreate(savedInstanceState);
+
+        ImageView imageView= (ImageView) findViewById(R.id.imageView);
     }
 }

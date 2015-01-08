@@ -173,11 +173,12 @@ public class PostalEditor extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == TAKE_PHOTO)
+            photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/" + imageDir)));
+
         if (data == null)
             return;
         if (requestCode == PHOTO_ZOOM) photoZoom(data.getData());
-        if (requestCode == TAKE_PHOTO)
-            photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/" + imageDir)));
         if (requestCode == PHOTO_RESULT) {
             Bundle extras = data.getExtras();
             if (extras != null) {
