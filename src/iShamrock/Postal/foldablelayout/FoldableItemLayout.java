@@ -109,18 +109,10 @@ public class FoldableItemLayout extends FrameLayout {
         }
     }
 
-    public float getFoldRotation() {
-        return mFoldRotation;
-    }
-
     public void setScale(float scale) {
         mScale = scale;
         mTopPart.applyScale(scale);
         mBottomPart.applyScale(scale);
-    }
-
-    public float getScale() {
-        return mScale;
     }
 
     /**
@@ -132,10 +124,6 @@ public class FoldableItemLayout extends FrameLayout {
         mBottomPart.applyRollingDistance(distance, mScale);
     }
 
-    public float getRollingDistance() {
-        return mRollingDistance;
-    }
-
     private void setInTransformation(boolean isInTransformation) {
         if (mIsInTransformation == isInTransformation) return;
         mIsInTransformation = isInTransformation;
@@ -143,10 +131,6 @@ public class FoldableItemLayout extends FrameLayout {
         mBaseLayout.setDrawToCache(isInTransformation);
         mTopPart.setVisibility(isInTransformation ? VISIBLE : INVISIBLE);
         mBottomPart.setVisibility(isInTransformation ? VISIBLE : INVISIBLE);
-    }
-
-    public void setAutoScaleEnabled(boolean isAutoScaleEnabled) {
-        mIsAutoScaleEnabled = isAutoScaleEnabled;
     }
 
     public FrameLayout getBaseLayout() {
@@ -167,9 +151,7 @@ public class FoldableItemLayout extends FrameLayout {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
 
-        // Helping GC to faster clean up bitmap memory.
-        // See issue #10: https://github.com/alexvasilkov/FoldableLayout/issues/10.
-        // Big thank to Michał Ćwiek https://github.com/jitsuCM.
+
         if (mCacheBitmap != null) {
             mCacheBitmap.recycle();
             applyCacheBitmap(mCacheBitmap = null);

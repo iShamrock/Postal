@@ -19,12 +19,7 @@ import iShamrock.Postal.foldablelayout.shading.SimpleFoldShading;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * Foldable items list layout.
- * <p/>
- * It wraps views created by given BaseAdapter into FoldableItemLayouts and provides functionality to scroll
- * among them.
- */
+
 public class FoldableListLayout extends FrameLayout implements GestureDetector.OnGestureListener {
 
     private static final long ANIMATION_DURATION_PER_ITEM = 600;
