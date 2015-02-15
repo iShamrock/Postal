@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.*;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.fore.Splash;
 
 import java.util.ArrayList;
 import java.util.List;

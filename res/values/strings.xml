@@ -11,5 +11,5 @@
     <string name="password">Password</string>
     <string name="phone_or_email">Phone/ Email</string>
     <string name="your_name">Your name</string>
-    <string name="friends">friends</string>
+    <string name="friends_title">friends</string>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.activity.Timeline_prev;
 import iShamrock.Postal.util.BaiduLocUtil;
 
 /**
