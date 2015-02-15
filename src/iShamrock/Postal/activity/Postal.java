@@ -23,7 +23,7 @@ public class Postal extends Activity {
         //bundle.putSerializable("data", (Serializable) data);
         //intent.putExtras(bundle);
 //        intent.setClass(this, Timeline.class);
-        intent.setClass(this, Timeline.class);
+        intent.setClass(this, Timeline_prev.class);
         startActivity(intent);
     }
 }

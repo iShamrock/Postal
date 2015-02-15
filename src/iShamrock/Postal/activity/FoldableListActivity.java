@@ -90,7 +90,7 @@ public class FoldableListActivity extends BaseActivity {
             finish();
         } else if (i == 0) {
             Intent intent = new Intent();
-            intent.setClass(this, Timeline.class);
+            intent.setClass(this, Timeline_prev.class);
             startActivity(intent);
             finish();
         }

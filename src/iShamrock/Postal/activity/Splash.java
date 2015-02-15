@@ -27,7 +27,7 @@ public class Splash extends Activity {
             @Override
             public void run() {
                 /* Create an intent that will start the main activity*/
-                Intent mainIntent = new Intent(Splash.this, Timeline.class);
+                Intent mainIntent = new Intent(Splash.this, Timeline_prev.class);
                 Splash.this.startActivity(mainIntent);
                 Splash.this.finish();
             }

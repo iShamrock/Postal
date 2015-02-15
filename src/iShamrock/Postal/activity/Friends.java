@@ -1,36 +1,44 @@
 package iShamrock.Postal.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.*;
 import iShamrock.Postal.R;
-import iShamrock.Postal.database.Database;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Created by lifengshuang on 2/14/15.
+ * Created by lifengshuang on 2/15/15.
  */
-public class Timeline extends Activity{
+public class Friends extends Activity{
 
-
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.timeline);
+        setContentView(R.layout.friends);
         initLeftDrawer();
-        initDatabase();
+        initListView();
     }
 
-    private void initDatabase() {
-        Database.database = openOrCreateDatabase("postal.db", Context.MODE_PRIVATE, null);
-        Database.initDatabase();
+    private void initListView(){
+        listView = (ListView) findViewById(R.id.friends_listView);
+        listView.setAdapter(new SimpleAdapter(this, getListItemData(), R.layout.timeline_item,
+                new String[]{"img", "name", "send"}, new int[]{R.id.friends_img, R.id.friends_name, R.id.friends_send}));
+
+    }
+
+    private List<Map<String, Object>> getListItemData() {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        //todo: add the contents to the list
+        return list;
     }
 
     private void initLeftDrawer() {
@@ -43,17 +51,17 @@ public class Timeline extends Activity{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 0){
-                    //do nothing
-                }
-                else if (i == 1){
                     Intent intent = new Intent();
-                    intent.setClass(Timeline.this, Friends.class);
+                    intent.setClass(Friends.this, Timeline.class);
                     startActivity(intent);
                     finish();
                 }
+                else if (i == 1){
+                    //do nothing
+                }
                 else if (i == 2){
                     Intent intent = new Intent();
-                    intent.setClass(Timeline.this, Splash.class);
+                    intent.setClass(Friends.this, Splash.class);
                     startActivity(intent);
                     finish();
                 }

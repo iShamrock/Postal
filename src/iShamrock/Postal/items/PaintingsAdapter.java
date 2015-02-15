@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 //import com.squareup.picasso.Picasso;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.activity.Timeline_prev;
 import iShamrock.Postal.commons.adapters.ItemsAdapter;
 import iShamrock.Postal.commons.utils.Views;
 
@@ -65,8 +65,8 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
 
     @Override
     public void onClick(View view) {
-        if (view.getContext() instanceof Timeline) {
-            Timeline activity = (Timeline) view.getContext();
+        if (view.getContext() instanceof Timeline_prev) {
+            Timeline_prev activity = (Timeline_prev) view.getContext();
             activity.openDetails(view, (Painting) view.getTag());
         }
     }
