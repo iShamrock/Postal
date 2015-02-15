@@ -48,7 +48,7 @@ public class Timeline extends Activity{
                 }
                 else if (i == 1){
                     Intent intent = new Intent();
-                    intent.setClass(Timeline.this, Friends.class);
+                    intent.setClass(Timeline.this, MyFriends.class);
                     startActivity(intent);
                     finish();
                 }

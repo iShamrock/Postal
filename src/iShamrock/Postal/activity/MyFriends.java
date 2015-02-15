@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by lifengshuang on 2/15/15.
  */
-public class Friends extends Activity{
+public class MyFriends extends Activity{
 
     private ListView listView;
 
@@ -53,7 +53,7 @@ public class Friends extends Activity{
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 0){
                     Intent intent = new Intent();
-                    intent.setClass(Friends.this, Timeline.class);
+                    intent.setClass(MyFriends.this, Timeline.class);
                     startActivity(intent);
                     finish();
                 }
@@ -62,7 +62,7 @@ public class Friends extends Activity{
                 }
                 else if (i == 2){
                     Intent intent = new Intent();
-                    intent.setClass(Friends.this, Splash.class);
+                    intent.setClass(MyFriends.this, Splash.class);
                     startActivity(intent);
                     finish();
                 }
