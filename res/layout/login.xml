@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffe84e40">
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_title"
+            android:layout_alignParentLeft="false"
+            android:src="@drawable/login_title"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="80dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_login"
+            android:layout_below="@id/login_title"
+            android:layout_alignParentLeft="false"
+            android:src="@drawable/login_button_notext"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="80dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:adjustViewBounds="true"/>
+
+
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:id="@+id/login_signature"
+            android:background="#ffe4e4e4"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_alignParentBottom="false"
+            android:layout_alignBottom="@+id/login_title"
+            android:layout_marginBottom="112dp"
+            android:hint="@string/phone_or_email"
+            android:textColor="#66666666"/>
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:id="@+id/login_psward"
+            android:inputType="textPassword"
+            android:background="#ffe4e4e4"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_alignParentBottom="false"
+            android:layout_alignBottom="@+id/login_title"
+            android:layout_marginBottom="57dp"
+            android:hint="@string/password"
+            android:textColor="#66666666"/>
+
+</RelativeLayout>

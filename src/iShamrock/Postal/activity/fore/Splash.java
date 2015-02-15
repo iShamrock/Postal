@@ -1,4 +1,4 @@
-package iShamrock.Postal.activity;
+package iShamrock.Postal.activity.fore;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.Timeline;
 import iShamrock.Postal.util.BaiduLocUtil;
 
 /**
