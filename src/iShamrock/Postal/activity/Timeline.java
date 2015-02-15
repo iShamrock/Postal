@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.fore.Splash;
 import iShamrock.Postal.database.Database;
 
 /**

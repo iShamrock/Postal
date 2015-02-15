@@ -8,4 +8,8 @@
     <string name="back">←</string>
     <string name="year">Year</string>
     <string name="location">Location</string>
+    <string name="password">Password</string>
+    <string name="phone_or_email">Phone/ Email</string>
+    <string name="your_name">Your name</string>
+    <string name="friends">friends</string>
 </resources>
