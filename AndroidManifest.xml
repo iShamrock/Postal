@@ -60,7 +60,7 @@
                 android:label="@string/app_name">
 
         </activity>
-        <activity android:name=".activity.Timeline">
+        <activity android:name=".activity.Timeline_prev">
 
         </activity>
         <activity

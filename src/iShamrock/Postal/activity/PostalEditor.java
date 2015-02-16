@@ -15,7 +15,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.*;
 import com.baidu.location.BDLocation;
-import com.gc.materialdesign.views.ButtonFloat;
 import com.gc.materialdesign.views.ButtonRectangle;
 import iShamrock.Postal.R;
 import iShamrock.Postal.entity.PostalData;
@@ -94,7 +93,7 @@ public class PostalEditor extends Activity {
                             .title("My Postal");
                     PostalData.dataItemList.add(dataItem);
                     Intent intent = new Intent();
-                    intent.setClass(PostalEditor.this, Timeline.class);
+                    intent.setClass(PostalEditor.this, Timeline_prev.class);
                     startActivity(intent);
                     finish();
                 }
@@ -104,7 +103,7 @@ public class PostalEditor extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(PostalEditor.this, Timeline.class);
+                intent.setClass(PostalEditor.this, Timeline_prev.class);
                 startActivity(intent);
                 finish();
             }
@@ -145,7 +144,7 @@ public class PostalEditor extends Activity {
             finish();
         } else if (i == 0) {
             Intent intent = new Intent();
-            intent.setClass(this, Timeline.class);
+            intent.setClass(this, Timeline_prev.class);
             startActivity(intent);
             finish();
         } else if (i == 3) {

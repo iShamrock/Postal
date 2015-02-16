@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.activity.Timeline_prev;
 import iShamrock.Postal.util.BaiduLocUtil;
 
 /**
@@ -28,7 +29,7 @@ public class Splash extends Activity {
             @Override
             public void run() {
                 /* Create an intent that will start the main activity*/
-                Intent mainIntent = new Intent(Splash.this, Timeline.class);
+                Intent mainIntent = new Intent(Splash.this, Timeline_prev.class);
                 Splash.this.startActivity(mainIntent);
                 Splash.this.finish();
             }

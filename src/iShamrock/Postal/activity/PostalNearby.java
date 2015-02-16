@@ -76,7 +76,7 @@ public class PostalNearby extends Activity {
     private void drawerItemOnClickAction(int i) {
         if (i == 0) {
             Intent intent = new Intent();
-            intent.setClass(this, Timeline.class);
+            intent.setClass(this, Timeline_prev.class);
             startActivity(intent);
             finish();
         } else if (i == 2) {
