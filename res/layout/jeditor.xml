@@ -51,14 +51,19 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="200dp"
-            android:background="#ff666666"
-            android:id="@+id/jeditor_media">
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:id="@+id/jeditor_media"
+            android:gravity="center_vertical">
 
-        <VideoView
+        <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/videoView"/>
+                android:layout_height="100dp"
+                android:id="@+id/jeditor_action"
+                android:src="@drawable/icon_audio"
+                android:adjustViewBounds="true"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"/>
     </LinearLayout>
 
     <EditText
@@ -66,18 +71,46 @@
             android:layout_height="match_parent"
             android:inputType="textMultiLine"
             android:id="@+id/jeditor_text"
-            android:layout_margin="10dp"
             android:layout_weight="12"
             android:hint="What&apos;s on your mind?"
             android:textColor="#ff666666"
             android:gravity="top|left"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"/>
 
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="60dp"
             android:layout_weight="0"
-            android:background="@drawable/background_checkbox_check">
+            >
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/jeditor_loc"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/imat_button"
+                android:adjustViewBounds="true"
+                android:layout_centerVertical="true"
+                android:longClickable="false"
+                android:layout_alignParentBottom="false"
+                android:layout_margin="15dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Large Text"
+                android:id="@+id/jeditor_time"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textColor="#ff666666"
+                android:layout_margin="10dp"/>
     </RelativeLayout>
 
 

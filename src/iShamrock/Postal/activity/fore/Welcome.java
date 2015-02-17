@@ -22,14 +22,12 @@ public class Welcome extends Activity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN: {
+                    case MotionEvent.ACTION_DOWN:
                         login.setImageDrawable(getResources().getDrawable(R.drawable.login_button_pressed));
                         break;
-                    }
-                    case MotionEvent.ACTION_UP: {
+                    case MotionEvent.ACTION_UP:
                         login.setImageDrawable(getResources().getDrawable(R.drawable.login_button));
                         break;
-                    }
                 }
                 return false;
             }
@@ -48,14 +46,12 @@ public class Welcome extends Activity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN: {
+                    case MotionEvent.ACTION_DOWN:
                         signup.setImageDrawable(getResources().getDrawable(R.drawable.signup_button_pressed));
                         break;
-                    }
-                    case MotionEvent.ACTION_UP: {
+                    case MotionEvent.ACTION_UP:
                         signup.setImageDrawable(getResources().getDrawable(R.drawable.signup_button));
                         break;
-                    }
                 }
                 return false;
             }
