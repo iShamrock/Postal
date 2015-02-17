@@ -40,6 +40,7 @@ public class Database {
 //    private static final String user_email = "USER_EMAIL";
     private static final String user_photoURI = "USER_PHOTO_URI";
     private static final String user_phone = "USER_PHONE";
+    private static final String user_timeline_cover = "USER_TIMELINE_COVER";
 
 
     public static void initDatabase(){
@@ -56,7 +57,8 @@ public class Database {
 
         //user information
         database.execSQL("CREATE TABLE " + user + "(USER_ID INTEGER primary key autoincrement, "
-                + user_name + " TEXT, "/* + user_email + " TEXT, "*/ + user_phone + " TEXT, " + user_photoURI + " TEXT, " + ");");
+                + user_name + " TEXT, "/* + user_email + " TEXT, "*/ + user_phone + " TEXT, "
+                + user_photoURI + " TEXT, " + user_timeline_cover + " TEXT, " + ");");
     }
 
     /**

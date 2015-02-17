@@ -31,7 +31,7 @@ public class MyFriends extends Activity{
 
     private void initListView(){
         listView = (ListView) findViewById(R.id.friends_listView);
-        listView.setAdapter(new SimpleAdapter(this, getListItemData(), R.layout.timeline_item,
+        listView.setAdapter(new SimpleAdapter(this, getListItemData(), R.layout.friends_item,
                 new String[]{"img", "name", "send"}, new int[]{R.id.friends_img, R.id.friends_name, R.id.friends_send}));
 
     }

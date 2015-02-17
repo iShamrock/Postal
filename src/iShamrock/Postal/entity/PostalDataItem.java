@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 /**
  * Created by lifengshuang on 11/28/14.
+ *
  * Added more detailed implementation on 12/29/14.
  * And changed all fields to public, deprecated getters and setters.
+ *
+ * Modification: add three properties on 2/16/15
  */
 public class PostalDataItem implements Serializable {
     /**
@@ -20,6 +23,14 @@ public class PostalDataItem implements Serializable {
     public String time;
     public String title;
     public double[] location;
+
+    /**
+     * Modification: add three properties
+     * Constructor not changed, to operate the properties, call corresponding methods
+     */
+    public String location_text;
+    public String videoUrl;
+    public String recordingUrl;
 
     public PostalDataItem(int coverType, String coverUrl, String title, int contentType, String content, String time, double[] location) {
         this.coverType = coverType;
@@ -79,6 +90,21 @@ public class PostalDataItem implements Serializable {
 
     public PostalDataItem title(String title) {
         this.title = title;
+        return this;
+    }
+
+    public PostalDataItem locationText(String location_text) {
+        this.location_text = location_text;
+        return this;
+    }
+
+    public PostalDataItem videoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+        return this;
+    }
+
+    public PostalDataItem recordingUrl(String recordingUrl) {
+        this.recordingUrl = recordingUrl;
         return this;
     }
     /*public String getFormattedTime() {

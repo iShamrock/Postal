@@ -116,7 +116,7 @@ public class Timeline_prev extends BaseActivity {
         ImageView image = Views.find(mDetailsLayout, R.id.details_image);
         TextView title = Views.find(mDetailsLayout, R.id.details_title);
         TextView description = Views.find(mDetailsLayout, R.id.details_text);
-        if (painting.isLocal()) {
+       /* if (painting.isLocal()) {
             image.setImageBitmap(BitmapFactory.decodeResource(getResources(), painting.getImageId()));
         }
         else {
@@ -126,7 +126,7 @@ public class Timeline_prev extends BaseActivity {
                 e.printStackTrace();
             }
         }
-        title.setText(painting.getTitle());
+        title.setText(painting.getTitle());*/
 
 /*        SpannableBuilder builder = new SpannableBuilder(this);
         builder
@@ -139,7 +139,9 @@ public class Timeline_prev extends BaseActivity {
                 .clearStyle()
                 .append(painting.getLocation());*/
 
+/*
         description.setText(painting.getContent() + "\n" + painting.getYear());
+*/
 
         mUnfoldableView.unfold(coverView, mDetailsLayout);
     }

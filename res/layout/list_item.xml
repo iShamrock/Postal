@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="#fff"
-    android:padding="4dp">
+    android:padding="4dp" android:orientation="horizontal">
 
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="80dp"
+            android:layout_height="200dp">
+        <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/profile_photo"/>
+    </LinearLayout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="200dp"
+                 android:background="#fff"
+                 android:padding="4dp">
     <ImageView
         android:id="@+id/list_item_image"
         android:layout_width="match_parent"
@@ -26,4 +39,5 @@
         android:textColor="#fff"
         android:textSize="16sp" />
 
-</FrameLayout>
+    </FrameLayout>
+</LinearLayout>
