@@ -119,7 +119,7 @@ public class FoldableListLayout extends FrameLayout implements GestureDetector.O
     }
 
     /**
-     * Set whether gestures are enabled or not. Useful when layout content is scrollable.
+     * Set whether gestures are enabled or not. Useful when layout text is scrollable.
      */
     public void setGesturesEnabled(boolean isGesturesEnabled) {
         mIsGesturesEnabled = isGesturesEnabled;

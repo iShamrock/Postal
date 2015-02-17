@@ -1,6 +1,6 @@
 package iShamrock.Postal.database;
 
-import iShamrock.Postal.entity.Friend;
+import iShamrock.Postal.entity.User;
 import iShamrock.Postal.entity.PostalDataItem;
 
 import java.util.ArrayList;
@@ -11,16 +11,15 @@ import java.util.ArrayList;
 
 /**
  * Implement all the methods
- * View the "Friend" and "PostalDataItem" class
+ * View the "User" and "PostalDataItem" class
  */
 public class Connect {
 
     /**
      * @param user
-     * @return the user's data
-     * (The Friend class seems to fulfill the need)
+     * @return the user's data, null if login failed
      */
-    private Friend getUserData(String user){
+    public User login(String user, String password){
         //todo
         return null;
     }
@@ -29,7 +28,7 @@ public class Connect {
      * @param user
      * @return all the postal of the user IN ORDER OF TIME
      */
-    private ArrayList<PostalDataItem> getPostalData(String user){
+    public ArrayList<PostalDataItem> getPostalData(String user){
         //todo
         return null;
     }
@@ -38,7 +37,7 @@ public class Connect {
      * @param user
      * @return all the friends of the user
      */
-    private ArrayList<Friend> getFriendData(String user){
+    public ArrayList<User> getFriendData(String user){
         //todo
         return null;
     }
@@ -47,7 +46,7 @@ public class Connect {
      * Add item to the server
      * @param postalDataItem
      */
-    private void addPostal(PostalDataItem postalDataItem){
+    public void addPostal(PostalDataItem postalDataItem){
         //todo
     }
 
@@ -55,15 +54,15 @@ public class Connect {
      * Delete the item from the server
      * @param postalDataItem
      */
-    private void deletePostal(PostalDataItem postalDataItem){
+    public void deletePostal(PostalDataItem postalDataItem){
         //todo
     }
 
-    private void addFriend(String user, Friend friend){
+    public void addFriend(String user, User friend){
         //todo
     }
 
-    private void deleteFriend(String user, Friend friend){
+    public void deleteFriend(String user, User friend){
         //todo
     }
 }

@@ -63,25 +63,25 @@ public class PostalEditor extends Activity {
             initEditComponents();
         } else {
             /* show existed postal*/
-            switch (data.coverType) {
+            switch (data.type) {
                 default:
-                    initImageCover(Uri.parse(data.coverUrl));
+                    initImageCover(Uri.parse(data.pictureUrl));
                     break;
                 case 1:
                     /*Unimplemented*/
                     break;
                 case 2:
-                    initWebCover(Uri.parse(data.coverUrl));
+                    initWebCover(Uri.parse(data.pictureUrl));
                     break;
             }
             editText.setFocusable(false);
             editText.setClickable(false);
-            editText.setText(data.content);
+            editText.setText(data.text);
         }
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dataItem.coverUrl == null)
+                if (dataItem.pictureUrl == null)
                     finish();
                 else {
                     BDLocation location = BaiduLocUtil.location;
@@ -89,7 +89,7 @@ public class PostalEditor extends Activity {
                             .latitude(location.getLatitude())
                             .longitude(location.getLongitude())
                             .content(editText.getText().toString())
-                            .contentType(PostalDataItem.TYPE_TEXT)
+                            .type(PostalDataItem.TYPE_TEXT)
                             .title("My Postal");
                     PostalData.dataItemList.add(dataItem);
                     Intent intent = new Intent();
@@ -255,7 +255,7 @@ public class PostalEditor extends Activity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                dataItem.coverType(PostalDataItem.TYPE_IMAGE)
+                dataItem.type(PostalDataItem.TYPE_IMAGE)
                         .coverUrl(Uri.fromFile(new File(Environment.getExternalStorageDirectory(), tempDir)).toString());
                 imageView.setImageBitmap(photo);
 

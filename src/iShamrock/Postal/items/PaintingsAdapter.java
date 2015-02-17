@@ -3,7 +3,6 @@ package iShamrock.Postal.items;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 //import com.squareup.picasso.Picasso;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
-import iShamrock.Postal.activity.Timeline_prev;
 import iShamrock.Postal.commons.adapters.ItemsAdapter;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.entity.PostalDataItem;
@@ -59,13 +57,13 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     protected void bindView(Painting item, int pos, View convertView) {
         ViewHolder vh = (ViewHolder) convertView.getTag();
         if (item.getItem().contentType == PostalDataItem.TYPE_TEXT){
-            vh.text.setText(item.getItem().content);
+            vh.text.setText(item.getItem().text);
         }
         else if (item.getItem().contentType == PostalDataItem.TYPE_IMAGE) {
             vh.image.setTag(item);
             vh.text.setText(item.getItem().title);
             try {
-                vh.image.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().coverUrl)));
+                vh.image.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().pictureUrl)));
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("error in bindView");

@@ -1,11 +1,7 @@
 package iShamrock.Postal.items;
 
 import android.content.res.Resources;
-import android.content.res.TypedArray;
-import iShamrock.Postal.R;
 import iShamrock.Postal.database.Database;
-import iShamrock.Postal.entity.Friend;
-import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 
 import java.util.ArrayList;
@@ -36,7 +32,7 @@ public class Painting {
         int i = 0;
 
         for (PostalDataItem item : PostalData.dataItemList) {
-            paintings[i++] = new Painting(0, item.coverUrl, item.title, item.time, "location", item.content, false);
+            paintings[i++] = new Painting(0, item.pictureUrl, item.title, item.time, "location", item.text, false);
         }
 
 //        System.err.println(size + " " + PostalData.dataItemList.size() + " " + titles.length);

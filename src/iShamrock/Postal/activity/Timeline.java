@@ -98,13 +98,13 @@ public class Timeline extends Activity{
         TextView title = Views.find(mDetailsLayout, R.id.details_title);
         TextView description = Views.find(mDetailsLayout, R.id.details_text);
         try {
-            image.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(painting.getItem().coverUrl)));
+            image.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(painting.getItem().pictureUrl)));
         } catch (IOException e) {
             e.printStackTrace();
         }
         title.setText(painting.getItem().title);
 
-        description.setText(painting.getItem().content + "\n");//todo: add other contents
+        description.setText(painting.getItem().text + "\n");//todo: add other contents
 
 /*
         if (painting.isLocal()) {
