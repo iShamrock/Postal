@@ -13,6 +13,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.util.BaiduLocUtil;
@@ -81,7 +82,7 @@ public class PostalNearby extends Activity {
             finish();
         } else if (i == 2) {
             Intent intent = new Intent();
-            intent.setClass(this, PostalEditor.class);
+            intent.setClass(this, PEditor.class);
             startActivity(intent);
             finish();
         } else if (i == 3) {

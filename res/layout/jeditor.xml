@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#ffe84e40">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/jeditor_icon_delete"
+                android:layout_alignParentRight="false"
+                android:src="@drawable/icon_delete"
+                android:layout_centerVertical="true"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Take a note"
+                android:id="@+id/jeditor_title"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="false"
+                android:textColor="#fff8f5ee"
+                android:singleLine="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:layout_centerInParent="true"/>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/jeditor_icon_send"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="false"
+                android:src="@drawable/icon_send"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:id="@+id/jeditor_media"
+            android:gravity="center_vertical">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:id="@+id/jeditor_action"
+                android:src="@drawable/icon_audio"
+                android:adjustViewBounds="true"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:inputType="textMultiLine"
+            android:id="@+id/jeditor_text"
+            android:layout_weight="12"
+            android:hint="What&apos;s on your mind?"
+            android:textColor="#ff666666"
+            android:gravity="top|left"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"/>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_weight="0"
+            >
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/jeditor_loc"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/imat_button"
+                android:adjustViewBounds="true"
+                android:layout_centerVertical="true"
+                android:longClickable="false"
+                android:layout_alignParentBottom="false"
+                android:layout_margin="15dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Large Text"
+                android:id="@+id/jeditor_time"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textColor="#ff666666"
+                android:layout_margin="10dp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

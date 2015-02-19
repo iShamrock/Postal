@@ -9,7 +9,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.*;
 import com.baidu.mapapi.model.LatLng;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.PostalEditor;
+import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.entity.PostalDataItem;
 
 /**
@@ -76,7 +76,7 @@ public class BaiduMapUtil {
         @Override
         public boolean onMarkerClick(Marker marker) {
             Intent intent = new Intent();
-            intent.setClass(context, PostalEditor.class);
+            intent.setClass(context, PEditor.class);
 
             Bundle bundle = new Bundle();
             bundle.putSerializable("data", data);

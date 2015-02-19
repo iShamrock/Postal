@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.foldablelayout.FoldableListLayout;
 import iShamrock.Postal.items.PaintingsAdapter;
@@ -42,7 +43,7 @@ public class FoldableListActivity extends BaseActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         Intent intent = new Intent();
-                        intent.setClass(FoldableListActivity.this, PostalEditor.class);
+                        intent.setClass(FoldableListActivity.this, PEditor.class);
                         startActivity(intent);
                         return false;
                     }
@@ -85,7 +86,7 @@ public class FoldableListActivity extends BaseActivity {
             finish();
         } else if (i == 2) {
             Intent intent = new Intent();
-            intent.setClass(this, PostalEditor.class);
+            intent.setClass(this, PEditor.class);
             startActivity(intent);
             finish();
         } else if (i == 0) {

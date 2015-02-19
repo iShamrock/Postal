@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.*;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.fore.Splash;
+import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.User;
 
@@ -70,7 +71,7 @@ public class MyFriends extends Activity{
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent();
-                    intent.setClass(MyFriends.this, PostalEditor.class);
+                    intent.setClass(MyFriends.this, PEditor.class);
                     intent.putExtra("name", friend.getName());
                     startActivity(intent);
                 }
