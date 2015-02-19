@@ -78,7 +78,7 @@
         <activity
                 android:name=".activity.PostalNearby"/>
         <activity
-                android:name=".activity.PostalEditor">
+                android:name=".activity.publishers.PEditor">
         </activity>
         <activity android:name=".activity.FoldableListActivity"/>
 

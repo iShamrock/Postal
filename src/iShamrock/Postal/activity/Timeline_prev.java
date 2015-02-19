@@ -3,9 +3,7 @@ package iShamrock.Postal.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -13,13 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.foldablelayout.UnfoldableView;
 import iShamrock.Postal.foldablelayout.shading.GlanceFoldShading;
 import iShamrock.Postal.items.Painting;
 import iShamrock.Postal.items.PaintingsAdapter;
-
-import java.io.IOException;
 
 
 /**
@@ -53,7 +50,7 @@ public class Timeline_prev extends BaseActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         Intent intent = new Intent();
-                        intent.setClass(Timeline_prev.this, PostalEditor.class);
+                        intent.setClass(Timeline_prev.this, PEditor.class);
                         startActivity(intent);
                         finish();
                         return false;
@@ -186,7 +183,7 @@ public class Timeline_prev extends BaseActivity {
             finish();
         } else if (i == 2) {
             Intent intent = new Intent();
-            intent.setClass(this, PostalEditor.class);
+            intent.setClass(this, PEditor.class);
             startActivity(intent);
             finish();
         } else if (i == 3) {
