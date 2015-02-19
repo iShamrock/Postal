@@ -1,7 +1,9 @@
 package iShamrock.Postal.database;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import iShamrock.Postal.entity.Friend;
+import iShamrock.Postal.entity.User;
 import iShamrock.Postal.entity.PostalDataItem;
 
 import java.util.ArrayList;
@@ -12,6 +14,10 @@ import java.util.ArrayList;
 public class Database {
 
     public static SQLiteDatabase database;
+    public static User me;
+    private static Connect connect = new Connect();
+
+    private static boolean test = true;
 
     private static final String postal = "POSTAL";
     private static final String postal_id = "POSTAL_ID";
@@ -19,6 +25,7 @@ public class Database {
     private static final String postal_to_user = "POSTAL_TO";
     private static final String postal_title = "POSTAL_TITLE";
     private static final String postal_text = "POSTAL_TEXT";
+    private static final String postal_type = "POSTAL_TYPE";
     private static final String postal_pictureULI = "POSTAL_PICTURE_URI";
     private static final String postal_time = "POSTAL_TIME";
     private static final String postal_location = "POSTAL_LOCATION";
@@ -33,13 +40,16 @@ public class Database {
     private static final String friends_name = "FRIENDS_NAME";
     private static final String friends_phone = "FRIENDS_PHONE";
     private static final String friends_photoURI = "FRIENDS_PHOTO_URI";
+    private static final String friends_timeline_cover = "USER_TIMELINE_COVER";
 
 
     private static final String user = "USER";
+    private static final String user_id = "USER_ID";
     private static final String user_name = "USER_NAME";
 //    private static final String user_email = "USER_EMAIL";
     private static final String user_photoURI = "USER_PHOTO_URI";
     private static final String user_phone = "USER_PHONE";
+    private static final String user_timeline_cover = "USER_TIMELINE_COVER";
 
 
     public static void initDatabase(){
@@ -47,24 +57,51 @@ public class Database {
         database.execSQL("CREATE TABLE " + postal + " (" + postal_id + " INTEGER primary key autoincrement, "
                 + postal_from_user + " TEXT, " + postal_title + " TEXT, " + postal_text + " TEXT, "
                 + postal_pictureULI + " TEXT, " + postal_time + " TEXT, " + postal_location + " TEXT, "
-                + postal_latitude + " DOUBLE, " + postal_longitude + " TEXT, " + postal_videoULI + " TEXT, "
-                + postal_recordingULI + " TEXT, " + postal_to_user + " TEXT, " + ");");
+                + postal_latitude + " DOUBLE, " + postal_longitude + " DOUBLE, " + postal_videoULI + " TEXT, "
+                + postal_recordingULI + " TEXT, " + postal_to_user + " TEXT, " + postal_type + " INTEGER," + ");");
 
         //friends list
         database.execSQL("CREATE TABLE " + friends + " (" + friends_id + " INTEGER primary key autoincrement, "
-                + friends_name + " TEXT, " + friends_photoURI + " TEXT, " + friends_phone + " TEXT, " + ");");
+                + friends_name + " TEXT, " + friends_photoURI + " TEXT, "
+                + friends_phone + " TEXT, " + friends_timeline_cover + " TEXT, " + ");");
 
         //user information
-        database.execSQL("CREATE TABLE " + user + "(USER_ID INTEGER primary key autoincrement, "
-                + user_name + " TEXT, "/* + user_email + " TEXT, "*/ + user_phone + " TEXT, " + user_photoURI + " TEXT, " + ");");
+        database.execSQL("CREATE TABLE " + user + " (" + user_id + " INTEGER primary key autoincrement, "
+                + user_name + " TEXT, " + user_phone + " TEXT, "
+                + user_photoURI + " TEXT, " + user_timeline_cover + " TEXT, " + ");");
     }
 
     /**
      * Called when log in, should be called only once
      * @param username
+     * @return login success or failed
      */
-    public static void loadUserInformation(String username){
-        //todo
+    public static boolean login(String username, String password){
+        if (test){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(user_name, username);
+            contentValues.put(user_phone, "13666666666");
+            contentValues.put(user_photoURI, "null");
+            contentValues.put(user_timeline_cover, "null");
+            database.insert(user, null, contentValues);
+            me = new User(username, "13666666666", "null", "null");
+            return true;
+        }
+        else {
+            User login = connect.login(username, password);
+            if (login == null) {
+                return false;
+            }
+            else {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(user_name, login.getName());
+                contentValues.put(user_phone, login.getPhone());
+                contentValues.put(user_photoURI, login.getPhotoURI());
+                contentValues.put(user_timeline_cover, login.getCoverURI());
+                database.insert(user, null, contentValues);
+                return true;
+            }
+        }
     }
 
     /**
@@ -72,8 +109,21 @@ public class Database {
      * Notice: The postal is a journal if and only if user_from equals user_to
      * @param postalDataItem
      */
-    public static void addPostal(PostalDataItem postalDataItem){
-        //todo
+    public static void addPostal(PostalDataItem postalDataItem) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(postal_from_user, postalDataItem.from_user);
+        contentValues.put(postal_title, postalDataItem.title);
+        contentValues.put(postal_to_user, postalDataItem.to_user);
+        contentValues.put(postal_time, postalDataItem.time);
+        contentValues.put(postal_text, postalDataItem.text);
+        contentValues.put(postal_type, postalDataItem.type);
+        contentValues.put(postal_pictureULI, postalDataItem.pictureUrl);
+        contentValues.put(postal_location, postalDataItem.location_text);
+        contentValues.put(postal_recordingULI, postalDataItem.recordingUrl);
+        contentValues.put(postal_videoULI, postalDataItem.videoUrl);
+        contentValues.put(postal_latitude, postalDataItem.location[0]);
+        contentValues.put(postal_longitude, postalDataItem.location[1]);
+        database.insert(postal, null, contentValues);
     }
 
     /**
@@ -81,24 +131,44 @@ public class Database {
      * @param postalDataItem
      */
     public static void deletePostal(PostalDataItem postalDataItem){
-        //todo
+        database.delete(postal, postal_time + " = ?", new String[]{postalDataItem.time});
     }
 
     /**
      *
      * @return all postal
      */
-    public static ArrayList<PostalDataItem> getPostal(){
-        //todo
-        return null;
+    public static ArrayList<PostalDataItem> getPostal() {
+        ArrayList<PostalDataItem> postalDataItemArrayList = new ArrayList<PostalDataItem>();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + postal, null);
+        while (cursor.moveToNext()){
+            PostalDataItem item = new PostalDataItem(
+                    cursor.getInt(cursor.getColumnIndex(postal_type)),
+                    cursor.getString(cursor.getColumnIndex(postal_pictureULI)),
+                    cursor.getString(cursor.getColumnIndex(postal_text)),
+                    cursor.getString(cursor.getColumnIndex(postal_time)),
+                    cursor.getString(cursor.getColumnIndex(postal_title)),
+                    new double[]{cursor.getDouble(cursor.getColumnIndex(postal_latitude)), cursor.getDouble(cursor.getColumnIndex(postal_longitude))},
+                    cursor.getString(cursor.getColumnIndex(postal_from_user)),
+                    cursor.getString(cursor.getColumnIndex(postal_to_user)),
+                    cursor.getString(cursor.getColumnIndex(postal_location)),
+                    cursor.getString(cursor.getColumnIndex(postal_videoULI)),
+                    cursor.getString(cursor.getColumnIndex(postal_recordingULI))
+            );
+            postalDataItemArrayList.add(item);
+        }
+        return postalDataItemArrayList;
     }
 
     /**
      * Modify the user's profile photo
      * @param photoURI
      */
-    public static void modifyPhoto(String photoURI){
-        //todo
+    public static void modifyPhoto(String photoURI) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(user_photoURI, photoURI);
+        database.update(user, contentValues, user_id + " < 10", null);
+        //todo:
     }
 
     /**
@@ -121,7 +191,7 @@ public class Database {
      *
      * @return all friends
      */
-    public static ArrayList<Friend> getFriend(){
+    public static ArrayList<User> getFriend(){
         //todo
         return null;
     }

@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 /**
  * Created by lifengshuang on 11/28/14.
+ *
  * Added more detailed implementation on 12/29/14.
  * And changed all fields to public, deprecated getters and setters.
+ *
+ * Modification: add three properties on 2/16/15
  */
 public class PostalDataItem implements Serializable {
     /**
@@ -14,46 +17,57 @@ public class PostalDataItem implements Serializable {
      */
     public static final int TYPE_IMAGE = 0, TYPE_VIDEO = 1, TYPE_WEBVIEW = 2,
             TYPE_HANDWRITING = 3, TYPE_TEXT = 4;
-    public int coverType, contentType;
-    public String coverUrl;
-    public String content;
+    public int type;
+    public String pictureUrl;
+    public String text;
     public String time;
     public String title;
     public double[] location;
 
-    public PostalDataItem(int coverType, String coverUrl, String title, int contentType, String content, String time, double[] location) {
-        this.coverType = coverType;
-        this.coverUrl = coverUrl;
-        this.title = title;
-        this.contentType = contentType;
-        this.content = content;
+    public String from_user = "?";
+    public String to_user = "?";
+
+    /**
+     * Modification: add three properties
+     * Constructor not changed, to operate the properties, call corresponding methods
+     */
+    public String location_text;
+    public String videoUrl;
+    public String recordingUrl;
+
+    public PostalDataItem(int type, String pictureUrl, String text, String time, String title, double[] location, String from_user, String to_user, String location_text, String videoUrl, String recordingUrl) {
+        this.type = type;
+        this.pictureUrl = pictureUrl;
+        this.text = text;
         this.time = time;
+        this.title = title;
         this.location = location;
+        this.from_user = from_user;
+        this.to_user = to_user;
+        this.location_text = location_text;
+        this.videoUrl = videoUrl;
+        this.recordingUrl = recordingUrl;
     }
 
     public PostalDataItem() {
-        coverType = 0;
-        contentType = 4;
+        type = 4;
         location = new double[2];
     }
 
-    public PostalDataItem coverType(int coverType) {
-        this.coverType = coverType;
-        return this;
-    }
+
 
     public PostalDataItem coverUrl(String coverUrl) {
-        this.coverUrl = coverUrl;
+        this.pictureUrl = coverUrl;
         return this;
     }
 
-    public PostalDataItem contentType(int contentType) {
-        this.contentType = contentType;
+    public PostalDataItem type(int type) {
+        this.type = type;
         return this;
     }
 
     public PostalDataItem content(String content) {
-        this.content = content;
+        this.text = content;
         return this;
     }
 
@@ -79,6 +93,21 @@ public class PostalDataItem implements Serializable {
 
     public PostalDataItem title(String title) {
         this.title = title;
+        return this;
+    }
+
+    public PostalDataItem locationText(String location_text) {
+        this.location_text = location_text;
+        return this;
+    }
+
+    public PostalDataItem videoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+        return this;
+    }
+
+    public PostalDataItem recordingUrl(String recordingUrl) {
+        this.recordingUrl = recordingUrl;
         return this;
     }
     /*public String getFormattedTime() {

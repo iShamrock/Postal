@@ -75,8 +75,8 @@
              - copy/paste the target into this file, *before* the
                <import> task.
              - customize it to your needs.
-         - Customize the whole content of build.xml
-             - copy/paste the content of the rules files (minus the top node)
+         - Customize the whole text of build.xml
+             - copy/paste the text of the rules files (minus the top node)
                into this file, replacing the <import> task.
              - customize to your needs.
 
