@@ -84,8 +84,8 @@ public class MyFriends extends Activity{
 
     private void initLeftDrawer() {
         String[] titles = new String[]{"Timeline", "Friends", "Old version"};
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_timeline_new);
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_timeline_new);
+        ListView drawerList = (ListView) findViewById(R.id.left_drawer_friends);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_friends);
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, titles));
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

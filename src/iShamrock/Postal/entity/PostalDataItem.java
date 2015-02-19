@@ -16,9 +16,9 @@ public class PostalDataItem implements Serializable {
      * location: [0] for latitude, [1] for longitude.
      */
     public static final int TYPE_IMAGE = 0, TYPE_VIDEO = 1, TYPE_WEBVIEW = 2,
-            TYPE_HANDWRITING = 3, TYPE_TEXT = 4;
+            TYPE_AUDIO = 3, TYPE_TEXT = 4;
     public int type;
-    public String pictureUrl;
+    public String uri;
     public String text;
     public String time;
     public String title;
@@ -32,12 +32,10 @@ public class PostalDataItem implements Serializable {
      * Constructor not changed, to operate the properties, call corresponding methods
      */
     public String location_text;
-    public String videoUrl;
-    public String recordingUrl;
 
-    public PostalDataItem(int type, String pictureUrl, String text, String time, String title, double[] location, String from_user, String to_user, String location_text, String videoUrl, String recordingUrl) {
+    public PostalDataItem(int type, String uri, String text, String time, String title, double[] location, String from_user, String to_user, String location_text) {
         this.type = type;
-        this.pictureUrl = pictureUrl;
+        this.uri = uri;
         this.text = text;
         this.time = time;
         this.title = title;
@@ -45,8 +43,6 @@ public class PostalDataItem implements Serializable {
         this.from_user = from_user;
         this.to_user = to_user;
         this.location_text = location_text;
-        this.videoUrl = videoUrl;
-        this.recordingUrl = recordingUrl;
     }
 
     public PostalDataItem() {
@@ -57,7 +53,7 @@ public class PostalDataItem implements Serializable {
 
 
     public PostalDataItem coverUrl(String coverUrl) {
-        this.pictureUrl = coverUrl;
+        this.uri = coverUrl;
         return this;
     }
 
@@ -101,15 +97,6 @@ public class PostalDataItem implements Serializable {
         return this;
     }
 
-    public PostalDataItem videoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-        return this;
-    }
-
-    public PostalDataItem recordingUrl(String recordingUrl) {
-        this.recordingUrl = recordingUrl;
-        return this;
-    }
     /*public String getFormattedTime() {
         SimpleDateFormat format = new SimpleDateFormat("MMM d, h:mm a");
         return format.format(time.getTime());

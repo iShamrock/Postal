@@ -1,57 +1,62 @@
-package iShamrock.Postal.activity;
+package iShamrock.Postal.activity.abandomed;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.baidu.mapapi.SDKInitializer;
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.MapView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.BaseActivity;
 import iShamrock.Postal.activity.publishers.PEditor;
-import iShamrock.Postal.entity.PostalData;
-import iShamrock.Postal.entity.PostalDataItem;
-import iShamrock.Postal.util.BaiduLocUtil;
-import iShamrock.Postal.util.BaiduMapUtil;
+import iShamrock.Postal.commons.utils.Views;
+import iShamrock.Postal.foldablelayout.FoldableListLayout;
+import iShamrock.Postal.items.PaintingsAdapter;
 
 /**
- * Created by Tong on 12.28.
+ * Created by lifengshuang on 1/8/15.
  */
-public class PostalNearby extends Activity {
-    private MapView mMapView;
-    private BaiduMap mBaiduMap;
-    private BaiduMapUtil baiduMapUtil;
+public class FoldableListActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
-        setContentView(R.layout.postal_in_map);
+        setContentView(R.layout.activity_foldable_list);
+
+        getActionBar().setDisplayHomeAsUpEnabled(false);
         initLeftDrawer();
-        mMapView = (MapView) findViewById(R.id.bmapView);
-        mBaiduMap = mMapView.getMap();
-
-        baiduMapUtil = new BaiduMapUtil();
-        baiduMapUtil.initialize(getApplicationContext(), mBaiduMap, mMapView);
-        /*TODO: Yet the null location has not been dealt.*/
-        if (BaiduLocUtil.location != null)
-            baiduMapUtil.locateTo(BaiduLocUtil.location);
-
-        //Intent intent = getIntent();
-        //ArrayList<PostalDataItem> data = (ArrayList<PostalDataItem>) intent.getSerializableExtra("data");
-        for (PostalDataItem each : PostalData.dataItemList) {
-            baiduMapUtil.addMarker(each);
-        }
+        FoldableListLayout foldableListLayout = Views.find(this, R.id.foldable_list);
+        foldableListLayout.setAdapter(new PaintingsAdapter(this));
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        super.onCreateOptionsMenu(menu);
+        MenuItem add = menu.add("");
+        add
+                .setIcon(R.drawable.plus)
+                .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent = new Intent();
+                        intent.setClass(FoldableListActivity.this, PEditor.class);
+                        startActivity(intent);
+                        return false;
+                    }
+                })
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        return true;
+    }
+
     private void initLeftDrawer() {
         String[] titles = new String[]{"Postal Box", "In the map", "Edit Postal", "My Posts"};
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_postalnearby);
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_postalnearby);
+        ListView drawerList = (ListView) findViewById(R.id.left_drawer_fold);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_fold);
         drawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, titles));
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -75,9 +80,9 @@ public class PostalNearby extends Activity {
     }
 
     private void drawerItemOnClickAction(int i) {
-        if (i == 0) {
+        if (i == 1) {
             Intent intent = new Intent();
-            intent.setClass(this, Timeline_prev.class);
+            intent.setClass(this, PostalNearby.class);
             startActivity(intent);
             finish();
         } else if (i == 2) {
@@ -85,31 +90,11 @@ public class PostalNearby extends Activity {
             intent.setClass(this, PEditor.class);
             startActivity(intent);
             finish();
-        } else if (i == 3) {
+        } else if (i == 0) {
             Intent intent = new Intent();
-            intent.setClass(this, FoldableListActivity.class);
+            intent.setClass(this, Timeline_prev.class);
             startActivity(intent);
             finish();
         }
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mMapView.onDestroy();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mMapView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mMapView.onPause();
-    }
-
-
 }

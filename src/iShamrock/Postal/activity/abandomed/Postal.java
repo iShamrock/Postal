@@ -1,4 +1,4 @@
-package iShamrock.Postal.activity;
+package iShamrock.Postal.activity.abandomed;
 
 import android.app.Activity;
 import android.content.Intent;

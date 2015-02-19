@@ -1,4 +1,4 @@
-package iShamrock.Postal.activity;
+package iShamrock.Postal.activity.abandomed;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.BaseActivity;
 import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.foldablelayout.UnfoldableView;

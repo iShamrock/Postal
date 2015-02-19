@@ -26,6 +26,15 @@ public class Connect {
 
     /**
      * @param user
+     * @return true if sign up succeed
+     */
+    public boolean signUp(User user){
+        //todo:
+        return true;
+    }
+
+    /**
+     * @param user
      * @return all the postal of the user IN ORDER OF TIME
      */
     public ArrayList<PostalDataItem> getPostalData(String user){
@@ -38,7 +47,7 @@ public class Connect {
      * @return all the friends of the user
      */
     public ArrayList<User> getFriendData(String user){
-        //todo
+        //todo 不急
         return null;
     }
 
@@ -55,14 +64,14 @@ public class Connect {
      * @param postalDataItem
      */
     public void deletePostal(PostalDataItem postalDataItem){
-        //todo
+        //todo 不急
     }
 
     public void addFriend(String user, User friend){
-        //todo
+        //todo 不急
     }
 
     public void deleteFriend(String user, User friend){
-        //todo
+        //todo 不急
     }
 }

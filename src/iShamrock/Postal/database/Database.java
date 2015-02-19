@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import iShamrock.Postal.entity.User;
 import iShamrock.Postal.entity.PostalDataItem;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -26,13 +27,13 @@ public class Database {
     private static final String postal_title = "POSTAL_TITLE";
     private static final String postal_text = "POSTAL_TEXT";
     private static final String postal_type = "POSTAL_TYPE";
-    private static final String postal_pictureULI = "POSTAL_PICTURE_URI";
+    private static final String postal_uri = "POSTAL_PICTURE_URI";
     private static final String postal_time = "POSTAL_TIME";
     private static final String postal_location = "POSTAL_LOCATION";
     private static final String postal_latitude = "POSTAL_LATITUDE";
     private static final String postal_longitude = "POSTAL_LONGITUDE";
-    private static final String postal_videoULI = "POSTAL_VIDEO_URI";
-    private static final String postal_recordingULI = "POSTAL_RECORDING_URI";
+//    private static final String postal_videoULI = "POSTAL_VIDEO_URI";
+//    private static final String postal_recordingULI = "POSTAL_RECORDING_URI";
 
 
     private static final String friends = "FRIENDS";
@@ -54,21 +55,26 @@ public class Database {
 
     public static void initDatabase(){
         //postal and journal
-        database.execSQL("CREATE TABLE " + postal + " (" + postal_id + " INTEGER primary key autoincrement, "
+        database.execSQL("CREATE TABLE IF NOT EXISTS " + postal + " (" + postal_id + " INTEGER primary key autoincrement, "
                 + postal_from_user + " TEXT, " + postal_title + " TEXT, " + postal_text + " TEXT, "
-                + postal_pictureULI + " TEXT, " + postal_time + " TEXT, " + postal_location + " TEXT, "
-                + postal_latitude + " DOUBLE, " + postal_longitude + " DOUBLE, " + postal_videoULI + " TEXT, "
-                + postal_recordingULI + " TEXT, " + postal_to_user + " TEXT, " + postal_type + " INTEGER," + ");");
+                + postal_uri + " TEXT, " + postal_time + " TEXT, " + postal_location + " TEXT, "
+                + postal_latitude + " DOUBLE, " + postal_longitude + " DOUBLE, "/* + postal_videoULI + " TEXT, "*/
+                /*+ postal_recordingULI + " TEXT, "*/ + postal_to_user + " TEXT, " + postal_type + " INTEGER" + ");");
 
         //friends list
-        database.execSQL("CREATE TABLE " + friends + " (" + friends_id + " INTEGER primary key autoincrement, "
+        database.execSQL("CREATE TABLE IF NOT EXISTS " + friends + " (" + friends_id + " INTEGER primary key autoincrement, "
                 + friends_name + " TEXT, " + friends_photoURI + " TEXT, "
-                + friends_phone + " TEXT, " + friends_timeline_cover + " TEXT, " + ");");
+                + friends_phone + " TEXT, " + friends_timeline_cover + " TEXT" + ");");
 
         //user information
-        database.execSQL("CREATE TABLE " + user + " (" + user_id + " INTEGER primary key autoincrement, "
+        database.execSQL("CREATE TABLE IF NOT EXISTS " + user + " (" + user_id + " INTEGER primary key autoincrement, "
                 + user_name + " TEXT, " + user_phone + " TEXT, "
-                + user_photoURI + " TEXT, " + user_timeline_cover + " TEXT, " + ");");
+                + user_photoURI + " TEXT, " + user_timeline_cover + " TEXT" + ");");
+
+        if (test){
+            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
+            addPostal(new PostalDataItem(0, "321", "lalalax", "10:10x", "thisx", new double[]{1.0, 2.4}, "lfsx", "tzyx", "herex"));
+        }
     }
 
     /**
@@ -104,6 +110,10 @@ public class Database {
         }
     }
 
+    public static boolean signUp(User user1){
+        return connect.signUp(user1);
+    }
+
     /**
      * Called when a postal or a journal is added
      * Notice: The postal is a journal if and only if user_from equals user_to
@@ -117,10 +127,10 @@ public class Database {
         contentValues.put(postal_time, postalDataItem.time);
         contentValues.put(postal_text, postalDataItem.text);
         contentValues.put(postal_type, postalDataItem.type);
-        contentValues.put(postal_pictureULI, postalDataItem.pictureUrl);
+        contentValues.put(postal_uri, postalDataItem.uri);
         contentValues.put(postal_location, postalDataItem.location_text);
-        contentValues.put(postal_recordingULI, postalDataItem.recordingUrl);
-        contentValues.put(postal_videoULI, postalDataItem.videoUrl);
+//        contentValues.put(postal_recordingULI, postalDataItem.recordingUrl);
+//        contentValues.put(postal_videoULI, postalDataItem.videoUrl);
         contentValues.put(postal_latitude, postalDataItem.location[0]);
         contentValues.put(postal_longitude, postalDataItem.location[1]);
         database.insert(postal, null, contentValues);
@@ -144,16 +154,16 @@ public class Database {
         while (cursor.moveToNext()){
             PostalDataItem item = new PostalDataItem(
                     cursor.getInt(cursor.getColumnIndex(postal_type)),
-                    cursor.getString(cursor.getColumnIndex(postal_pictureULI)),
+                    cursor.getString(cursor.getColumnIndex(postal_uri)),
                     cursor.getString(cursor.getColumnIndex(postal_text)),
                     cursor.getString(cursor.getColumnIndex(postal_time)),
                     cursor.getString(cursor.getColumnIndex(postal_title)),
                     new double[]{cursor.getDouble(cursor.getColumnIndex(postal_latitude)), cursor.getDouble(cursor.getColumnIndex(postal_longitude))},
                     cursor.getString(cursor.getColumnIndex(postal_from_user)),
                     cursor.getString(cursor.getColumnIndex(postal_to_user)),
-                    cursor.getString(cursor.getColumnIndex(postal_location)),
-                    cursor.getString(cursor.getColumnIndex(postal_videoULI)),
-                    cursor.getString(cursor.getColumnIndex(postal_recordingULI))
+                    cursor.getString(cursor.getColumnIndex(postal_location))
+//                    cursor.getString(cursor.getColumnIndex(postal_videoULI)),
+//                   cursor.getString(cursor.getColumnIndex(postal_recordingULI))
             );
             postalDataItemArrayList.add(item);
         }
@@ -193,7 +203,18 @@ public class Database {
      */
     public static ArrayList<User> getFriend(){
         //todo
-        return null;
+        User a = new User("tzy", "null", "null", "null");
+        User b = new User("lfs", "null", "null", "null");
+        User c = new User("zq", "null", "null", "null");
+        ArrayList<User> x = new ArrayList<User>();
+        x.add(a);
+        x.add(b);
+        x.add(c);
+        return x;
+    }
+
+    public static void delete(){
+        SQLiteDatabase.deleteDatabase(new File(database.getPath()));
     }
 
 

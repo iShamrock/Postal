@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import com.baidu.location.BDLocation;
 import com.gc.materialdesign.views.ButtonRectangle;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.Timeline_prev;
+import iShamrock.Postal.activity.abandomed.Timeline_prev;
 import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.util.BaiduLocUtil;
@@ -60,7 +60,7 @@ public class PEditor extends Activity {
             initEditComponents();
         } else {
             /* show existed postal*/
-            initImageCover(Uri.parse(data.pictureUrl));
+            initImageCover(Uri.parse(data.uri));
             editText.setFocusable(false);
             editText.setClickable(false);
             editText.setText(data.text);
@@ -68,7 +68,7 @@ public class PEditor extends Activity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dataItem.pictureUrl == null)
+                if (dataItem.uri == null)
                     finish();
                 else {
                     BDLocation location = BaiduLocUtil.location;

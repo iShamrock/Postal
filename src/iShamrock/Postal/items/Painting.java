@@ -32,7 +32,7 @@ public class Painting {
         int i = 0;
 
         for (PostalDataItem item : PostalData.dataItemList) {
-            paintings[i++] = new Painting(0, item.pictureUrl, item.title, item.time, "location", item.text, false);
+            paintings[i++] = new Painting(0, item.uri, item.title, item.time, "location", item.text, false);
         }
 
 //        System.err.println(size + " " + PostalData.dataItemList.size() + " " + titles.length);

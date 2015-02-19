@@ -32,7 +32,7 @@ import java.util.Date;
  * Created by Tong on 02.15.
  */
 public class JEditor extends Activity {
-    public static final int TYPE_TEXT = 0, TYPE_IMAGE = 1, TYPE_VIDEO = 2, TYPE_AUDIO = 3, TYPE_WEB = 4;
+    public static final int TYPE_TEXT = 4, TYPE_IMAGE = 0, TYPE_VIDEO = 1, TYPE_AUDIO = 3, TYPE_WEB = 2;
     static final int PHOTO_CROP = 0, RESULT_CAPTURE_IMAGE = 1,
             REQUEST_CODE_TAKE_VIDEO = 2, RESULT_CAPTURE_RECORDER_SOUND = 3, REQUEST_LOCATION = 4;
 
@@ -48,7 +48,7 @@ public class JEditor extends Activity {
         super.onCreate(savedInstanceState);
 
         initCommonComponents();
-        initMediaComponents(TYPE_WEB);
+        initMediaComponents(TYPE_TEXT);
 
     }
 
