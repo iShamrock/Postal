@@ -31,7 +31,7 @@
             android:label="@string/app_name"
             android:icon="@drawable/ic"
             android:allowBackup="true"
-            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
         <!--the API key in that value tag belongs to Tong-->
         <meta-data
                 android:name="com.baidu.lbsapi.API_KEY"
@@ -49,17 +49,19 @@
 
         </activity>
         <activity
-                android:name=".activity.publishers.JEditor"
-                android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+                android:name=".activity.publishers.JEditor">
+
         </activity>
         <activity
                 android:name=".activity.publishers.GeoEncodingActivity"/>
         <activity
-                android:name=".activity.fore.Splash">
+                android:name=".activity.fore.Splash"
+
+                android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity

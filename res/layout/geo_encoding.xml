@@ -44,7 +44,8 @@
                 android:layout_marginRight="15dp"
                 android:layout_centerVertical="true"
                 android:adjustViewBounds="false"
-                android:src="@drawable/icon_send"/>
+                android:src="@drawable/icon_send"
+                android:visibility="invisible"/>
     </RelativeLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -60,23 +61,46 @@
     </LinearLayout>
 
     <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="40dp"
+            android:background="#fffafafa">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/geo_icon_place"
+                android:src="@drawable/place"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="I&apos;m some place some place some place "
-                android:id="@+id/textView"
-                android:layout_margin="10dp"
-                android:textIsSelectable="false"/>
+                android:id="@+id/geo_text_address"
+                android:textIsSelectable="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
         <ListView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/listView"/>
+                android:layout_height="fill_parent"
+                android:id="@+id/geo_list"
+                android:layout_marginLeft="-20dp"
+                />
     </LinearLayout>
 
 </LinearLayout>

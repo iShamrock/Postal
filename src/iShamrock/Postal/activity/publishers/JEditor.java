@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ import java.util.Date;
  */
 public class JEditor extends Activity {
     public static final int TYPE_TEXT = 0, TYPE_IMAGE = 1, TYPE_VIDEO = 2, TYPE_AUDIO = 3, TYPE_WEB = 4;
-    private static final int PHOTO_CROP = 0, RESULT_CAPTURE_IMAGE = 1,
+    static final int PHOTO_CROP = 0, RESULT_CAPTURE_IMAGE = 1,
             REQUEST_CODE_TAKE_VIDEO = 2, RESULT_CAPTURE_RECORDER_SOUND = 3, REQUEST_LOCATION = 4;
 
     private int width, height;
@@ -46,12 +47,12 @@ public class JEditor extends Activity {
         setContentView(R.layout.jeditor);
         super.onCreate(savedInstanceState);
 
-        initCommonArea();
-        initMediaArea(TYPE_WEB);
+        initCommonComponents();
+        initMediaComponents(TYPE_WEB);
 
     }
 
-    private void initCommonArea() {
+    private void initCommonComponents() {
         jeditor_media = (ViewGroup) findViewById(R.id.jeditor_media);
         jeditor_delete = (ImageView) findViewById(R.id.jeditor_icon_delete);
         jeditor_send = (ImageView) findViewById(R.id.jeditor_icon_send);
@@ -89,7 +90,7 @@ public class JEditor extends Activity {
         });
     }
 
-    private void initMediaArea(int actionType) {
+    private void initMediaComponents(int actionType) {
         /* Decide the function of action button*/
         switch (actionType) {
             case TYPE_TEXT:
@@ -155,7 +156,14 @@ public class JEditor extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_OK) return;
+        if (resultCode != RESULT_OK) {
+            switch (resultCode) {
+                case REQUEST_LOCATION:
+                    String geoEncoding = data.getStringExtra("GeoEncoding");
+                    Log.d("ssaasa", geoEncoding);
+            }
+            return;
+        }
         switch (requestCode) {
             case RESULT_CAPTURE_IMAGE:
                 photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/temp.jpg")));
@@ -233,8 +241,8 @@ public class JEditor extends Activity {
                 jeditor_media.removeView(jeditor_action);
                 jeditor_media.addView(audioImageview);
                 break;
-
         }
+
     }
 
     private void photoZoom(Uri uri) {
