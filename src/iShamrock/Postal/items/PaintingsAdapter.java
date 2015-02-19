@@ -36,13 +36,13 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     @Override
     protected View createView(Painting item, int pos, ViewGroup parent, LayoutInflater inflater) {
         View view = null;
-        if (item.getItem().contentType == PostalDataItem.TYPE_TEXT){
+        if (item.getItem().type == PostalDataItem.TYPE_TEXT){
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_text, parent, false);
             ViewHolder vh = new ViewHolder();
             vh.text = Views.find(view, R.id.list_item_text);
             view.setTag(vh);
         }
-        else if (item.getItem().contentType == PostalDataItem.TYPE_IMAGE) {
+        else if (item.getItem().type == PostalDataItem.TYPE_IMAGE) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
             ViewHolder vh = new ViewHolder();
             vh.image = Views.find(view, R.id.list_item_image);
@@ -56,10 +56,10 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     @Override
     protected void bindView(Painting item, int pos, View convertView) {
         ViewHolder vh = (ViewHolder) convertView.getTag();
-        if (item.getItem().contentType == PostalDataItem.TYPE_TEXT){
+        if (item.getItem().type == PostalDataItem.TYPE_TEXT){
             vh.text.setText(item.getItem().text);
         }
-        else if (item.getItem().contentType == PostalDataItem.TYPE_IMAGE) {
+        else if (item.getItem().type == PostalDataItem.TYPE_IMAGE) {
             vh.image.setTag(item);
             vh.text.setText(item.getItem().title);
             try {
