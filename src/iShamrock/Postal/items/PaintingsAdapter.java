@@ -63,7 +63,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
             vh.image.setTag(item);
             vh.text.setText(item.getItem().title);
             try {
-                vh.image.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().pictureUrl)));
+                vh.image.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().uri)));
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("error in bindView");

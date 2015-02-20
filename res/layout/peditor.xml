@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1"
+              android:background="#eee">
+
+    <!--<WebView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="200dp"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:id="@+id/postal_container">-->
+
+    <!--</WebView>-->
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#e84e40">
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/peditor_title"
+                android:layout_alignParentTop="false"
+                android:layout_toRightOf="@+id/peditor_cancel"
+                android:layout_toLeftOf="@+id/peditor_send"
+                android:text="Postal Title"
+                android:textColor="#ffffff"
+                android:textSize="22dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentBottom="false"
+                android:gravity="center"/>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/peditor_send"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_send"
+                android:layout_margin="10dp"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/peditor_cancel"
+                android:layout_alignParentRight="false"
+                android:src="@drawable/icon_delete"
+                android:layout_centerVertical="true"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentLeft="true"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:id="@+id/peditor_media"
+            android:background="@drawable/cover_frame">
+
+        <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/peditor_cover"
+                android:src="@drawable/default_postal_cover"
+                android:adjustViewBounds="true"
+                android:layout_margin="4dp"
+                android:alpha="0.8"/>
+
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/peditor_stamp"
+                android:src="@drawable/stamp_unlocated"
+                android:adjustViewBounds="true"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignLeft="@+id/peditor_cover"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="13dp"
+                android:alpha="0.8"/>
+
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/peditor_img_from_file"
+                android:src="@drawable/icon_image_from_file_red"
+                android:adjustViewBounds="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignRight="@+id/peditor_cover"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"/>
+
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/peditor_img_take"
+                android:src="@drawable/icon_image_take_red"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/peditor_img_from_file"
+                android:layout_marginRight="75dp"
+                android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/paper">
+
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/peditor_text"
+                android:layout_weight="1"
+                android:gravity="top|left"
+                android:textColor="#666666"
+                android:background="@null"
+                android:layout_margin="10dp"
+                android:text="@string/postal_text_example"
+                />
+
+    </RelativeLayout>
+
+</LinearLayout>

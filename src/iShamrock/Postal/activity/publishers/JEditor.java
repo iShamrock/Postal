@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.*;
 import iShamrock.Postal.R;
+import iShamrock.Postal.entity.PostalDataItem;
+import iShamrock.Postal.util.BaiduLocUtil;
 import iShamrock.Postal.util.SysInfoUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -41,6 +42,7 @@ public class JEditor extends Activity {
     private ViewGroup jeditor_media;
     private ImageView jeditor_delete, jeditor_send, jeditor_action, jeditor_loc;
     private TextView jeditor_title, jeditor_time;
+    private PostalDataItem dataItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,6 @@ public class JEditor extends Activity {
 
         initCommonComponents();
         initMediaComponents(TYPE_WEB);
-
     }
 
     private void initCommonComponents() {
@@ -95,6 +96,9 @@ public class JEditor extends Activity {
         switch (actionType) {
             case TYPE_TEXT:
                 jeditor_title.setText("Take a note");
+                ViewGroup.LayoutParams params = jeditor_media.getLayoutParams();
+                params.height = 0;
+                jeditor_media.setLayoutParams(params);
                 return;
             case TYPE_IMAGE: {
                 jeditor_title.setText("Take a photo");
@@ -159,8 +163,8 @@ public class JEditor extends Activity {
         if (resultCode != RESULT_OK) {
             switch (resultCode) {
                 case REQUEST_LOCATION:
-                    String geoEncoding = data.getStringExtra("GeoEncoding");
-                    Log.d("ssaasa", geoEncoding);
+                    dataItem.location=new double[]{BaiduLocUtil.location.getLatitude(),BaiduLocUtil.location.getLongitude()};
+                    dataItem.location_text= data.getStringExtra("GeoEncoding");
             }
             return;
         }

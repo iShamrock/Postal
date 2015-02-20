@@ -98,7 +98,7 @@ public class Timeline extends Activity{
         TextView title = Views.find(mDetailsLayout, R.id.details_title);
         TextView description = Views.find(mDetailsLayout, R.id.details_text);
         try {
-            image.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(painting.getItem().pictureUrl)));
+            image.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(painting.getItem().uri)));
         } catch (IOException e) {
             e.printStackTrace();
         }

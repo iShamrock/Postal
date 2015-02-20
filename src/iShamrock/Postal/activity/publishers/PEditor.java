@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import com.baidu.location.BDLocation;
-import com.gc.materialdesign.views.ButtonRectangle;
+import android.widget.RelativeLayout;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.Timeline_prev;
-import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.util.BaiduLocUtil;
 import iShamrock.Postal.util.SysInfoUtil;
@@ -30,78 +27,82 @@ import java.io.IOException;
  */
 public class PEditor extends Activity {
 
-    private final int PHOTO_ZOOM = 0, TAKE_PHOTO = 1, PHOTO_RESULT = 2;
+    private final int PHOTO_ZOOM = 0, TAKE_PHOTO = 1, PHOTO_RESULT = 2, REQUEST_LOCATION = 4;
     private final String IMAGE_UNSPECIFIED = "image/*";
     private String imageDir;
 
     private int width, height;
-    private ImageView imageView;
-    private EditText editText;
-    private ButtonRectangle btnImage, btnTake;
-    private ImageView btnBack, btnSend;
+    private RelativeLayout peditor_media;
+    private EditText peditor_text, peditor_title;
+    private ImageView peditor_cover, peditor_stamp, btnBack, btnSend, btnFromFile, btnTakePhoto;
     private PostalDataItem dataItem;
+    private Uri mediaUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addpostal);
+        setContentView(R.layout.peditor);
+        initCommonComponents();
+        initUploadComponents();
+        initCover();
 
+    }
 
-        imageView = (ImageView) findViewById(R.id.add_postal_imageView);
-        editText = (EditText) findViewById(R.id.editText);
-        btnBack = (ImageView) findViewById(R.id.img_back);
-        btnSend = (ImageView) findViewById(R.id.img_send);
-        Intent intent = getIntent();
-        final PostalDataItem data = (PostalDataItem) intent.getSerializableExtra("data");
-        if (data == null) {
-            /* add new postal*/
-            dataItem = new PostalDataItem();
-            initImageCover(null);
-            initEditComponents();
-        } else {
-            /* show existed postal*/
-            initImageCover(Uri.parse(data.pictureUrl));
-            editText.setFocusable(false);
-            editText.setClickable(false);
-            editText.setText(data.text);
-        }
+    private void initCommonComponents() {
+        peditor_media = (RelativeLayout) findViewById(R.id.peditor_media);
+        peditor_cover = (ImageView) findViewById(R.id.peditor_cover);
+        peditor_text = (EditText) findViewById(R.id.peditor_text);
+        peditor_title = (EditText) findViewById(R.id.peditor_title);
+        peditor_stamp = (ImageView) findViewById(R.id.peditor_stamp);
+        btnBack = (ImageView) findViewById(R.id.peditor_cancel);
+        btnSend = (ImageView) findViewById(R.id.peditor_send);
+
+        dataItem = new PostalDataItem();
+        peditor_stamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PEditor.this, GeoEncodingActivity.class);
+                startActivityForResult(intent, REQUEST_LOCATION);
+            }
+        });
+        peditor_stamp.setOnTouchListener(new ButtonTouchAnimationListener(peditor_stamp));
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (dataItem.pictureUrl == null)
-                    finish();
-                else {
-                    BDLocation location = BaiduLocUtil.location;
-                    dataItem.time(SysInfoUtil.getTimeString())
-                            .latitude(location.getLatitude())
-                            .longitude(location.getLongitude())
-                            .content(editText.getText().toString())
-                            .type(PostalDataItem.TYPE_TEXT)
-                            .title("My Postal");
-                    PostalData.dataItemList.add(dataItem);
-                    Intent intent = new Intent();
-                    intent.setClass(PEditor.this, Timeline_prev.class);
-                    startActivity(intent);
-                    finish();
-                }
+                Intent friendIntent = new Intent(PEditor.this, ChooseFriendToSendTo.class);
+                startActivityForResult(friendIntent, 12345);
+                /* TODO : Choose a friend to send to.
+                *
+                * TODO : Use onActivityResult to get the returned friend ID,
+                * ToDO : then copy the following code there and add the friend to dataItem.
+                * TODO : You can refer to how GeoEncoding returns the result.
+                * */
+
+                /*BDLocation location = BaiduLocUtil.location;
+                dataItem.time(SysInfoUtil.getTimeString())
+                        .latitude(location.getLatitude())
+                        .longitude(location.getLongitude())
+                        .content(peditor_text.getText().toString())
+                        .type(PostalDataItem.TYPE_TEXT)
+                        .title(peditor_title.getText().toString());
+                PostalData.dataItemList.add(dataItem);
+                finish();*/
             }
         });
+        btnSend.setOnTouchListener(new ButtonTouchAnimationListener(btnSend));
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(PEditor.this, Timeline_prev.class);
-                startActivity(intent);
                 finish();
             }
         });
+        btnBack.setOnTouchListener(new ButtonTouchAnimationListener(btnBack));
     }
 
-
-    private void initEditComponents() {
-        btnImage = (ButtonRectangle) findViewById(R.id.btn_img);
-        btnImage.setVisibility(View.VISIBLE);
-        btnImage.setOnClickListener(new View.OnClickListener() {
+    private void initUploadComponents() {
+        btnFromFile = (ImageView) findViewById(R.id.peditor_img_from_file);
+        btnFromFile.setVisibility(View.VISIBLE);
+        btnFromFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -110,11 +111,12 @@ public class PEditor extends Activity {
                 startActivityForResult(wrapperIntent, PHOTO_ZOOM);
             }
         });
+        btnFromFile.setOnTouchListener(new ButtonTouchAnimationListener(btnFromFile, 196));
 
 
-        btnTake = (ButtonRectangle) findViewById(R.id.btn_take_photo);
-        btnTake.setVisibility(View.VISIBLE);
-        btnTake.setOnClickListener(new View.OnClickListener() {
+        btnTakePhoto = (ImageView) findViewById(R.id.peditor_img_take);
+        btnTakePhoto.setVisibility(View.VISIBLE);
+        btnTakePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imageDir = "temp.jpg";
@@ -123,28 +125,18 @@ public class PEditor extends Activity {
                 startActivityForResult(intent, TAKE_PHOTO);
             }
         });
-
+        btnTakePhoto.setOnTouchListener(new ButtonTouchAnimationListener(btnTakePhoto, 196));
     }
 
-    private void initImageCover(Uri uri) {
+    private void initCover() {
         int screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
         float scale = this.getResources().getDisplayMetrics().densityDpi;
         width = (int) (screenWidth / scale * 160);
-        height = width / 4 * 3;
+        height = width / 16 * 9;
 
-        ViewGroup.LayoutParams params = imageView.getLayoutParams();
-        params.height = screenWidth / 4 * 3;
-        imageView.setLayoutParams(params);
-        if (uri != null) {
-            Bitmap photo = null;
-            try {
-                photo = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                photo.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());
-                imageView.setImageBitmap(photo);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        ViewGroup.LayoutParams params = peditor_media.getLayoutParams();
+        params.height = screenWidth / 16 * 9 + 10;
+        peditor_media.setLayoutParams(params);
     }
 
 
@@ -153,40 +145,46 @@ public class PEditor extends Activity {
         intent.setDataAndType(uri, IMAGE_UNSPECIFIED);
         /* width:height ratio*/
         intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", 4);
-        intent.putExtra("aspectY", 3);
+        intent.putExtra("aspectX", 16);
+        intent.putExtra("aspectY", 9);
         /* image size*/
         intent.putExtra("outputX", width);
         intent.putExtra("outputY", height);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, PHOTO_RESULT);
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == TAKE_PHOTO)
-            photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/" + imageDir)));
-
-        if (data == null)
-            return;
-        if (requestCode == PHOTO_ZOOM) photoZoom(data.getData());
-        if (requestCode == PHOTO_RESULT) {
-            Bundle extras = data.getExtras();
-            if (extras != null) {
+        switch (resultCode) {
+            case REQUEST_LOCATION:
+                dataItem.location = new double[]{BaiduLocUtil.location.getLatitude(), BaiduLocUtil.location.getLongitude()};
+                String geoEncoding = data.getStringExtra("GeoEncoding");
+                dataItem.location_text = geoEncoding;
+                if (geoEncoding != null) {
+                    peditor_stamp.setImageDrawable(getResources().getDrawable(R.drawable.stamp1));
+                }
+        }
+        switch (requestCode) {
+            case TAKE_PHOTO:
+                photoZoom(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/temp.jpg")));
+                break;
+            case PHOTO_RESULT:
+                if (data == null) return;
+                Bundle extras = data.getExtras();
+                if (extras == null) return;
                 Bitmap photo = extras.getParcelable("data");
+                if (photo == null) return;
                 photo.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());
-                String tempDir = "temp" + System.currentTimeMillis();
+                String tempDir = "cache" + System.currentTimeMillis();
                 try {
                     SysInfoUtil.saveBitmapToFile(photo, Environment.getExternalStorageDirectory() + "/" + tempDir);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                dataItem.type(PostalDataItem.TYPE_IMAGE)
-                        .coverUrl(Uri.fromFile(new File(Environment.getExternalStorageDirectory(), tempDir)).toString());
-                imageView.setImageBitmap(photo);
-
-            }
+                mediaUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), tempDir));
+                peditor_cover.setImageBitmap(photo);
+                break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
