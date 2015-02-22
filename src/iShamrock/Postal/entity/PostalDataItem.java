@@ -51,7 +51,6 @@ public class PostalDataItem implements Serializable {
     }
 
 
-
     public PostalDataItem coverUrl(String coverUrl) {
         this.uri = coverUrl;
         return this;

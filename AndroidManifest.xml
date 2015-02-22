@@ -56,7 +56,6 @@
                 android:name=".activity.publishers.GeoEncodingActivity"/>
         <activity
                 android:name=".activity.fore.Splash"
-
                 android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -79,6 +78,7 @@
                 android:name=".activity.abandomed.PostalNearby"/>
         <activity
                 android:name=".activity.publishers.PEditor">
+
         </activity>
         <activity android:name=".activity.abandomed.FoldableListActivity"/>
 

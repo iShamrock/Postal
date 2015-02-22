@@ -19,7 +19,8 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentTop="false"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="15dp"/>
+                android:layout_margin="10dp"
+                android:adjustViewBounds="true"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -41,10 +42,10 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/jeditor_icon_send"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
                 android:layout_centerVertical="true"
-                android:adjustViewBounds="false"
-                android:src="@drawable/icon_send"/>
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_send"
+                android:layout_margin="10dp"/>
 
     </RelativeLayout>
 

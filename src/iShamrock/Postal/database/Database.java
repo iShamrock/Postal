@@ -110,10 +110,6 @@ public class Database {
         }
     }
 
-    public static boolean signUp(User user1){
-        return connect.signUp(user1);
-    }
-
     /**
      * Called when a postal or a journal is added
      * Notice: The postal is a journal if and only if user_from equals user_to
