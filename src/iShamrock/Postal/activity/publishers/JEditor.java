@@ -19,6 +19,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.*;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.util.BaiduLocUtil;
 import iShamrock.Postal.util.SysInfoUtil;
@@ -33,24 +35,26 @@ import java.util.Date;
  * Created by Tong on 02.15.
  */
 public class JEditor extends Activity {
-    public static final int TYPE_TEXT = 0, TYPE_IMAGE = 1, TYPE_VIDEO = 2, TYPE_AUDIO = 3, TYPE_WEB = 4;
     static final int PHOTO_CROP = 0, RESULT_CAPTURE_IMAGE = 1,
             REQUEST_CODE_TAKE_VIDEO = 2, RESULT_CAPTURE_RECORDER_SOUND = 3, REQUEST_LOCATION = 4;
 
     private int width, height;
-    private Uri mediaUri;
+    private int type;
+    private Uri mediaUri = Uri.parse("");
     private ViewGroup jeditor_media;
     private ImageView jeditor_delete, jeditor_send, jeditor_action, jeditor_loc;
     private TextView jeditor_title, jeditor_time;
-    private PostalDataItem dataItem;
+    private EditText jeditor_text;
+    private PostalDataItem dataItem = new PostalDataItem();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.jeditor);
         super.onCreate(savedInstanceState);
-
+        Intent intent = getIntent();
+        type = intent.getIntExtra("type", PostalDataItem.TYPE_IMAGE);
         initCommonComponents();
-        initMediaComponents(TYPE_WEB);
+        initMediaComponents();
     }
 
     private void initCommonComponents() {
@@ -61,6 +65,7 @@ public class JEditor extends Activity {
         jeditor_action = (ImageView) findViewById(R.id.jeditor_action);
         jeditor_time = (TextView) findViewById(R.id.jeditor_time);
         jeditor_loc = (ImageView) findViewById(R.id.jeditor_loc);
+        jeditor_text = (EditText) findViewById(R.id.jeditor_text);
 
         jeditor_delete.setOnTouchListener(new ButtonTouchAnimationListener(jeditor_delete));
 
@@ -75,7 +80,20 @@ public class JEditor extends Activity {
         jeditor_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: SEND
+                Database.addPostal(new PostalDataItem(
+                        type,
+                        mediaUri.toString(),
+                        jeditor_text.getText().toString(),
+                        jeditor_time.getText().toString(),
+                        "no title",
+                        dataItem.location,
+                        Database.me.getName(),
+                        Database.me.getName(),
+                        dataItem.location_text));
+                Intent intent = new Intent();
+                intent.setClass(JEditor.this, Timeline.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -91,16 +109,16 @@ public class JEditor extends Activity {
         });
     }
 
-    private void initMediaComponents(int actionType) {
+    private void initMediaComponents() {
         /* Decide the function of action button*/
-        switch (actionType) {
-            case TYPE_TEXT:
+        switch (type) {
+            case PostalDataItem.TYPE_TEXT:
                 jeditor_title.setText("Take a note");
                 ViewGroup.LayoutParams params = jeditor_media.getLayoutParams();
                 params.height = 0;
                 jeditor_media.setLayoutParams(params);
                 return;
-            case TYPE_IMAGE: {
+            case PostalDataItem.TYPE_IMAGE: {
                 jeditor_title.setText("Take a photo");
                 jeditor_action.setImageDrawable(getResources().getDrawable(R.drawable.icon_image_take));
                 jeditor_action.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +129,7 @@ public class JEditor extends Activity {
                 });
                 break;
             }
-            case TYPE_VIDEO: {
+            case PostalDataItem.TYPE_VIDEO: {
                 jeditor_title.setText("Take a video");
                 jeditor_action.setImageDrawable(getResources().getDrawable(R.drawable.icon_video));
                 jeditor_action.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +140,7 @@ public class JEditor extends Activity {
                 });
                 break;
             }
-            case TYPE_AUDIO:
+            case PostalDataItem.TYPE_AUDIO:
                 jeditor_title.setText("Take an audio");
                 jeditor_action.setImageDrawable(getResources().getDrawable(R.drawable.icon_audio));
                 jeditor_action.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +150,7 @@ public class JEditor extends Activity {
                     }
                 });
                 break;
-            case TYPE_WEB:
+            case PostalDataItem.TYPE_WEB:
                 jeditor_title.setText("Take a page");
                 jeditor_action.setImageDrawable(getResources().getDrawable(R.drawable.icon_web));
                 jeditor_action.setOnClickListener(new View.OnClickListener() {

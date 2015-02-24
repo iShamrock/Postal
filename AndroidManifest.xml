@@ -83,7 +83,8 @@
         <activity android:name=".activity.abandomed.FoldableListActivity"/>
 
         <activity android:name=".activity.Timeline"></activity>
-        <activity android:name=".activity.Test"/>
+        <activity android:name=".activity.publishers.TypeChooser"/>
+        <activity android:name=".activity.abandomed.Test"/>
         <activity android:name=".activity.MyFriends"/>
 
     </application>

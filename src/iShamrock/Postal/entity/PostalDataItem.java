@@ -15,7 +15,7 @@ public class PostalDataItem implements Serializable {
      * Data Type, specifically defined image/ short video/ html url.
      * location: [0] for latitude, [1] for longitude.
      */
-    public static final int TYPE_IMAGE = 0, TYPE_VIDEO = 1, TYPE_WEBVIEW = 2,
+    public static final int TYPE_IMAGE = 0, TYPE_VIDEO = 1, TYPE_WEB = 2,
             TYPE_AUDIO = 3, TYPE_TEXT = 4;
     public int type;
     public String uri;
@@ -50,9 +50,18 @@ public class PostalDataItem implements Serializable {
         location = new double[2];
     }
 
+    public PostalDataItem to_user(String to_user) {
+        this.to_user = to_user;
+        return this;
+    }
 
-    public PostalDataItem coverUrl(String coverUrl) {
-        this.uri = coverUrl;
+    public PostalDataItem from_user(String from_user) {
+        this.from_user = from_user;
+        return this;
+    }
+
+    public PostalDataItem uri(String uri) {
+        this.uri = uri;
         return this;
     }
 

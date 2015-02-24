@@ -9,14 +9,11 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.fore.Splash;
 import iShamrock.Postal.activity.publishers.ButtonTouchAnimationListener;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.database.Database;
@@ -25,31 +22,58 @@ import iShamrock.Postal.foldablelayout.UnfoldableView;
 import iShamrock.Postal.foldablelayout.shading.GlanceFoldShading;
 import iShamrock.Postal.items.Painting;
 import iShamrock.Postal.items.PaintingsAdapter;
+import iShamrock.Postal.util.SystemUtil;
 
 import java.io.IOException;
 
 /**
  * Created by lifengshuang on 2/14/15.
  */
-public class Timeline extends Activity{
+public class Timeline extends Activity {
 
     private ListView mListView;
     private View mListTouchInterceptor;
     private View mDetailsLayout;
     private UnfoldableView mUnfoldableView;
 
+    private ImageView postal_friend, postal_user_avatar;
+    private RelativeLayout postal_cover_container;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.timeline);/*
-        getActionBar().setDisplayHomeAsUpEnabled(false);
-        getActionBar().setTitle("Timeline");*/
-        initLeftDrawer();
+        setContentView(R.layout.timeline);
+
+        initCommonComponents();
         initDatabase();
         initUnfoldableDetailsActivity();
     }
 
-    private void initUnfoldableDetailsActivity(){
+    private void initCommonComponents() {
+        postal_friend = (ImageView) findViewById(R.id.postal_friend);
+        postal_user_avatar = (ImageView) findViewById(R.id.postal_user_avatar);
+        postal_cover_container = (RelativeLayout) findViewById(R.id.postal_cover_container);
+
+        postal_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent friendIntent = new Intent(Timeline.this, MyFriends.class);
+                startActivity(friendIntent);
+            }
+        });
+        postal_friend.setOnTouchListener(new ButtonTouchAnimationListener(postal_friend));
+
+        int screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
+
+        ViewGroup.LayoutParams params = postal_cover_container.getLayoutParams();
+        params.height = screenWidth / 16 * 9;
+        postal_cover_container.setLayoutParams(params);
+
+        postal_user_avatar.setImageBitmap(SystemUtil.toRoundCorner(BitmapFactory.decodeResource(getResources(), R.drawable.p1)));
+    }
+
+
+    private void initUnfoldableDetailsActivity() {
         mListView = Views.find(this, R.id.list_view_timeline);
         mListView.setAdapter(new PaintingsAdapter(this));
 
@@ -111,7 +135,7 @@ public class Timeline extends Activity{
         timeline_text.setText(item.text);
         timeline_time.setText(item.time);
 
-        switch (item.type){
+        switch (item.type) {
 
             case PostalDataItem.TYPE_AUDIO: {
                 final ImageView audioImageview = new ImageView(this);
@@ -168,7 +192,7 @@ public class Timeline extends Activity{
                 break;
             }
 
-            case PostalDataItem.TYPE_WEBVIEW: {
+            case PostalDataItem.TYPE_WEB: {
                 //todo
                 break;
             }
@@ -214,43 +238,5 @@ public class Timeline extends Activity{
         Database.initDatabase();
     }
 
-    private void initLeftDrawer() {
-        String[] titles = new String[]{"Timeline", "Friends", "Old version"};
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_timeline_new);
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_timeline_new);
-        drawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, titles));
-        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0){
-                    //do nothing
-                }
-                else if (i == 1){
-                    Intent intent = new Intent();
-                    intent.setClass(Timeline.this, MyFriends.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else if (i == 2){
-                    Intent intent = new Intent();
-                    intent.setClass(Timeline.this, Splash.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                invalidateOptionsMenu();
-            }
 
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                invalidateOptionsMenu();
-            }
-        };
-        drawerLayout.setDrawerListener(toggle);
-    }
 }

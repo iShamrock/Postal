@@ -48,6 +48,10 @@
                 android:visibility="invisible"
                 android:layout_margin="10dp"/>
     </RelativeLayout>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/choose_friend"/>
 
 
 </LinearLayout>

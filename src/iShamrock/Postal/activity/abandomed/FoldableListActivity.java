@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.BaseActivity;
 import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.foldablelayout.FoldableListLayout;

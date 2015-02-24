@@ -43,8 +43,10 @@ public class Painting {
 
         ArrayList<Painting> paintings = new ArrayList<Painting>();
         for (PostalDataItem item : Database.getPostal()) {
+            System.out.println("!!!!!!!");
             paintings.add(new Painting(item));
         }
+        System.out.println("Painting size is " + paintings.size());
         return paintings.toArray(new Painting[paintings.size()]);
     }
 }

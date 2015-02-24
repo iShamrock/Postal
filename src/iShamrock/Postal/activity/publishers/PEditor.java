@@ -12,7 +12,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import com.baidu.location.BDLocation;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.util.BaiduLocUtil;
 import iShamrock.Postal.util.SysInfoUtil;
@@ -69,24 +72,26 @@ public class PEditor extends Activity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent friendIntent = new Intent(PEditor.this, ChooseFriendToSendTo.class);
-                startActivityForResult(friendIntent, 12345);
-                /* TODO : Choose a friend to send to.
-                *
-                * TODO : Use onActivityResult to get the returned friend ID,
-                * ToDO : then copy the following code there and add the friend to dataItem.
-                * TODO : You can refer to how GeoEncoding returns the result.
-                * */
-
-                /*BDLocation location = BaiduLocUtil.location;
+                if (getIntent().hasExtra("name")){
+                    dataItem.to_user = getIntent().getStringExtra("name");
+                }
+                else {
+                    Intent friendIntent = new Intent(PEditor.this, ChooseFriendToSendTo.class);
+                    startActivityForResult(friendIntent, 12345);
+                }
+                BDLocation location = BaiduLocUtil.location;
                 dataItem.time(SysInfoUtil.getTimeString())
                         .latitude(location.getLatitude())
                         .longitude(location.getLongitude())
                         .content(peditor_text.getText().toString())
                         .type(PostalDataItem.TYPE_TEXT)
-                        .title(peditor_title.getText().toString());
-                PostalData.dataItemList.add(dataItem);
-                finish();*/
+                        .title(peditor_title.getText().toString())
+                        .uri(mediaUri.toString())
+                        .from_user(Database.me.getName());
+                Intent intent = new Intent();
+                intent.setClass(PEditor.this, Timeline.class);
+                startActivity(intent);
+                finish();
             }
         });
         btnSend.setOnTouchListener(new ButtonTouchAnimationListener(btnSend));
@@ -184,6 +189,10 @@ public class PEditor extends Activity {
                 }
                 mediaUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), tempDir));
                 peditor_cover.setImageBitmap(photo);
+                break;
+            case 12345:
+
+                dataItem.to_user(data.getStringExtra("name"));
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);

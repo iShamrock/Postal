@@ -72,8 +72,10 @@ public class Database {
                 + user_photoURI + " TEXT, " + user_timeline_cover + " TEXT" + ");");
 
         if (test){
-            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
-            addPostal(new PostalDataItem(0, "321", "lalalax", "10:10x", "thisx", new double[]{1.0, 2.4}, "lfsx", "tzyx", "herex"));
+//            delete();
+            me = new User("lfs", "13666666666", "null", "null");
+//            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
+//            addPostal(new PostalDataItem(0, "321", "lalalax", "10:10x", "thisx", new double[]{1.0, 2.4}, "lfsx", "tzyx", "herex"));
         }
     }
 
@@ -163,6 +165,9 @@ public class Database {
             );
             postalDataItemArrayList.add(item);
         }
+        for (PostalDataItem item : postalDataItemArrayList) {
+            System.out.println(item.type + "|" + item.uri + "|" + item.text + "|" + item.time + "|" + item.title + "|" + item.from_user + "|" + item.to_user + "|" + item.location_text);
+        }
         return postalDataItemArrayList;
     }
 
@@ -179,10 +184,15 @@ public class Database {
 
     /**
      *
-     * @param username the friend's name
+     * @param friend
      */
-    public static void addFriend(String username){
-        //todo
+    public static void addFriend(User friend){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(friends_name, friend.getName());
+        contentValues.put(friends_phone, friend.getPhone());
+        contentValues.put(friends_photoURI, friend.getPhotoURI());
+        contentValues.put(friends_timeline_cover, friend.getCoverURI());
+        database.insert(friends, null, contentValues);
     }
 
     /**
