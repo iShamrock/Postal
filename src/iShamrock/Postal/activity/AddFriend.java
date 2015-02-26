@@ -50,7 +50,7 @@ public class AddFriend extends Activity{
                 String name = searchName.getText().toString();
                 ArrayList<User> found = new ArrayList<User>();
                 for (User i : friends){
-                    if (i.getName().startsWith(name)){
+                    if (i.getNickname().startsWith(name)){
                         found.add(i);
                     }
                 }
@@ -65,7 +65,7 @@ public class AddFriend extends Activity{
                 else {
                     for (final User i : found) {
                         map = new HashMap<String, Object>();
-                        map.put("name", i.getName());
+                        map.put("name", i.getNickname());
                         ImageView imageView = (ImageView) findViewById(R.id.photo_add_friend);
                         try {
                             imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(i.getPhotoURI())));

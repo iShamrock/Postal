@@ -5,20 +5,20 @@ package iShamrock.Postal.entity;
  */
 public class User {
 
-    private String name;
+    private String nickname;
     private String phone;
     private String photoURI;
     private String coverURI;
 
-    public User(String name, String phone, String photoURI, String coverURI) {
-        this.name = name;
+    public User(String nickname, String phone, String photoURI, String coverURI) {
+        this.nickname = nickname;
         this.phone = phone;
         this.photoURI = photoURI;
         this.coverURI = coverURI;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNickname(String name) {
+        this.nickname = name;
     }
 
     public void setPhone(String phone) {
@@ -33,8 +33,8 @@ public class User {
         return coverURI;
     }
 
-    public String getName() {
-        return name;
+    public String getNickname() {
+        return nickname;
     }
 
     public String getPhone() {

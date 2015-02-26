@@ -102,7 +102,7 @@ public class Database {
             }
             else {
                 ContentValues contentValues = new ContentValues();
-                contentValues.put(user_name, login.getName());
+                contentValues.put(user_name, login.getNickname());
                 contentValues.put(user_phone, login.getPhone());
                 contentValues.put(user_photoURI, login.getPhotoURI());
                 contentValues.put(user_timeline_cover, login.getCoverURI());
@@ -188,11 +188,12 @@ public class Database {
      */
     public static void addFriend(User friend){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(friends_name, friend.getName());
+        contentValues.put(friends_name, friend.getNickname());
         contentValues.put(friends_phone, friend.getPhone());
         contentValues.put(friends_photoURI, friend.getPhotoURI());
         contentValues.put(friends_timeline_cover, friend.getCoverURI());
         database.insert(friends, null, contentValues);
+        //todo:
     }
 
     /**

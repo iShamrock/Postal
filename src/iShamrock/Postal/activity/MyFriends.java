@@ -59,12 +59,12 @@ public class MyFriends extends Activity{
                 public void onClick(View view) {
                     Intent intent = new Intent();
                     intent.setClass(MyFriends.this, Timeline.class);
-                    intent.putExtra("name", friend.getName());
+                    intent.putExtra("name", friend.getNickname());
                     startActivity(intent);
                 }
             });
             map.put("img", imageView);
-            map.put("name", friend.getName());
+            map.put("name", friend.getNickname());
             Button button = new Button(this);
             button.setText("Send");
             button.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,7 @@ public class MyFriends extends Activity{
                 public void onClick(View view) {
                     Intent intent = new Intent();
                     intent.setClass(MyFriends.this, PEditor.class);
-                    intent.putExtra("name", friend.getName());
+                    intent.putExtra("name", friend.getNickname());
                     startActivity(intent);
                 }
             });

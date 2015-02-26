@@ -87,8 +87,8 @@ public class JEditor extends Activity {
                         jeditor_time.getText().toString(),
                         "no title",
                         dataItem.location,
-                        Database.me.getName(),
-                        Database.me.getName(),
+                        Database.me.getNickname(),
+                        Database.me.getNickname(),
                         dataItem.location_text));
                 Intent intent = new Intent();
                 intent.setClass(JEditor.this, Timeline.class);

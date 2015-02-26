@@ -87,7 +87,7 @@ public class PEditor extends Activity {
                         .type(PostalDataItem.TYPE_TEXT)
                         .title(peditor_title.getText().toString())
                         .uri(mediaUri.toString())
-                        .from_user(Database.me.getName());
+                        .from_user(Database.me.getNickname());
                 Intent intent = new Intent();
                 intent.setClass(PEditor.this, Timeline.class);
                 startActivity(intent);

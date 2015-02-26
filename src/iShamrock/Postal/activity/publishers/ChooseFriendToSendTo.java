@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.Timeline;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.User;
 
@@ -60,7 +59,7 @@ public class ChooseFriendToSendTo extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 User user = friends.get(i);
                 Intent intent = new Intent();
-                intent.putExtra("name", user.getName());
+                intent.putExtra("name", user.getNickname());
                 setResult(RESULT_OK, intent);
             }
         });
@@ -77,7 +76,7 @@ public class ChooseFriendToSendTo extends Activity {
                 e.printStackTrace();
             }
             map.put("img", imageView);
-            map.put("name", friend.getName());
+            map.put("name", friend.getNickname());
             items.add(map);
         }
         return items;
