@@ -15,29 +15,30 @@
                 android:id="@+id/profile_photo"
                 android:adjustViewBounds="false"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
+                android:background="#ffffd626"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="15dp"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_divider"
+                android:src="@drawable/postal_node"
+                android:adjustViewBounds="true"/>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView"
+                android:background="@drawable/postal_node_line"
+                android:adjustViewBounds="true"
                 />
-
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-            <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/item_divider"
-                    android:src="@drawable/postal_node"
-                    android:adjustViewBounds="true"/>
-
-            <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView"
-                    android:background="@drawable/postal_node_line"
-                    android:adjustViewBounds="true"/>
-        </LinearLayout>
     </LinearLayout>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,10 +46,9 @@
                  android:layout_height="fill_parent"
                  android:background="#FFF5F0EB"
                  android:id="@+id/timeline_animation"
-                 android:layout_marginTop="10dp"
                  android:layout_marginLeft="5dp"
                  android:layout_marginRight="5dp"
-                 android:layout_marginBottom="5dp">
+            >
         <!--imageView is not used in the code-->
         <ImageView
                 android:id="@+id/list_item_image"

@@ -1,6 +1,7 @@
 package iShamrock.Postal.activity.fore;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.MotionEvent;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.Timeline;
 
 /**
  * Created by Tong on 01.07.
@@ -41,7 +43,9 @@ public class Login extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // LOGIN SERVICE REQUIRED
+                // TODO: LOGIN SERVICE REQUIRED
+                Intent intent = new Intent(Login.this, Timeline.class);
+                startActivity(intent);
             }
         });
 

@@ -8,16 +8,28 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp"
+            android:background="#ffe84e40"
+            android:layout_gravity="center_vertical">
         <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/search_name" android:layout_weight="1" android:hint="search username"/>
-        <Button
+                android:id="@+id/search_name"
+                android:hint="search username"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffffffff"
+                android:textColorHint="#ffe0e0e0"/>
+
+        <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search"
-                android:id="@+id/search_button_add_friend"/>
+                android:id="@+id/search_button_add_friend"
+                android:src="@drawable/icon_search"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
     </LinearLayout>
     <ListView
             android:layout_width="wrap_content"

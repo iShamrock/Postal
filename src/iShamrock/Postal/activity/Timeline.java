@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.publishers.ButtonTouchAnimationListener;
+import iShamrock.Postal.activity.publishers.JEditor;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.PostalDataItem;
@@ -36,8 +37,10 @@ public class Timeline extends Activity {
     private View mDetailsLayout;
     private UnfoldableView mUnfoldableView;
 
-    private ImageView postal_friend, postal_user_avatar;
+    private ImageView postal_friend, postal_user_avatar, postal_add, postal_add_text, postal_add_image, postal_add_video, postal_add_audio, postal_add_web;
     private RelativeLayout postal_cover_container;
+
+    private boolean isAddButtonsFolded = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +68,83 @@ public class Timeline extends Activity {
 
         int screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
 
-        ViewGroup.LayoutParams params = postal_cover_container.getLayoutParams();
-        params.height = screenWidth / 16 * 9;
-        postal_cover_container.setLayoutParams(params);
+//        ViewGroup.LayoutParams params = postal_cover_container.getLayoutParams();
+//        params.height = screenWidth / 16 * 9;
+//        postal_cover_container.setLayoutParams(params);
 
         postal_user_avatar.setImageBitmap(SystemUtil.toRoundCorner(BitmapFactory.decodeResource(getResources(), R.drawable.p1)));
+
+        postal_add = (ImageView) findViewById(R.id.postal_add);
+        postal_add_text = (ImageView) findViewById(R.id.postal_add_text);
+        postal_add_image = (ImageView) findViewById(R.id.postal_add_image);
+        postal_add_video = (ImageView) findViewById(R.id.postal_add_video);
+        postal_add_audio = (ImageView) findViewById(R.id.postal_add_audio);
+        postal_add_web = (ImageView) findViewById(R.id.postal_add_web);
+
+        postal_add.setOnTouchListener(new ButtonTouchAnimationListener(postal_add));
+        postal_add_text.setOnTouchListener(new ButtonTouchAnimationListener(postal_add_text));
+        postal_add_image.setOnTouchListener(new ButtonTouchAnimationListener(postal_add_image));
+        postal_add_video.setOnTouchListener(new ButtonTouchAnimationListener(postal_add_video));
+        postal_add_audio.setOnTouchListener(new ButtonTouchAnimationListener(postal_add_audio));
+        postal_add_web.setOnTouchListener(new ButtonTouchAnimationListener(postal_add_web));
+
+        postal_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                foldAddButtons(isAddButtonsFolded);
+                isAddButtonsFolded = !isAddButtonsFolded;
+            }
+        });
+        postal_add_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Timeline.this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_TEXT);
+                startActivity(intent);
+            }
+        });
+        postal_add_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Timeline.this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_IMAGE);
+                startActivity(intent);
+            }
+        });
+        postal_add_audio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Timeline.this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_AUDIO);
+                startActivity(intent);
+            }
+        });
+        postal_add_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Timeline.this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_VIDEO);
+                startActivity(intent);
+            }
+        });
+        postal_add_web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Timeline.this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_WEB);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void foldAddButtons(boolean flag) {
+        int isVisible = (flag) ? View.VISIBLE : View.INVISIBLE;
+        postal_add_text.setVisibility(isVisible);
+        postal_add_audio.setVisibility(isVisible);
+        postal_add_image.setVisibility(isVisible);
+        postal_add_web.setVisibility(isVisible);
+        postal_add_video.setVisibility(isVisible);
+        postal_add.setImageDrawable(getResources().getDrawable((flag) ? R.drawable.icon_more_red : R.drawable.icon_add_red));
     }
 
 
