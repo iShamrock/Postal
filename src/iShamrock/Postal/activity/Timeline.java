@@ -261,7 +261,7 @@ public class Timeline extends Activity {
             case PostalDataItem.TYPE_IMAGE: {
                 try {
                     timeline_action.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(item.uri)));
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;

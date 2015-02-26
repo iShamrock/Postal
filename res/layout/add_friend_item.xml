@@ -9,12 +9,22 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/photo_add_friend"/>
-    <TextView
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(username)"
-            android:id="@+id/username_add_friend" android:layout_weight="1" android:textSize="25dp"
-            />
+            android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(username)"
+                android:id="@+id/username_add_friend" android:layout_weight="1" android:textSize="25dp"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(phone)"
+                android:id="@+id/phone_add_friend"/>
+    </LinearLayout>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

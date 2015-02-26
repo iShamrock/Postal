@@ -74,8 +74,8 @@ public class Database {
         if (test){
 //            delete();
             me = new User("lfs", "13666666666", "null", "null");
-            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
-            addPostal(new PostalDataItem(0, "321", "lalalax", "10:10x", "thisx", new double[]{1.0, 2.4}, "lfsx", "tzyx", "herex"));
+//            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
+//            addPostal(new PostalDataItem(0, "321", "lalalax", "10:10x", "thisx", new double[]{1.0, 2.4}, "lfsx", "tzyx", "herex"));
         }
     }
 
@@ -202,6 +202,19 @@ public class Database {
      */
     public static void deleteFriend(String username){
         //todo
+    }
+
+    public static ArrayList<User> getAllUsers(){
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(new User("tzy", "1333", "null", "null"));
+        users.add(new User("tzy1", "2333", "null", "null"));
+        users.add(new User("tzy2", "3333", "null", "null"));
+        users.add(new User("tzy3", "4333", "null", "null"));
+        users.add(new User("tzy4", "5333", "null", "null"));
+        users.add(new User("tzy5", "6333", "null", "null"));
+        users.add(new User("lfs", "7333", "null", "null"));
+        users.add(new User("zq", "8333", "null", "null"));
+        return users;
     }
 
     /**

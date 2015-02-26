@@ -41,12 +41,14 @@ public class Painting {
             paintings[i + PostalData.dataItemList.size()] = new Painting(images.getResourceId(i, -1), "", titles[i], years[i], locations[i], contents[i], true);
         }*/
 
-        ArrayList<Painting> paintings = new ArrayList<Painting>();
-        for (PostalDataItem item : Database.getPostal()) {
-            System.out.println("!!!!!!!");
-            paintings.add(new Painting(item));
+        ArrayList<PostalDataItem> dataItems = Database.getPostal();
+        Painting[] paintings = new Painting[dataItems.size() + 1];
+        PostalDataItem cover = new PostalDataItem();
+        cover.time = "cover";
+        paintings[0] = new Painting(cover);
+        for (int i = 0; i < dataItems.size(); i++) {
+            paintings[i + 1] = new Painting(dataItems.get(dataItems.size() - i - 1));
         }
-        System.out.println("Painting size is " + paintings.size());
-        return paintings.toArray(new Painting[paintings.size()]);
+        return paintings;
     }
 }

@@ -11,12 +11,9 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 //import com.squareup.picasso.Picasso;
-import android.widget.VideoView;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
 import iShamrock.Postal.commons.adapters.ItemsAdapter;
@@ -50,9 +47,15 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     protected View createView(Painting item, int pos, ViewGroup parent, LayoutInflater inflater) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         ViewHolder vh = new ViewHolder();
-        vh.frameLayout = Views.find(view, R.id.timeline_animation);
-        vh.frameLayout.setOnClickListener(this);
-        vh.title = Views.find(view, R.id.list_item_title);
+        vh.total = Views.find(view, R.id.total_list_item);
+        vh.linearLayout = Views.find(view, R.id.timeline_animation);
+        vh.linearLayout.setOnClickListener(this);
+        vh.contents = Views.find(view, R.id.list_contents);
+        vh.name = Views.find(view, R.id.list_item_name);
+        vh.text = Views.find(view, R.id.list_item_title);
+        vh.imageView = Views.find(view, R.id.list_item_image);
+        vh.imageView2 = Views.find(view, R.id.list_item_image_2);
+        vh.cover = Views.find(view, R.id.list_cover);
         view.setTag(vh);
         return view;
     }
@@ -65,38 +68,60 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     @Override
     protected void bindView(Painting item, int pos, View convertView) {
         ViewHolder vh = (ViewHolder) convertView.getTag();
-        vh.frameLayout.setTag(item);
+        vh.linearLayout.setTag(item);
+        if (item.getItem().time.equals("cover")){
+            vh.total.removeAllViews();
+            vh.total.addView(vh.cover);
+            return;
+        }
+        else {
+            vh.total.removeAllViews();
+            vh.total.addView(vh.contents);
+        }
+        String text = item.getItem().text;
+        if (text.length() > 50){
+            text = text.substring(0, 50) + "......";
+        }
+        vh.imageView2.setImageBitmap(null);
+        vh.imageView.setImageBitmap(null);
         switch (item.getItem().type){
             case PostalDataItem.TYPE_IMAGE:
-                ImageView imageView = new ImageView(getContext());
                 try {
-                    imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().uri)));
+                    vh.imageView2.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().uri)));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                vh.frameLayout.addView(imageView);
+                vh.text.setText(text);
+                vh.name.setText(item.getItem().from_user);
                 break;
             case PostalDataItem.TYPE_VIDEO:
-                VideoView videoView = new VideoView(getContext());
-                videoView.setVideoURI(Uri.parse(item.getItem().uri));
-                vh.frameLayout.addView(videoView);
+                //VideoView videoView = new VideoView(getContext());
+                //videoView.setVideoURI(Uri.parse(item.getItem().uri));
+                //vh.frameLayout.addView(videoView);
+                Bitmap video = BitmapFactory.decodeResource(resources, R.drawable.icon_video_red);
+                Bitmap resizedBitmap = Bitmap.createScaledBitmap(video, 300, 300, false);
+                vh.imageView.setImageBitmap(resizedBitmap);
+                vh.text.setText(text);
+                vh.name.setText(item.getItem().from_user);
                 break;
             case PostalDataItem.TYPE_AUDIO:
-                ImageView audioImageView = new ImageView(getContext());
-                audioImageView.setImageBitmap(BitmapFactory.decodeResource(resources, R.drawable.voice_message_playing));
-                audioImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                vh.frameLayout.addView(audioImageView);
+//                ImageView audioImageView = new ImageView(getContext());
+//                audioImageView.setImageBitmap(BitmapFactory.decodeResource(resources, R.drawable.voice_message_playing));
+//                audioImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                vh.frameLayout.addView(audioImageView);
+                vh.text.setText(text);
+                vh.name.setText(item.getItem().from_user);
+                Bitmap audio = BitmapFactory.decodeResource(resources, R.drawable.icon_audio_red);
+                resizedBitmap = Bitmap.createScaledBitmap(audio, 300, 300, false);
+                vh.imageView.setImageBitmap(resizedBitmap);
                 break;
             case PostalDataItem.TYPE_WEB:
                 //todo
                 break;
             case PostalDataItem.TYPE_TEXT:
-                TextView textView = new TextView(getContext());
-                textView.setText(item.getItem().text);
-                textView.setPadding(30, 20, 8, 8);
-                vh.frameLayout.addView(textView);
-                vh.frameLayout.setOnClickListener(null);
+                vh.text.setText(text);
+                vh.linearLayout.setOnClickListener(null);
+                vh.name.setText(item.getItem().from_user);
                 break;
         }
     }
@@ -110,8 +135,14 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     }
 
     private static class ViewHolder {
-        FrameLayout frameLayout;
-        TextView title;
+        LinearLayout total;
+        LinearLayout linearLayout;
+        LinearLayout contents;
+        FrameLayout cover;
+        TextView name;
+        ImageView imageView;
+        ImageView imageView2;
+        TextView text;
     }
 
 }

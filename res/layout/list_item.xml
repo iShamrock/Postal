@@ -1,78 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
-              android:layout_height="150dp"
+              android:layout_height="180dp"
               android:orientation="horizontal"
-              android:background="#f5f0eb">
+              android:background="#f5f0eb"
+              android:id="@+id/total_list_item">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent">
-        <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/profile_photo"
-                android:adjustViewBounds="false"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="5dp"
-                android:background="#ffffd626"/>
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:id="@+id/list_contents">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/profile_photo"
+                    android:adjustViewBounds="false"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/zhihu"/>
 
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="15dp"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_divider"
+                    android:src="@drawable/postal_node"
+                    android:adjustViewBounds="true"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView"
+                    android:background="@drawable/postal_node_line"
+                    android:adjustViewBounds="true"
+                    />
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                     android:layout_width="match_parent"
+                     android:layout_height="fill_parent"
+                     android:background="#FFF5F0EB"
+                     android:id="@+id/timeline_animation"
+                     android:layout_marginLeft="5dp"
+                     android:layout_marginRight="5dp"
+                     android:orientation="vertical">
+            <!--imageView is not used in the code-->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(name)"
+                    android:id="@+id/list_item_name" android:textColor="#ffff3f19" android:textSize="18dp"
+                    android:paddingLeft="4dp" android:paddingTop="4dp" android:paddingRight="4dp"
+                    android:paddingBottom="0dp" android:textStyle="bold"/>
+            <TextView
+                    android:id="@+id/list_item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" android:paddingLeft="8dp" android:paddingTop="0dp" android:paddingRight="8dp"
+                    android:paddingBottom="4dp"/>
+            <ImageView
+                    android:id="@+id/list_item_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="false"
+                    android:layout_gravity="center"/>
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="false"
+                    android:layout_gravity="center"
+                    android:id="@+id/list_item_image_2"/>
+
+            <!--
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="40sp"
+                            android:background="@drawable/image_text_shadow"
+                            android:layout_gravity="bottom" />
+            -->
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="15dp"
-            android:layout_height="match_parent">
-
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:id="@+id/list_cover">
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/item_divider"
-                android:src="@drawable/postal_node"
-                android:adjustViewBounds="true"/>
-
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/imageView"
-                android:background="@drawable/postal_node_line"
-                android:adjustViewBounds="true"
-                />
-    </LinearLayout>
-
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 android:layout_width="match_parent"
-                 android:layout_height="fill_parent"
-                 android:background="#FFF5F0EB"
-                 android:id="@+id/timeline_animation"
-                 android:layout_marginLeft="5dp"
-                 android:layout_marginRight="5dp"
-            >
-        <!--imageView is not used in the code-->
-        <ImageView
-                android:id="@+id/list_item_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:background="#ffffe070"
-                android:adjustViewBounds="false"
-                />
-
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:background="@drawable/image_text_shadow"
-                android:layout_gravity="bottom" />
-
-        <TextView
-                android:id="@+id/list_item_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:padding="8dp"
-                android:textColor="#fff"
-                android:textSize="16sp" />
-
+                android:id="@+id/imageView2" android:background="@drawable/postal_cover"/>
     </FrameLayout>
 </LinearLayout>
