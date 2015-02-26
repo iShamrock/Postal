@@ -56,7 +56,7 @@
 
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
             android:id="@+id/postal_cover_container"
             android:background="@drawable/postal_cover">
 
@@ -74,7 +74,7 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
@@ -82,110 +82,215 @@
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                      android:layout_width="match_parent"
                      android:layout_height="fill_parent"
-                     android:layout_marginTop="5dp">
+                >
 
-            <ListView
-                    android:id="@+id/list_view_timeline"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:cacheColorHint="@android:color/transparent"
-                    android:divider="@android:color/transparent"
-                    android:dividerHeight="12dp"
-                    android:listSelector="@android:color/transparent"
-                    android:scrollingCache="false"
-                    android:clipToPadding="false"
-                    android:fadeScrollbars="true"
-                    android:scrollbarStyle="outsideOverlay"
-                    />
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
 
-            <View
-                    android:id="@+id/touch_interceptor_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                <ListView
+                        android:id="@+id/list_view_timeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cacheColorHint="@android:color/transparent"
+                        android:divider="@android:color/transparent"
+                        android:dividerHeight="12dp"
+                        android:listSelector="@android:color/transparent"
+                        android:scrollingCache="false"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="true"
+                        android:scrollbarStyle="outsideOverlay"
+                        />
 
-            <LinearLayout
-                    android:id="@+id/details_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#333"
-                    android:orientation="vertical">
-                <!--Detail starts-->
-                <!--Here is the view of detail thing, the View that appears after tapping a list item-->
-                <!--You can view this as a full-screen view, ignore all the things outside-->
+                <View
+                        android:id="@+id/touch_interceptor_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
                 <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:id="@+id/timeline_media"
-                        android:gravity="center_vertical">
+                        android:id="@+id/details_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFF5F0EB"
+                        android:orientation="vertical">
+                    <!--Detail starts-->
+                    <!--Here is the view of detail thing, the View that appears after tapping a list item-->
+                    <!--You can view this as a full-screen view, ignore all the things outside-->
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:id="@+id/timeline_media"
+                            android:gravity="center_vertical">
 
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:id="@+id/timeline_action"
-                            android:src="@drawable/icon_audio"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="20dp"
-                            android:layout_gravity="center"/>
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:id="@+id/timeline_action"
+                                android:src="@drawable/icon_audio"
+                                android:adjustViewBounds="true"
+                                android:layout_margin="20dp"
+                                android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="textMultiLine"
+                            android:id="@+id/timeline_text"
+                            android:layout_weight="12"
+                            android:hint="What&apos;s on your mind?"
+                            android:textColor="#ff666666"
+                            android:gravity="top|left"
+                            android:background="@android:color/transparent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="20dp"/>
+
+                    <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dp"
+                            android:layout_weight="0"
+                            >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/timeline_loc"
+                                android:layout_alignParentTop="false"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/imat_button"
+                                android:adjustViewBounds="true"
+                                android:layout_centerVertical="true"
+                                android:longClickable="false"
+                                android:layout_alignParentBottom="false"
+                                android:layout_margin="15dp"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="Large Text"
+                                android:id="@+id/timeline_time"
+                                android:layout_alignParentTop="false"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:textColor="#ff666666"
+                                android:layout_margin="10dp"/>
+                    </RelativeLayout>
+                    <!--Detail ends-->
                 </LinearLayout>
 
-                <TextView
+                <iShamrock.Postal.foldablelayout.UnfoldableView
+                        android:id="@+id/unfoldable_view"
                         android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textMultiLine"
-                        android:id="@+id/timeline_text"
-                        android:layout_weight="12"
-                        android:hint="What&apos;s on your mind?"
-                        android:textColor="#ff666666"
-                        android:gravity="top|left"
-                        android:background="@android:color/transparent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="20dp"/>
+                        android:layout_height="fill_parent"
+                        />
 
-                <RelativeLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:layout_weight="0"
-                        >
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/timeline_loc"
-                            android:layout_alignParentTop="false"
-                            android:layout_alignParentRight="true"
-                            android:src="@drawable/imat_button"
-                            android:adjustViewBounds="true"
-                            android:layout_centerVertical="true"
-                            android:longClickable="false"
-                            android:layout_alignParentBottom="false"
-                            android:layout_margin="15dp"/>
+                <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/postal_add_text"
+                        android:layout_gravity="top|center_horizontal"
+                        android:src="@drawable/icon_text_red"
+                        android:adjustViewBounds="true"
+                        android:layout_alignBottom="@+id/unfoldable_view"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000"
+                        android:scaleType="fitXY"
+                        android:layout_toLeftOf="@+id/postal_add_image"
+                        android:layout_marginBottom="70dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:visibility="invisible"/>
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Large Text"
-                            android:id="@+id/timeline_time"
-                            android:layout_alignParentTop="false"
-                            android:layout_alignParentLeft="true"
-                            android:layout_centerVertical="true"
-                            android:textColor="#ff666666"
-                            android:layout_margin="10dp"/>
-                </RelativeLayout>
-                <!--Detail ends-->
-            </LinearLayout>
+                <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/postal_add_image"
+                        android:layout_gravity="top|center_horizontal"
+                        android:src="@drawable/icon_image_take_red"
+                        android:adjustViewBounds="true"
+                        android:layout_alignBottom="@+id/unfoldable_view"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000"
+                        android:scaleType="fitXY"
+                        android:layout_toLeftOf="@+id/postal_add"
+                        android:layout_marginBottom="70dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:visibility="invisible"/>
 
-            <iShamrock.Postal.foldablelayout.UnfoldableView
-                    android:id="@+id/unfoldable_view"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    />
+                <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/postal_add_web"
+                        android:layout_gravity="top|center_horizontal"
+                        android:src="@drawable/icon_web_red"
+                        android:adjustViewBounds="true"
+                        android:layout_alignBottom="@+id/unfoldable_view"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000"
+                        android:scaleType="fitXY"
+                        android:layout_toRightOf="@+id/postal_add_audio"
+                        android:layout_marginBottom="70dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:visibility="invisible"/>
+
+                <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/postal_add_audio"
+                        android:layout_gravity="top|center_horizontal"
+                        android:src="@drawable/icon_audio_red"
+                        android:adjustViewBounds="true"
+                        android:layout_alignBottom="@+id/unfoldable_view"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000"
+                        android:scaleType="fitXY"
+                        android:layout_toRightOf="@+id/postal_add"
+                        android:layout_marginBottom="70dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:visibility="invisible"/>
+
+                <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/postal_add_video"
+                        android:layout_gravity="top|center_horizontal"
+                        android:src="@drawable/icon_video_red"
+                        android:adjustViewBounds="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000"
+                        android:scaleType="fitXY"
+                        android:layout_marginBottom="70dp"
+                        android:layout_alignBottom="@+id/unfoldable_view"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:visibility="invisible"/>
+
+                <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/postal_add"
+                        android:layout_gravity="top|center_horizontal"
+                        android:src="@drawable/icon_add_red"
+                        android:adjustViewBounds="false"
+                        android:layout_alignBottom="@+id/unfoldable_view"
+                        android:layout_centerHorizontal="true"
+                        android:background="#00000000"
+                        android:scaleType="fitXY"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+            </RelativeLayout>
 
         </FrameLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

@@ -20,7 +20,7 @@ public class AddFriend extends Activity{
 
     ListView listView;
     EditText searchName;
-    Button search;
+    ImageView search;
 
     ArrayList<User> friends;
     List<Map<String, Object>> list;
@@ -39,7 +39,7 @@ public class AddFriend extends Activity{
     private void initComponents() {
         listView = (ListView) findViewById(R.id.listView_add_friend);
         searchName = (EditText) findViewById(R.id.search_name);
-        search = (Button) findViewById(R.id.search_button_add_friend);
+        search = (ImageView) findViewById(R.id.search_button_add_friend);
 
         adapter = new SimpleAdapter(this, list, R.layout.add_friend_item, new String[]{"name", "photo", "button"},
                 new int[]{R.id.username_add_friend, R.id.photo_add_friend, R.id.button_add_friend});

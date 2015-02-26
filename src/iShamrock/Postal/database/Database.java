@@ -74,8 +74,8 @@ public class Database {
         if (test){
 //            delete();
             me = new User("lfs", "13666666666", "null", "null");
-//            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
-//            addPostal(new PostalDataItem(0, "321", "lalalax", "10:10x", "thisx", new double[]{1.0, 2.4}, "lfsx", "tzyx", "herex"));
+            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
+            addPostal(new PostalDataItem(0, "321", "lalalax", "10:10x", "thisx", new double[]{1.0, 2.4}, "lfsx", "tzyx", "herex"));
         }
     }
 

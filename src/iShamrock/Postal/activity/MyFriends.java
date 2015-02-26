@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import iShamrock.Postal.R;
-import iShamrock.Postal.activity.fore.Splash;
+import iShamrock.Postal.activity.publishers.ButtonTouchAnimationListener;
 import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.User;
@@ -24,19 +25,42 @@ import java.util.Map;
 /**
  * Created by lifengshuang on 2/15/15.
  */
-public class MyFriends extends Activity{
+public class MyFriends extends Activity {
 
     private ListView listView;
+    private ImageView friends_add, friends_cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends);
-        initLeftDrawer();
         initListView();
+
+        initCommonComponents();
     }
 
-    private void initListView(){
+    private void initCommonComponents() {
+        friends_add = (ImageView) findViewById(R.id.friends_add);
+        friends_add.setOnTouchListener(new ButtonTouchAnimationListener(friends_add));
+        friends_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent friendsIntent = new Intent(MyFriends.this, AddFriend.class);
+                startActivity(friendsIntent);
+            }
+        });
+
+        friends_cancel = (ImageView) findViewById(R.id.friends_cancel);
+        friends_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        friends_cancel.setOnTouchListener(new ButtonTouchAnimationListener(friends_cancel));
+    }
+
+    private void initListView() {
         listView = (ListView) findViewById(R.id.friends_listView);
         listView.setAdapter(new SimpleAdapter(this, getListItemData(), R.layout.friends_item,
                 new String[]{"img", "name", "send"}, new int[]{R.id.friends_img, R.id.friends_name, R.id.friends_send}));
@@ -80,45 +104,5 @@ public class MyFriends extends Activity{
             list.add(map);
         }
         return list;
-    }
-
-    private void initLeftDrawer() {
-        String[] titles = new String[]{"Timeline", "Friends", "Old version"};
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_friends);
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_friends);
-        drawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, titles));
-        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0){
-                    Intent intent = new Intent();
-                    intent.setClass(MyFriends.this, Timeline.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else if (i == 1){
-                    //do nothing
-                }
-                else if (i == 2){
-                    Intent intent = new Intent();
-                    intent.setClass(MyFriends.this, Splash.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                invalidateOptionsMenu();
-            }
-        };
-        drawerLayout.setDrawerListener(toggle);
     }
 }
