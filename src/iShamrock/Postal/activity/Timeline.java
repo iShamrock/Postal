@@ -16,6 +16,7 @@ import android.widget.*;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.publishers.ButtonTouchAnimationListener;
 import iShamrock.Postal.activity.publishers.JEditor;
+import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.PostalDataItem;
@@ -24,8 +25,6 @@ import iShamrock.Postal.foldablelayout.shading.GlanceFoldShading;
 import iShamrock.Postal.items.Painting;
 import iShamrock.Postal.items.PaintingsAdapter;
 import iShamrock.Postal.util.SystemUtil;
-
-import java.io.IOException;
 
 /**
  * Created by lifengshuang on 2/14/15.
@@ -37,7 +36,7 @@ public class Timeline extends Activity {
     private View mDetailsLayout;
     private UnfoldableView mUnfoldableView;
 
-    private ImageView postal_friend, postal_user_avatar, postal_add, postal_add_text, postal_add_image, postal_add_video, postal_add_audio, postal_add_web;
+    private ImageView postal_friend, postal_user_avatar, postal_add, postal_add_text, postal_add_image, postal_add_video, postal_add_audio, postal_add_web, postal_edit;
     private RelativeLayout postal_cover_container;
 
     private boolean isAddButtonsFolded = true;
@@ -53,6 +52,7 @@ public class Timeline extends Activity {
     }
 
     private void initCommonComponents() {
+        postal_edit = (ImageView) findViewById(R.id.postal_edit);
         postal_friend = (ImageView) findViewById(R.id.postal_friend);
         postal_user_avatar = (ImageView) findViewById(R.id.postal_user_avatar);
         postal_cover_container = (RelativeLayout) findViewById(R.id.postal_cover_container);
@@ -91,8 +91,7 @@ public class Timeline extends Activity {
         postal_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                foldAddButtons(isAddButtonsFolded);
-                isAddButtonsFolded = !isAddButtonsFolded;
+                foldAddButtons();
             }
         });
         postal_add_text.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +100,7 @@ public class Timeline extends Activity {
                 Intent intent = new Intent(Timeline.this, JEditor.class);
                 intent.putExtra("type", PostalDataItem.TYPE_TEXT);
                 startActivity(intent);
+                foldAddButtons();
             }
         });
         postal_add_image.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +109,7 @@ public class Timeline extends Activity {
                 Intent intent = new Intent(Timeline.this, JEditor.class);
                 intent.putExtra("type", PostalDataItem.TYPE_IMAGE);
                 startActivity(intent);
+                foldAddButtons();
             }
         });
         postal_add_audio.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +118,7 @@ public class Timeline extends Activity {
                 Intent intent = new Intent(Timeline.this, JEditor.class);
                 intent.putExtra("type", PostalDataItem.TYPE_AUDIO);
                 startActivity(intent);
+                foldAddButtons();
             }
         });
         postal_add_video.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +127,7 @@ public class Timeline extends Activity {
                 Intent intent = new Intent(Timeline.this, JEditor.class);
                 intent.putExtra("type", PostalDataItem.TYPE_VIDEO);
                 startActivity(intent);
+                foldAddButtons();
             }
         });
         postal_add_web.setOnClickListener(new View.OnClickListener() {
@@ -133,18 +136,29 @@ public class Timeline extends Activity {
                 Intent intent = new Intent(Timeline.this, JEditor.class);
                 intent.putExtra("type", PostalDataItem.TYPE_WEB);
                 startActivity(intent);
+                foldAddButtons();
+            }
+        });
+        postal_edit.setOnTouchListener(new ButtonTouchAnimationListener(postal_edit));
+        postal_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Timeline.this, PEditor.class);
+                startActivity(intent);
+                foldAddButtons();
             }
         });
     }
 
-    private void foldAddButtons(boolean flag) {
-        int isVisible = (flag) ? View.VISIBLE : View.INVISIBLE;
+    private void foldAddButtons() {
+        int isVisible = (isAddButtonsFolded) ? View.VISIBLE : View.INVISIBLE;
         postal_add_text.setVisibility(isVisible);
         postal_add_audio.setVisibility(isVisible);
         postal_add_image.setVisibility(isVisible);
         postal_add_web.setVisibility(isVisible);
         postal_add_video.setVisibility(isVisible);
-        postal_add.setImageDrawable(getResources().getDrawable((flag) ? R.drawable.icon_more_red : R.drawable.icon_add_red));
+        postal_add.setImageDrawable(getResources().getDrawable((isAddButtonsFolded) ? R.drawable.icon_more_red : R.drawable.icon_add_red));
+        isAddButtonsFolded = !isAddButtonsFolded;
     }
 
 
@@ -210,6 +224,7 @@ public class Timeline extends Activity {
         timeline_text.setText(item.text);
         timeline_time.setText(item.time);
 
+
         switch (item.type) {
 
             case PostalDataItem.TYPE_AUDIO: {
@@ -259,6 +274,10 @@ public class Timeline extends Activity {
             }
 
             case PostalDataItem.TYPE_IMAGE: {
+                int screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
+                ViewGroup.LayoutParams params = timeline_action.getLayoutParams();
+                params.height = screenWidth / 16 * 9;
+                timeline_action.setLayoutParams(params);
                 try {
                     timeline_action.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(item.uri)));
                 } catch (Exception e) {
@@ -273,7 +292,6 @@ public class Timeline extends Activity {
             }
 
         }
-
         mUnfoldableView.unfold(coverView, mDetailsLayout);
 
 /*        ImageView image = Views.find(mDetailsLayout, R.id.details_image);
@@ -306,7 +324,6 @@ public class Timeline extends Activity {
 
         mUnfoldableView.unfold(coverView, mDetailsLayout);*/
     }
-
 
     private void initDatabase() {
         Database.database = openOrCreateDatabase("postal.db", Context.MODE_PRIVATE, null);

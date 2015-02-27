@@ -8,20 +8,23 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import iShamrock.Postal.R;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.User;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Created by lifengshuang on 2/22/15.
  */
 public class AddFriend extends ListActivity {
 
-//    ListView listView;
+    //    ListView listView;
     EditText searchName;
     ImageView search;
     Runnable run;
@@ -60,8 +63,8 @@ public class AddFriend extends ListActivity {
             public void onClick(View view) {
                 String name = searchName.getText().toString();
                 list = new ArrayList<User>();
-                for (User i : friends){
-                    if (i.getNickname().startsWith(name)){
+                for (User i : friends) {
+                    if (i.getNickname().startsWith(name)) {
                         list.add(i);
                     }
                 }
@@ -105,14 +108,14 @@ public class AddFriend extends ListActivity {
         });
     }
 
-    public final class ViewHolder{
+    public final class ViewHolder {
         ImageView imageView;
         TextView name;
         TextView phone;
-        Button add;
+        ImageView add;
     }
 
-    public class AddFriendAdapter extends BaseAdapter{
+    public class AddFriendAdapter extends BaseAdapter {
 
         private LayoutInflater mInflater;
 
@@ -138,17 +141,16 @@ public class AddFriend extends ListActivity {
         @Override
         public View getView(final int i, View view, ViewGroup viewGroup) {
             ViewHolder holder;
-            if (view == null){
+            if (view == null) {
                 holder = new ViewHolder();
                 view = mInflater.inflate(R.layout.add_friend_item, null);
                 holder.imageView = (ImageView) view.findViewById(R.id.photo_add_friend);
                 holder.name = (TextView) view.findViewById(R.id.username_add_friend);
                 holder.phone = (TextView) view.findViewById(R.id.phone_add_friend);
-                holder.add = (Button) view.findViewById(R.id.button_add_friend);
+                holder.add = (ImageView) view.findViewById(R.id.button_add_friend);
                 view.setTag(holder);
-            }
-            else {
-                holder = (ViewHolder)view.getTag();
+            } else {
+                holder = (ViewHolder) view.getTag();
             }
             try {
                 holder.imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(list.get(i).getPhotoURI())));
@@ -164,6 +166,8 @@ public class AddFriend extends ListActivity {
             if (list.get(i).getPhone() == null){
                 System.out.println("user phone null");
             }*/
+
+
             holder.name.setText(list.get(i).getNickname());
             holder.phone.setText(list.get(i).getPhone());
             final int i_copy = i;

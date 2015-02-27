@@ -5,15 +5,15 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-
-//import com.squareup.picasso.Picasso;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
 import iShamrock.Postal.commons.adapters.ItemsAdapter;
@@ -22,6 +22,8 @@ import iShamrock.Postal.entity.PostalDataItem;
 
 import java.io.IOException;
 import java.util.Arrays;
+
+//import com.squareup.picasso.Picasso;
 
 public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnClickListener {
 
@@ -98,9 +100,9 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
                 //VideoView videoView = new VideoView(getContext());
                 //videoView.setVideoURI(Uri.parse(item.getItem().uri));
                 //vh.frameLayout.addView(videoView);
-                Bitmap video = BitmapFactory.decodeResource(resources, R.drawable.icon_video_red);
-                Bitmap resizedBitmap = Bitmap.createScaledBitmap(video, 300, 300, false);
-                vh.imageView.setImageBitmap(resizedBitmap);
+                Bitmap video = BitmapFactory.decodeResource(resources, R.drawable.video_cover);
+//                Bitmap resizedBitmap = Bitmap.createScaledBitmap(video, 300, 300, false);
+                vh.imageView.setImageBitmap(video);
                 vh.text.setText(text);
                 vh.name.setText(item.getItem().from_user);
                 break;
@@ -111,14 +113,15 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
 //                vh.frameLayout.addView(audioImageView);
                 vh.text.setText(text);
                 vh.name.setText(item.getItem().from_user);
-                Bitmap audio = BitmapFactory.decodeResource(resources, R.drawable.icon_audio_red);
-                resizedBitmap = Bitmap.createScaledBitmap(audio, 300, 300, false);
-                vh.imageView.setImageBitmap(resizedBitmap);
+                Bitmap audio = BitmapFactory.decodeResource(resources, R.drawable.audio_cover);
+//                audio = Bitmap.createScaledBitmap(audio, 300, 300, false);
+                vh.imageView.setImageBitmap(audio);
                 break;
             case PostalDataItem.TYPE_WEB:
                 //todo
                 break;
             case PostalDataItem.TYPE_TEXT:
+                vh.text.setLines(8);
                 vh.text.setText(text);
                 vh.linearLayout.setOnClickListener(null);
                 vh.name.setText(item.getItem().from_user);
