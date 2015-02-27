@@ -7,6 +7,7 @@ import iShamrock.Postal.entity.User;
 import iShamrock.Postal.entity.PostalDataItem;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,7 @@ public class Database {
     public static User me;
     private static Connect connect = new Connect();
 
-    private static boolean test = true;
+    private static boolean local = true;
 
     private static final String postal = "POSTAL";
     private static final String postal_id = "POSTAL_ID";
@@ -71,7 +72,7 @@ public class Database {
                 + user_name + " TEXT, " + user_phone + " TEXT, "
                 + user_photoURI + " TEXT, " + user_timeline_cover + " TEXT" + ");");
 
-        if (test){
+        if (local){
 //            delete();
             me = new User("lfs", "13666666666", "null", "null");
 //            addPostal(new PostalDataItem(0, "123", "lalala", "10:10", "this", new double[]{1.0, 2.4}, "lfs", "tzy", "here"));
@@ -85,7 +86,7 @@ public class Database {
      * @return login success or failed
      */
     public static boolean login(String username, String password){
-        if (test){
+        if (local){
             ContentValues contentValues = new ContentValues();
             contentValues.put(user_name, username);
             contentValues.put(user_phone, "13666666666");
@@ -96,19 +97,31 @@ public class Database {
             return true;
         }
         else {
-            User login = connect.login(username, password);
-            if (login == null) {
+            try {
+                me = connect.login(username, password);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (me == null) {
                 return false;
             }
             else {
                 ContentValues contentValues = new ContentValues();
-                contentValues.put(user_name, login.getNickname());
-                contentValues.put(user_phone, login.getPhone());
-                contentValues.put(user_photoURI, login.getPhotoURI());
-                contentValues.put(user_timeline_cover, login.getCoverURI());
+                contentValues.put(user_name, me.getNickname());
+                contentValues.put(user_phone, me.getPhone());
+                contentValues.put(user_photoURI, me.getPhotoURI());
+                contentValues.put(user_timeline_cover, me.getCoverURI());
                 database.insert(user, null, contentValues);
                 return true;
             }
+        }
+    }
+
+    public static void signUp(User user1, String password){
+        try {
+            connect.signUp(user1, password);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -132,6 +145,11 @@ public class Database {
         contentValues.put(postal_latitude, postalDataItem.location[0]);
         contentValues.put(postal_longitude, postalDataItem.location[1]);
         database.insert(postal, null, contentValues);
+        try {
+            connect.addPostal(postalDataItem);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -148,22 +166,31 @@ public class Database {
      */
     public static ArrayList<PostalDataItem> getPostal() {
         ArrayList<PostalDataItem> postalDataItemArrayList = new ArrayList<PostalDataItem>();
-        Cursor cursor = database.rawQuery("SELECT * FROM " + postal, null);
-        while (cursor.moveToNext()){
-            PostalDataItem item = new PostalDataItem(
-                    cursor.getInt(cursor.getColumnIndex(postal_type)),
-                    cursor.getString(cursor.getColumnIndex(postal_uri)),
-                    cursor.getString(cursor.getColumnIndex(postal_text)),
-                    cursor.getString(cursor.getColumnIndex(postal_time)),
-                    cursor.getString(cursor.getColumnIndex(postal_title)),
-                    new double[]{cursor.getDouble(cursor.getColumnIndex(postal_latitude)), cursor.getDouble(cursor.getColumnIndex(postal_longitude))},
-                    cursor.getString(cursor.getColumnIndex(postal_from_user)),
-                    cursor.getString(cursor.getColumnIndex(postal_to_user)),
-                    cursor.getString(cursor.getColumnIndex(postal_location))
+        if (local) {
+            Cursor cursor = database.rawQuery("SELECT * FROM " + postal, null);
+            while (cursor.moveToNext()) {
+                PostalDataItem item = new PostalDataItem(
+                        cursor.getInt(cursor.getColumnIndex(postal_type)),
+                        cursor.getString(cursor.getColumnIndex(postal_uri)),
+                        cursor.getString(cursor.getColumnIndex(postal_text)),
+                        cursor.getString(cursor.getColumnIndex(postal_time)),
+                        cursor.getString(cursor.getColumnIndex(postal_title)),
+                        new double[]{cursor.getDouble(cursor.getColumnIndex(postal_latitude)), cursor.getDouble(cursor.getColumnIndex(postal_longitude))},
+                        cursor.getString(cursor.getColumnIndex(postal_from_user)),
+                        cursor.getString(cursor.getColumnIndex(postal_to_user)),
+                        cursor.getString(cursor.getColumnIndex(postal_location))
 //                    cursor.getString(cursor.getColumnIndex(postal_videoULI)),
 //                   cursor.getString(cursor.getColumnIndex(postal_recordingULI))
-            );
-            postalDataItemArrayList.add(item);
+                );
+                postalDataItemArrayList.add(item);
+            }
+        }
+        else {
+            try {
+                postalDataItemArrayList = connect.getPostalData(me);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         for (PostalDataItem item : postalDataItemArrayList) {
             System.out.println(item.type + "|" + item.uri + "|" + item.text + "|" + item.time + "|" + item.title + "|" + item.from_user + "|" + item.to_user + "|" + item.location_text);
@@ -193,7 +220,11 @@ public class Database {
         contentValues.put(friends_photoURI, friend.getPhotoURI());
         contentValues.put(friends_timeline_cover, friend.getCoverURI());
         database.insert(friends, null, contentValues);
-        //todo:
+        try {
+            connect.addFriend(me, friend);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -205,16 +236,21 @@ public class Database {
     }
 
     public static ArrayList<User> getAllUsers(){
-        ArrayList<User> users = new ArrayList<User>();
-        users.add(new User("tzy", "1333", "null", "null"));
-        users.add(new User("tzy1", "2333", "null", "null"));
-        users.add(new User("tzy2", "3333", "null", "null"));
-        users.add(new User("tzy3", "4333", "null", "null"));
-        users.add(new User("tzy4", "5333", "null", "null"));
-        users.add(new User("tzy5", "6333", "null", "null"));
-        users.add(new User("lfs", "7333", "null", "null"));
-        users.add(new User("zq", "8333", "null", "null"));
-        return users;
+        if (local) {
+            ArrayList<User> users = new ArrayList<User>();
+            users.add(new User("tzy", "1333", "null", "null"));
+            users.add(new User("tzy1", "2333", "null", "null"));
+            users.add(new User("tzy2", "3333", "null", "null"));
+            users.add(new User("tzy3", "4333", "null", "null"));
+            users.add(new User("tzy4", "5333", "null", "null"));
+            users.add(new User("tzy5", "6333", "null", "null"));
+            users.add(new User("lfs", "7333", "null", "null"));
+            users.add(new User("zq", "8333", "null", "null"));
+            return users;
+        }
+        else {
+            return connect.getAllUser();
+        }
     }
 
     /**
@@ -222,15 +258,19 @@ public class Database {
      * @return all friends
      */
     public static ArrayList<User> getFriend(){
-        //todo
-        User a = new User("tzy", "null", "null", "null");
-        User b = new User("lfs", "null", "null", "null");
-        User c = new User("zq", "null", "null", "null");
-        ArrayList<User> x = new ArrayList<User>();
-        x.add(a);
-        x.add(b);
-        x.add(c);
-        return x;
+        if (local) {
+            User a = new User("tzy", "null", "null", "null");
+            User b = new User("lfs", "null", "null", "null");
+            User c = new User("zq", "null", "null", "null");
+            ArrayList<User> x = new ArrayList<User>();
+            x.add(a);
+            x.add(b);
+            x.add(c);
+            return x;
+        }
+        else {
+            return connect.getFriendData(me);
+        }
     }
 
     public static void delete(){

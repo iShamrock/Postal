@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.database.Database;
 
 /**
  * Created by Tong on 01.07.
@@ -21,7 +22,8 @@ public class Login extends Activity {
         setContentView(R.layout.login);
         super.onCreate(savedInstanceState);
 
-        EditText txtPorE = (EditText) findViewById(R.id.login_psward);
+        final EditText txtPorE = (EditText) findViewById(R.id.login_psward);
+        final EditText user = (EditText) findViewById(R.id.login_signature);
         final ImageView login = (ImageView) findViewById(R.id.login_login);
         login.setLongClickable(true);
         login.setOnTouchListener(new View.OnTouchListener() {
@@ -43,9 +45,12 @@ public class Login extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: LOGIN SERVICE REQUIRED
-                Intent intent = new Intent(Login.this, Timeline.class);
-                startActivity(intent);
+                if (Database.login(user.getText().toString(), txtPorE.getText().toString())) {
+                    Intent intent = new Intent(Login.this, Timeline.class);
+                    startActivity(intent);
+                }else {
+                    //login failed
+                }
             }
         });
 
