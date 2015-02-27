@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -89,8 +88,8 @@ public class MyFriends extends Activity {
             });
             map.put("img", imageView);
             map.put("name", friend.getNickname());
-            Button button = new Button(this);
-            button.setText("Send");
+            ImageView button = new ImageView(this);
+//            button.setText("Send");
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
