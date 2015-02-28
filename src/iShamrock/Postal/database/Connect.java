@@ -1,5 +1,7 @@
 package iShamrock.Postal.database;
 
+import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
 
 import org.apache.http.HttpResponse;
@@ -13,6 +15,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import iShamrock.Postal.database.photo.FileDownload;
+import iShamrock.Postal.database.photo.FileImageUpload;
 import iShamrock.Postal.entity.PostalData;
 import iShamrock.Postal.entity.PostalDataItem;
 import iShamrock.Postal.entity.User;
@@ -20,6 +24,7 @@ import iShamrock.Postal.entity.User;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,6 +32,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -44,38 +51,12 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class Connect {
     public final String server="http://121.40.155.146:8080/postalservermine/data/";
+    public final String urlserver="http://121.40.155.146:8080/postalservermine/";
+    String ALBUM_PATH= Environment.getExternalStorageDirectory() + "/download_test/";
+    FileImageUpload f=new FileImageUpload();
 
 
 
-    public String logintests(String user, String password) {
-       // String server="http://121.40.155.146:8080/postalservermine/data/";
-        String url = server + "UserLogin?phone=" + user + "&password=" + password;
-
-        System.out.println(url);
-        try {
-            HttpClient client = new DefaultHttpClient();
-            HttpGet get = new HttpGet(url);
-            HttpResponse response = client.execute(get);
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                InputStream is = null;
-
-
-                is = response.getEntity().getContent();
-
-
-                String result = inStream2String(is);
-                return result;
-            }
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
     /**
      * @param user
      * @return the user's data, null if login failed
@@ -112,60 +93,36 @@ public class Connect {
         photoURI=(photoURI.equals("null"))?null:photoURI;
         coverURI=(coverURI.equals("null"))?null:coverURI;
 
+
+
+
         User u=new User(name,phone,photoURI,coverURI);
 
+        String uri=u.getCoverURI();
+        if(uri!=null) {
+            int pos = uri.split("/").length - 1;
+            File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
+
+
+            u.setCoverURI(Uri.fromFile(new File(ALBUM_PATH + u.getPhone() + "/" + u.getCoverURI().split("/")[pos])).toString());
+            Thread fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+            fileDownload.start();
+        }
+        uri = u.getPhotoURI();
+        if(uri!=null) {
+
+            int  pos = uri.split("/").length - 1;
+            File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
+            u.setPhotoURI(Uri.fromFile(file).toString());
+            Thread  fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+            fileDownload.start();
+        }
 
         return u;
+
+
     }
-    private String inStream2String(InputStream is) throws Exception {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[] buf = new byte[1024];
-        int len = -1;
-        while ((len = is.read(buf)) != -1) {
-            baos.write(buf, 0, len);
-        }
-        return new String(baos.toByteArray());
-    }
-    public ArrayList<String> logintest(String user, String password){
-        String strurl=server+"UserLogin";
-        URL url=null;
-        try {
-            url= new URL(strurl);
-            HttpURLConnection urlConn= (HttpURLConnection) url.openConnection();
-            urlConn.setDoInput(true);
-            urlConn.setDoOutput(true);
-            urlConn.setRequestMethod("post");
-            urlConn.setUseCaches(false);
-            // set requestproperty;
-            urlConn.setRequestProperty("Charset","utf-8");
-            urlConn.connect();
 
-            DataOutputStream dop=new DataOutputStream(urlConn.getOutputStream());
-            dop.writeBytes("param="+ URLEncoder.encode("","utf-8"));
-            dop.flush();
-            dop.close();
-
-            BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(urlConn.getInputStream()));
-            ArrayList<String> result=new ArrayList<String>();
-            String readLine=null;
-            while((readLine=bufferedReader.readLine())!=null){
-                result.add(readLine);
-
-            }
-            bufferedReader.close();
-            urlConn.disconnect();
-
-            return result;
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //todo
-
-        return null;
-    }
     /**
      * @param user
      * @return all the postal of the user IN ORDER OF TIME
@@ -223,7 +180,32 @@ public class Connect {
 
             PostalDataItem pdi = new PostalDataItem(type, uri, text, time, title, location, from_user, to_user, location_text);
             apid.add(pdi);
+
+
+
+
+
+
         }
+
+        for( PostalDataItem pdi: apid){
+            int pos=pdi.uri.split("/").length-1;
+            File f=new File(ALBUM_PATH+pdi.from_user+"/"+pdi.uri.split("/")[pos]);
+            if(f.exists()){
+                continue;
+            }
+
+            Thread fileDownload=new FileDownload(pdi.uri.split("/")[pos],urlserver+"img/"+pdi.from_user+""+"/"+pdi.uri.split("/")[n],pdi.from_user);
+            fileDownload.start();
+
+            pdi.uri(Uri.fromFile(new File(ALBUM_PATH + pdi.from_user + "/" + pdi.uri.split("/")[pos])).toString());
+
+
+
+        }
+
+
+
 
         return apid;
     }
@@ -263,6 +245,16 @@ public class Connect {
 
 
         rd.close();
+
+
+        File myCaptureFile = null;
+        try {
+            myCaptureFile = new File(new URI(postalDataItem.uri));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        f.uploadFile(myCaptureFile,server+"OkServletUp", postalDataItem.from_user);
+
 
     }
 
@@ -333,7 +325,7 @@ public class Connect {
      * @param user
      * @return all the friends of the user
      */
-    public ArrayList<User> getFriendData(User user){
+    public ArrayList<User> getFriendData(User user) throws IOException {
         //todo: return all the friends of the user
         String url = server + "GetAllFriendsData";
         HttpClient client = new DefaultHttpClient();
@@ -344,51 +336,63 @@ public class Connect {
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("phone", user.getPhone()));
+
+
+        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+        HttpResponse response = client.execute(post);
+
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
         ArrayList<User> auser = new ArrayList<User>();
+        int n = Integer.valueOf(rd.readLine());
+        for (int i = 0; i < n; i++) {
 
-        try {
-            post.setEntity(new UrlEncodedFormEntity(urlParameters));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            String name=rd.readLine();
+            String phone=rd.readLine();
+            String photoURI=rd.readLine();
+            String coverURI=rd.readLine();
+            name=(name.equals("null"))?null:name;
+            phone=(phone.equals("null"))?null:phone;
+            photoURI=(photoURI.equals("null"))?null:photoURI;
+            coverURI=(coverURI.equals("null"))?null:coverURI;
+
+            User u=new User(name,phone,photoURI,coverURI);
+            auser.add(u);
         }
 
-        HttpResponse response = null;
-        try {
-            response = client.execute(post);
-            BufferedReader rd = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
+        for(User u:auser) {
 
-            StringBuffer result = new StringBuffer();
-            auser = new ArrayList<User>();
-            int n = Integer.valueOf(rd.readLine());
-            for (int i = 0; i < n; i++) {
 
-                String name=rd.readLine();
-                String phone=rd.readLine();
-                String photoURI=rd.readLine();
-                String coverURI=rd.readLine();
-                name=(name.equals("null"))?null:name;
-                phone=(phone.equals("null"))?null:phone;
-                photoURI=(photoURI.equals("null"))?null:photoURI;
-                coverURI=(coverURI.equals("null"))?null:coverURI;
-
-                User u=new User(name,phone,photoURI,coverURI);
-                auser.add(u);
+            String uri=u.getCoverURI();
+            if(uri!=null) {
+                int pos = uri.split("/").length - 1;
+                File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
+                u.setCoverURI(Uri.fromFile(file).toString());
+                Thread fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+                fileDownload.start();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            uri = u.getPhotoURI();
+            if(uri!=null) {
+
+                int  pos = uri.split("/").length - 1;
+                File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
+                u.setPhotoURI(Uri.fromFile(file).toString());
+                Thread  fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+                fileDownload.start();
+            }
+
         }
-
-
-
-
         return auser;
 
     }
 
 
 
-    public ArrayList<User> getAllUser(){
+    public ArrayList<User> getAllUser() throws IOException {
         //todo: return all the users, it's used when the user wants to add a friend
         String url = server + "GetAllUser";
         HttpClient client = new DefaultHttpClient();
@@ -396,37 +400,58 @@ public class Connect {
 
         // add header
         post.setHeader("User-Agent", "android");
+
+
+
+
+
+
+        HttpResponse response = client.execute(post);
+
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
         ArrayList<User> auser = new ArrayList<User>();
+        int n = Integer.valueOf(rd.readLine());
+        for (int i = 0; i < n; i++) {
 
-        HttpResponse response = null;
-        try {
-            response = client.execute(post);
+            String name=rd.readLine();
+            String phone=rd.readLine();
+            String photoURI=rd.readLine();
+            String coverURI=rd.readLine();
+            name=(name.equals("null"))?null:name;
+            phone=(phone.equals("null"))?null:phone;
+            photoURI=(photoURI.equals("null"))?null:photoURI;
+            coverURI=(coverURI.equals("null"))?null:coverURI;
 
-            BufferedReader rd = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
-
-            StringBuffer result = new StringBuffer();
-            auser = new ArrayList<User>();
-            int n = Integer.valueOf(rd.readLine());
-            for (int i = 0; i < n; i++) {
-
-                String name=rd.readLine();
-                String phone=rd.readLine();
-                String photoURI=rd.readLine();
-                String coverURI=rd.readLine();
-                name=(name.equals("null"))?null:name;
-                phone=(phone.equals("null"))?null:phone;
-                photoURI=(photoURI.equals("null"))?null:photoURI;
-                coverURI=(coverURI.equals("null"))?null:coverURI;
-
-                User u=new User(name,phone,photoURI,coverURI);
-                auser.add(u);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            User u=new User(name,phone,photoURI,coverURI);
+            auser.add(u);
         }
+        for(User u:auser) {
 
 
+            String uri=u.getCoverURI();
+            if(uri!=null) {
+                int pos = uri.split("/").length - 1;
+                File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
+                u.setCoverURI(Uri.fromFile(file).toString());
+                Thread fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+                fileDownload.start();
+            }
+            uri = u.getPhotoURI();
+            if(uri!=null) {
+
+                int  pos = uri.split("/").length - 1;
+                File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
+                u.setPhotoURI(Uri.fromFile(file).toString());
+                Thread  fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+                fileDownload.start();
+            }
+
+
+        }
 
         return auser;
 
@@ -470,6 +495,23 @@ public class Connect {
 
 
         rd.close();
+
+        try {
+            File myPhotoImg = new File(new URI(updatedUser.getPhotoURI()));
+
+            f.uploadFile(myPhotoImg, server + "OkServletUp", user.getPhone());
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        File myCoverImg = null;
+        try {
+            myCoverImg = new File(new URI(updatedUser.getCoverURI()));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        f.uploadFile(myCoverImg, server + "OkServletUp", user.getPhone());
+
 
     }
     public void deleteFriend(User user, User friend){

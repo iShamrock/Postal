@@ -36,7 +36,6 @@ public class Database {
 //    private static final String postal_videoULI = "POSTAL_VIDEO_URI";
 //    private static final String postal_recordingULI = "POSTAL_RECORDING_URI";
 
-
     private static final String friends = "FRIENDS";
     private static final String friends_id = "FRIENDS_ID";
     private static final String friends_name = "FRIENDS_NAME";
@@ -118,11 +117,19 @@ public class Database {
     }
 
     public static void signUp(User user1, String password){
-        try {
-            connect.signUp(user1, password);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        final User u = user1;
+        final String p = password;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        connect.signUp(u, p);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("sign up");
+                }
+            }).run();
     }
 
     /**
@@ -249,7 +256,12 @@ public class Database {
             return users;
         }
         else {
-            return connect.getAllUser();
+            try {
+                return connect.getAllUser();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 
@@ -269,7 +281,12 @@ public class Database {
             return x;
         }
         else {
-            return connect.getFriendData(me);
+            try {
+                return connect.getFriendData(me);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 

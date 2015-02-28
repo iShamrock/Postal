@@ -68,6 +68,7 @@ public class Signup extends Activity {
                     public void run() {
                         Database.signUp(new User(txtName.getText().toString(), txtPorE.getText().toString(),
                                 avatarUri.toString(), txtPswd.getText().toString()), txtPswd.getText().toString());
+                        Database.login(txtName.getText().toString(), txtPswd.getText().toString());
                     }
                 }).run();
                 Intent intent = new Intent(Signup.this, Timeline.class);
