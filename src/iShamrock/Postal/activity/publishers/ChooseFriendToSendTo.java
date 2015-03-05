@@ -54,12 +54,14 @@ public class ChooseFriendToSendTo extends ListActivity {
         Intent intent = new Intent();
         intent.putExtra("name", user.getNickname());
         setResult(RESULT_OK, intent);
+        finish();
     }
 
     public final class ViewHolder{
         ImageView imageView;
         TextView name;
         TextView phone;
+        ImageView send;
     }
 
     public class ChooseFriendAdapter extends BaseAdapter{
@@ -94,6 +96,7 @@ public class ChooseFriendToSendTo extends ListActivity {
                 holder.imageView = (ImageView) view.findViewById(R.id.photo_add_friend);
                 holder.name = (TextView) view.findViewById(R.id.username_add_friend);
                 holder.phone = (TextView) view.findViewById(R.id.phone_add_friend);
+                holder.send = (ImageView) view.findViewById(R.id.button_add_friend);
                 view.setTag(holder);
             }
             else {
@@ -101,20 +104,13 @@ public class ChooseFriendToSendTo extends ListActivity {
             }
             try {
                 holder.imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(friends.get(i).getPhotoURI())));
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-            }/*
-            if (holder.phone == null){
-                System.out.println("phone");
+                holder.imageView.setImageResource(R.drawable.zhihu);
             }
-            if (list.get(i) == null){
-                System.out.println("i null");
-            }
-            if (list.get(i).getPhone() == null){
-                System.out.println("user phone null");
-            }*/
             holder.name.setText(friends.get(i).getNickname());
             holder.phone.setText(friends.get(i).getPhone());
+            holder.send.setVisibility(View.INVISIBLE);
             return view;
         }
     }

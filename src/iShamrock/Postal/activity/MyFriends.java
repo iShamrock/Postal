@@ -1,41 +1,47 @@
 package iShamrock.Postal.activity;
 
-import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.view.ViewGroup;
+import android.widget.*;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.publishers.ButtonTouchAnimationListener;
 import iShamrock.Postal.activity.publishers.PEditor;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.User;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by lifengshuang on 2/15/15.
  */
-public class MyFriends extends Activity {
+public class MyFriends extends ListActivity {
 
-    private ListView listView;
+    private FriendAdapter adapter;
     private ImageView friends_add, friends_cancel;
+    private ArrayList<User> friend = Database.getFriend();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friends);
-        initListView();
 
         initCommonComponents();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adapter != null){
+            friend = Database.getFriend();
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private void initCommonComponents() {
@@ -48,7 +54,8 @@ public class MyFriends extends Activity {
                 startActivity(friendsIntent);
             }
         });
-
+        adapter = new FriendAdapter(this);
+        setListAdapter(adapter);
         friends_cancel = (ImageView) findViewById(R.id.friends_cancel);
         friends_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,49 +66,68 @@ public class MyFriends extends Activity {
         friends_cancel.setOnTouchListener(new ButtonTouchAnimationListener(friends_cancel));
     }
 
-    private void initListView() {
-        listView = (ListView) findViewById(R.id.friends_listView);
-        listView.setAdapter(new SimpleAdapter(this, getListItemData(), R.layout.friends_item,
-                new String[]{"img", "name", "send"}, new int[]{R.id.friends_img, R.id.friends_name, R.id.friends_send}));
+
+    public final class ViewHolder {
+        ImageView imageView;
+        TextView name;
+        ImageView send;
     }
 
-    private List<Map<String, Object>> getListItemData() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map;
-        ArrayList<User> friends = Database.getFriend();
-        for (final User friend : friends) {
-            map = new HashMap<String, Object>();
-            ImageView imageView = new ImageView(this);
-            try {
-                imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(friend.getPhotoURI())));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setClass(MyFriends.this, Timeline.class);
-                    intent.putExtra("name", friend.getNickname());
-                    startActivity(intent);
-                }
-            });
-            map.put("img", imageView);
-            map.put("name", friend.getNickname());
-            ImageView button = new ImageView(this);
-//            button.setText("Send");
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setClass(MyFriends.this, PEditor.class);
-                    intent.putExtra("name", friend.getNickname());
-                    startActivity(intent);
-                }
-            });
-            map.put("send", button);
-            list.add(map);
+    public class FriendAdapter extends BaseAdapter {
+
+        private LayoutInflater mInflater;
+
+        public FriendAdapter(Context context) {
+            mInflater = LayoutInflater.from(context);
         }
-        return list;
+
+        @Override
+        public int getCount() {
+            return friend.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            ViewHolder holder;
+            if (view == null) {
+                holder = new ViewHolder();
+                view = mInflater.inflate(R.layout.friends_item, null);
+                holder.imageView = (ImageView) view.findViewById(R.id.friends_img);
+                holder.name = (TextView) view.findViewById(R.id.friends_name);
+                holder.send = (ImageView) view.findViewById(R.id.friends_send);
+                view.setTag(holder);
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+            try {
+                holder.imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(friend.get(i).getPhotoURI())));
+            } catch (Exception e) {
+                e.printStackTrace();
+                holder.imageView.setImageResource(R.drawable.zhihu);
+            }
+            holder.name.setText(friend.get(i).getNickname());
+            final int i_copy = i;
+            holder.send.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MyFriends.this, PEditor.class);
+                    intent.putExtra("to_user", friend.get(i_copy).getPhone());
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            return view;
+        }
     }
 }
+

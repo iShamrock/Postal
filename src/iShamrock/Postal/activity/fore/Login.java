@@ -8,9 +8,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
+import iShamrock.Postal.database.Connect;
 import iShamrock.Postal.database.Database;
+import iShamrock.Postal.entity.User;
+
+import java.io.IOException;
 
 /**
  * Created by Tong on 01.07.
@@ -23,7 +28,7 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
 
         final EditText txtPorE = (EditText) findViewById(R.id.login_psward);
-        final EditText user = (EditText) findViewById(R.id.login_signature);
+        final EditText phone = (EditText) findViewById(R.id.login_signature);
         final ImageView login = (ImageView) findViewById(R.id.login_login);
         login.setLongClickable(true);
         login.setOnTouchListener(new View.OnTouchListener() {
@@ -45,12 +50,34 @@ public class Login extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Database.login(user.getText().toString(), txtPorE.getText().toString())) {
+               /* if (Database.login(user.getText().toString(), txtPorE.getText().toString())) {
                     Intent intent = new Intent(Login.this, Timeline.class);
                     startActivity(intent);
                 }else {
                     //login failed
-                }
+                }*/
+                Toast.makeText(Login.this, "Logging in... ", Toast.LENGTH_SHORT).show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        User user = null;
+                        try {
+                            user = Connect.login(phone.getText().toString(), txtPorE.getText().toString());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            System.out.println("Login Exception");
+                        }
+                        if (user == null){
+                            Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Database.me = user;
+                            Intent intent = new Intent(Login.this, Timeline.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                }).start();
             }
         });
 

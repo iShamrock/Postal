@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="390dp"
-              android:layout_height="40dp"
+              android:layout_height="50dp"
               android:gravity="center_vertical">
 
     <ImageView
@@ -21,14 +21,14 @@
             android:layout_height="wrap_content" android:layout_weight="1">
 
         <TextView
-                android:layout_width="140dp"
+                android:layout_width="180dp"
                 android:layout_height="40dp"
                 android:text="(username)"
                 android:id="@+id/username_add_friend" android:layout_weight="1" android:textSize="20dp"
                 android:gravity="center_vertical"/>
 
         <TextView
-                android:layout_width="140dp"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="(phone)"
                 android:id="@+id/phone_add_friend"
@@ -37,7 +37,7 @@
 
     <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="40dp"
             android:id="@+id/button_add_friend"
             android:src="@drawable/add_friend_button"
             android:layout_margin="10dp"

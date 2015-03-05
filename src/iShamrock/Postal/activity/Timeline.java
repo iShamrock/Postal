@@ -38,6 +38,9 @@ public class Timeline extends Activity {
 
     private ImageView postal_friend, postal_user_avatar, postal_add, postal_add_text, postal_add_image, postal_add_video, postal_add_audio, postal_add_web, postal_edit;
     private RelativeLayout postal_cover_container;
+    private PaintingsAdapter adapter;
+    private Runnable run;
+    private Thread refreshThread;
 
     private boolean isAddButtonsFolded = true;
 
@@ -46,9 +49,33 @@ public class Timeline extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timeline);
 
+        initThread();
         initCommonComponents();
         initDatabase();
         initUnfoldableDetailsActivity();
+    }
+
+    private void initThread(){
+        run = new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+                System.out.println("try to update view...");
+            }
+        };
+        refreshThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 5; i++){
+                    runOnUiThread(run);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     private void initCommonComponents() {
@@ -164,8 +191,9 @@ public class Timeline extends Activity {
 
     private void initUnfoldableDetailsActivity() {
         mListView = Views.find(this, R.id.list_view_timeline);
-        mListView.setAdapter(new PaintingsAdapter(this));
-
+        adapter = new PaintingsAdapter(this);
+        mListView.setAdapter(adapter);
+        refreshThread.start();
         mListTouchInterceptor = Views.find(this, R.id.touch_interceptor_view);
         mListTouchInterceptor.setClickable(false);
 

@@ -39,7 +39,7 @@ public class PEditor extends Activity {
     private EditText peditor_text, peditor_title;
     private ImageView peditor_cover, peditor_stamp, btnBack, btnSend, btnFromFile, btnTakePhoto;
     private PostalDataItem dataItem;
-    private Uri mediaUri;
+    private Uri mediaUri = Uri.EMPTY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,26 +72,14 @@ public class PEditor extends Activity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (getIntent().hasExtra("name")){
-                    dataItem.to_user = getIntent().getStringExtra("name");
+                if (getIntent().hasExtra("to_user")){
+                    dataItem.to_user = getIntent().getStringExtra("to_user");
+                    sendIt();
                 }
                 else {
                     Intent friendIntent = new Intent(PEditor.this, ChooseFriendToSendTo.class);
                     startActivityForResult(friendIntent, 12345);
                 }
-                BDLocation location = BaiduLocUtil.location;
-                dataItem.time(SysInfoUtil.getTimeString())
-                        .latitude(location.getLatitude())
-                        .longitude(location.getLongitude())
-                        .content(peditor_text.getText().toString())
-                        .type(PostalDataItem.TYPE_TEXT)
-                        .title(peditor_title.getText().toString())
-                        .uri(mediaUri.toString())
-                        .from_user(Database.me.getNickname());
-                Intent intent = new Intent();
-                intent.setClass(PEditor.this, Timeline.class);
-                startActivity(intent);
-                finish();
             }
         });
         btnSend.setOnTouchListener(new ButtonTouchAnimationListener(btnSend));
@@ -144,6 +132,23 @@ public class PEditor extends Activity {
         peditor_media.setLayoutParams(params);
     }
 
+    private void sendIt(){
+        BDLocation location = BaiduLocUtil.location;
+        dataItem.time(SysInfoUtil.getTimeString())
+                .latitude(location.getLatitude())
+                .longitude(location.getLongitude())
+                .content(peditor_text.getText().toString())
+                .type(PostalDataItem.TYPE_IMAGE)
+                .title(peditor_title.getText().toString())
+                .uri(mediaUri.toString())
+                .from_user(Database.me.getPhone());
+        Database.addPostal(dataItem);
+        Intent intent = new Intent();
+        intent.setClass(PEditor.this, Timeline.class);
+        startActivity(intent);
+        finish();
+    }
+
 
     private void photoZoom(Uri uri) {
         Intent intent = new Intent("com.android.camera.action.CROP");
@@ -191,8 +196,9 @@ public class PEditor extends Activity {
                 peditor_cover.setImageBitmap(photo);
                 break;
             case 12345:
-
-                dataItem.to_user(data.getStringExtra("name"));
+                dataItem.to_user(Database.getPhoneWithName(data.getStringExtra("name")));
+                System.out.println("on result");
+                sendIt();
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);

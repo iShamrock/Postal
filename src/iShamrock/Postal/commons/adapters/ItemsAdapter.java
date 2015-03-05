@@ -32,7 +32,7 @@ public abstract class ItemsAdapter<T> extends BaseAdapter {
      */
     public void setItemsList(List<T> list) {
         mItemsList = list;
-        notifyDataSetChanged();
+//        notifyDataSetChanged();
     }
 
     public List<T> getItemsList() {

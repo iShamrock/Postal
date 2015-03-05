@@ -8,15 +8,11 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import iShamrock.Postal.R;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.User;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -29,6 +25,7 @@ public class AddFriend extends ListActivity {
     ImageView search;
     Runnable run;
 
+    ArrayList<User> allUsers;
     ArrayList<User> friends;
     ArrayList<User> list = new ArrayList<User>();
     AddFriendAdapter adapter;
@@ -41,71 +38,50 @@ public class AddFriend extends ListActivity {
             @Override
             public void run() {
                 adapter.notifyDataSetChanged();
-                //onContentChanged();
             }
         };
-        friends = Database.getAllUsers();
+        allUsers = Database.getAllUsers();
+        friends = Database.getFriend();
         initComponents();
     }
 
     private void initComponents() {
-//        listView = (ListView) findViewById(R.id.listView_add_friend);
         searchName = (EditText) findViewById(R.id.search_name);
         search = (ImageView) findViewById(R.id.search_button_add_friend);
 
-/*        adapter = new SimpleAdapter(this, list, R.layout.add_friend_item, new String[]{"name", "photo", "button"},
-                new int[]{R.id.username_add_friend, R.id.photo_add_friend, R.id.button_add_friend});*/
-//        listView.setAdapter(adapter);
         adapter = new AddFriendAdapter(this);
         setListAdapter(adapter);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = searchName.getText().toString();
-                list = new ArrayList<User>();
-                for (User i : friends) {
-                    if (i.getNickname().startsWith(name)) {
-                        list.add(i);
-                    }
-                }
-/*                list.clear();
-                Map<String, Object> map = new HashMap<String, Object>();
-                if (found.size() == 0){
-                    map.put("photo", "");
-                    map.put("name", "No result");
-                    map.put("button", null);
-                    list.add(map);
-                    System.out.println("not found");
-                }
-                else {
-                    for (final User i : found) {
-                        map = new HashMap<String, Object>();
-                        map.put("name", i.getNickname());
-                        ImageView imageView = (ImageView) findViewById(R.id.photo_add_friend);
-                        try {
-                            imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(i.getPhotoURI())));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        map.put("photo", imageView);
-                        Button button = (Button) findViewById(R.id.button_add_friend);
-                        button.setText("Add");
-*//*
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Database.addFriend(i);
-                            }
-                        });
-*//*
-                        map.put("button", button);
-                        list.add(map);
-                    }
-                }
-                System.out.println("try to run");*/
-                runOnUiThread(run);
+                loadListData();
             }
         });
+    }
+
+    private void loadListData(){
+        String name = searchName.getText().toString();
+        list = new ArrayList<User>();
+        for (User i : allUsers) {
+
+            friends = Database.getFriend();
+            boolean isFriend = false;
+            for (User j : friends){
+                if (j.getPhone().equals(i.getPhone())){
+                    isFriend = true;
+                    break;
+                }
+            }
+
+            if (i.getNickname() != null && i.getPhone() != null) {
+                if (i.getNickname().startsWith(name)
+                        && !i.getPhone().equals(Database.me.getPhone())
+                        && !isFriend) {
+                    list.add(i);
+                }
+            }
+        }
+        runOnUiThread(run);
     }
 
     public final class ViewHolder {
@@ -154,18 +130,10 @@ public class AddFriend extends ListActivity {
             }
             try {
                 holder.imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(list.get(i).getPhotoURI())));
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-            }/*
-            if (holder.phone == null){
-                System.out.println("phone");
+                holder.imageView.setImageResource(R.drawable.zhihu);
             }
-            if (list.get(i) == null){
-                System.out.println("i null");
-            }
-            if (list.get(i).getPhone() == null){
-                System.out.println("user phone null");
-            }*/
 
 
             holder.name.setText(list.get(i).getNickname());
@@ -174,8 +142,9 @@ public class AddFriend extends ListActivity {
             holder.add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Database.addFriend(list.get(i_copy));
-                    //list.remove(i_copy);
+                    Database.addFriend(list.get(i_copy));
+                    loadListData();
+                    Toast.makeText(AddFriend.this, "Added!", Toast.LENGTH_SHORT).show();
                 }
             });
             runOnUiThread(run);

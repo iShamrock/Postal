@@ -12,9 +12,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
 import iShamrock.Postal.activity.publishers.ButtonTouchAnimationListener;
+import iShamrock.Postal.database.Connect;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.User;
 import iShamrock.Postal.util.SysInfoUtil;
@@ -30,7 +32,7 @@ public class Signup extends Activity {
     private final String IMAGE_UNSPECIFIED = "image/*";
     private final int PHOTO_ZOOM = 1, PHOTO_RESULT = 2;
     private ImageView signup_avatar;
-    private Uri avatarUri;
+    private Uri avatarUri = Uri.EMPTY;
     private EditText txtName, txtPorE, txtPswd;
 
     @Override
@@ -63,16 +65,39 @@ public class Signup extends Activity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Database.signUp(new User(txtName.getText().toString(), txtPorE.getText().toString(),
-                                avatarUri.toString(), txtPswd.getText().toString()), txtPswd.getText().toString());
-                        Database.login(txtName.getText().toString(), txtPswd.getText().toString());
-                    }
-                }).run();
-                Intent intent = new Intent(Signup.this, Timeline.class);
-                startActivity(intent);
+                String name = txtName.getText().toString();
+                final String password = txtPswd.getText().toString();
+                String phone = txtPorE.getText().toString();
+                String photoUri = avatarUri.toString();
+                final User user = new User(name, phone, photoUri, "");
+                boolean legal = !name.isEmpty() && !password.isEmpty() && !phone.isEmpty();
+                if (legal){
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Connect.signUp(user, password);
+                                User user1 = Connect.login(user.getPhone(), password);
+                                if (user1 == null){
+                                    Toast.makeText(Signup.this, "Sign up failed!", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    Database.me = user1;
+                                    Intent intent = new Intent(Signup.this, Timeline.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                System.out.println("Sign up failed with IOException");
+                            }
+                        }
+                    }).start();
+                }
+                else {
+                    Toast.makeText(Signup.this, "Please fill your basic information", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -18,15 +18,18 @@ import iShamrock.Postal.R;
 import iShamrock.Postal.activity.Timeline;
 import iShamrock.Postal.commons.adapters.ItemsAdapter;
 import iShamrock.Postal.commons.utils.Views;
+import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.PostalDataItem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 //import com.squareup.picasso.Picasso;
 
 public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnClickListener {
 
+    Context context;
     Resources resources;
     ContentResolver contentResolver;
 
@@ -37,14 +40,12 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
         setItemsList(Arrays.asList(Painting.getAllPaintings(context.getResources())));
     }
 
-    /**
-     * The layout is "list_item"
-     * if you add components, modify this method
-     * and you just need to combine the components here, Views.find() is equal to findViewById()
-     * PS. do not use "type" property here, or the strange bug may appear again = =
-     * PSS. so I suggest you adding components using code in bindView method
-     * @param item: don't use it
-     */
+    @Override
+    public void notifyDataSetChanged() {
+        setItemsList(Arrays.asList(Painting.getAllPaintings(resources)));
+        super.notifyDataSetChanged();
+    }
+
     @Override
     protected View createView(Painting item, int pos, ViewGroup parent, LayoutInflater inflater) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
@@ -74,6 +75,12 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
         if (item.getItem().time.equals("cover")){
             vh.total.removeAllViews();
             vh.total.addView(vh.cover);
+            vh.total.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    notifyDataSetChanged();
+                }
+            });
             return;
         }
         else {
@@ -94,7 +101,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
                     e.printStackTrace();
                 }
                 vh.text.setText(text);
-                vh.name.setText(item.getItem().from_user);
+                vh.name.setText(Database.getNameWithPhone(item.getItem().from_user));
                 break;
             case PostalDataItem.TYPE_VIDEO:
                 //VideoView videoView = new VideoView(getContext());
@@ -104,7 +111,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
 //                Bitmap resizedBitmap = Bitmap.createScaledBitmap(video, 300, 300, false);
                 vh.imageView.setImageBitmap(video);
                 vh.text.setText(text);
-                vh.name.setText(item.getItem().from_user);
+                vh.name.setText(Database.getNameWithPhone(item.getItem().from_user));
                 break;
             case PostalDataItem.TYPE_AUDIO:
 //                ImageView audioImageView = new ImageView(getContext());
@@ -112,7 +119,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
 //                audioImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //                vh.frameLayout.addView(audioImageView);
                 vh.text.setText(text);
-                vh.name.setText(item.getItem().from_user);
+                vh.name.setText(Database.getNameWithPhone(item.getItem().from_user));
                 Bitmap audio = BitmapFactory.decodeResource(resources, R.drawable.audio_cover);
 //                audio = Bitmap.createScaledBitmap(audio, 300, 300, false);
                 vh.imageView.setImageBitmap(audio);
@@ -124,7 +131,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
                 vh.text.setLines(8);
                 vh.text.setText(text);
                 vh.linearLayout.setOnClickListener(null);
-                vh.name.setText(item.getItem().from_user);
+                vh.name.setText(Database.getNameWithPhone(item.getItem().from_user));
                 break;
         }
     }

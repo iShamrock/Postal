@@ -50,10 +50,10 @@ import javax.net.ssl.HttpsURLConnection;
  * View the "User" and "PostalDataItem" class
  */
 public class Connect {
-    public final String server="http://121.40.155.146:8080/postalservermine/data/";
-    public final String urlserver="http://121.40.155.146:8080/postalservermine/";
-    String ALBUM_PATH= Environment.getExternalStorageDirectory() + "/download_test/";
-    FileImageUpload f=new FileImageUpload();
+    public static final String server="http://121.40.155.146:8080/postalservermine/data/";
+    public static final String urlserver="http://121.40.155.146:8080/postalservermine/";
+    static String ALBUM_PATH= Environment.getExternalStorageDirectory() + "/download_test/";
+    static FileImageUpload f=new FileImageUpload();
 
 
 
@@ -61,7 +61,7 @@ public class Connect {
      * @param user
      * @return the user's data, null if login failed
      */
-    public User login(String user, String password) throws IOException {
+    public static User login(String user, String password) throws IOException {
 
         String url = server + "UserLogin";
         HttpClient client = new DefaultHttpClient();
@@ -92,8 +92,6 @@ public class Connect {
         phone=(phone.equals("null"))?null:phone;
         photoURI=(photoURI.equals("null"))?null:photoURI;
         coverURI=(coverURI.equals("null"))?null:coverURI;
-
-
 
 
         User u=new User(name,phone,photoURI,coverURI);
@@ -129,7 +127,7 @@ public class Connect {
      */
 
 
-    public ArrayList<PostalDataItem> getPostalData(User user) throws IOException {
+    public static ArrayList<PostalDataItem> getPostalData(User user) throws IOException {
 
         //todo: changed the parameter from String to User
         //todo: return all the postal if the to_user or the from_user is parameter user
@@ -162,8 +160,17 @@ public class Connect {
             String text = rd.readLine();
             String time = rd.readLine();
             String title = rd.readLine();
-            double locationx = Double.valueOf(rd.readLine());
-            double locationy = Double.valueOf(rd.readLine());
+            double locationx = 0.0, locationy = 0.0;
+            try {
+                locationx = Double.valueOf(rd.readLine());
+            }catch (Exception e){
+                System.out.println("Double parse failed");
+            }
+            try {
+                locationy = Double.valueOf(rd.readLine());
+            }catch (Exception e){
+                System.out.println("Double parse failed");
+            }
             String from_user = rd.readLine();
             String to_user = rd.readLine();
             String location_text = rd.readLine();
@@ -195,7 +202,9 @@ public class Connect {
                 continue;
             }
 
-            Thread fileDownload=new FileDownload(pdi.uri.split("/")[pos],urlserver+"img/"+pdi.from_user+""+"/"+pdi.uri.split("/")[n],pdi.from_user);
+            Thread fileDownload=new FileDownload(pdi.uri.split("/")[pos],
+                    urlserver+"img/"+pdi.from_user+""+"/"+pdi.uri.split("/")[pos],
+                    pdi.from_user);
             fileDownload.start();
 
             pdi.uri(Uri.fromFile(new File(ALBUM_PATH + pdi.from_user + "/" + pdi.uri.split("/")[pos])).toString());
@@ -213,8 +222,9 @@ public class Connect {
 
 
 
-    public void addPostal(PostalDataItem postalDataItem) throws IOException {
+    public static void addPostal(PostalDataItem postalDataItem) throws IOException {
         //todo
+        System.out.println("addPostal where " + postalDataItem.text);
         String url = server + "AddPostalItem";
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
@@ -246,20 +256,22 @@ public class Connect {
 
         rd.close();
 
-
-        File myCaptureFile = null;
-        try {
-            myCaptureFile = new File(new URI(postalDataItem.uri));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+        if (postalDataItem.type != PostalDataItem.TYPE_TEXT) {
+            File myCaptureFile = new File(postalDataItem.uri);
+            if (myCaptureFile.exists()) {
+                try {
+                    myCaptureFile = new File(new URI(postalDataItem.uri));
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                f.uploadFile(myCaptureFile, server + "OkServletUp", postalDataItem.from_user);
+            }
         }
-        f.uploadFile(myCaptureFile,server+"OkServletUp", postalDataItem.from_user);
-
 
     }
 
 
-    public void addFriend(User user, User friend) throws IOException {
+    public static void addFriend(User user, User friend) throws IOException {
 
 
         String url = server + "AddFriend";
@@ -288,7 +300,7 @@ public class Connect {
     }
 
 
-    public void signUp(User user,String password) throws IOException {
+    public static void signUp(User user,String password) throws IOException {
         //todo:
         String url = server + "UserRegister";
         HttpClient client = new DefaultHttpClient();
@@ -300,6 +312,7 @@ public class Connect {
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("phone", user.getPhone()));
         urlParameters.add(new BasicNameValuePair("password", password));
+        urlParameters.add(new BasicNameValuePair("name", user.getNickname()));
 
 
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
@@ -325,7 +338,7 @@ public class Connect {
      * @param user
      * @return all the friends of the user
      */
-    public ArrayList<User> getFriendData(User user) throws IOException {
+    public static ArrayList<User> getFriendData(User user) throws IOException {
         //todo: return all the friends of the user
         String url = server + "GetAllFriendsData";
         HttpClient client = new DefaultHttpClient();
@@ -392,7 +405,7 @@ public class Connect {
 
 
 
-    public ArrayList<User> getAllUser() throws IOException {
+    public static ArrayList<User> getAllUser() throws IOException {
         //todo: return all the users, it's used when the user wants to add a friend
         String url = server + "GetAllUser";
         HttpClient client = new DefaultHttpClient();
@@ -468,7 +481,7 @@ public class Connect {
 
 
 
-    public void updateUserInformation(User user, User updatedUser) throws IOException {
+    public static void updateUserInformation(User user, User updatedUser) throws IOException {
         String url = server + "UpdateUserInformation";
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
@@ -504,13 +517,13 @@ public class Connect {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        File myCoverImg = null;
+/*        File myCoverImg = null;
         try {
             myCoverImg = new File(new URI(updatedUser.getCoverURI()));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        f.uploadFile(myCoverImg, server + "OkServletUp", user.getPhone());
+        f.uploadFile(myCoverImg, server + "OkServletUp", user.getPhone());*/
 
 
     }
