@@ -9,6 +9,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,9 +55,10 @@ public class Timeline extends Activity {
         initCommonComponents();
         initDatabase();
         initUnfoldableDetailsActivity();
+        initLeftDrawer();
     }
 
-    private void initThread(){
+    private void initThread() {
         run = new Runnable() {
             @Override
             public void run() {
@@ -66,7 +69,7 @@ public class Timeline extends Activity {
         refreshThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 5; i++){
+                for (int i = 0; i < 5; i++) {
                     runOnUiThread(run);
                     try {
                         Thread.sleep(1000);
@@ -93,11 +96,6 @@ public class Timeline extends Activity {
         });
         postal_friend.setOnTouchListener(new ButtonTouchAnimationListener(postal_friend));
 
-        int screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
-
-//        ViewGroup.LayoutParams params = postal_cover_container.getLayoutParams();
-//        params.height = screenWidth / 16 * 9;
-//        postal_cover_container.setLayoutParams(params);
 
         postal_user_avatar.setImageBitmap(SystemUtil.toRoundCorner(BitmapFactory.decodeResource(getResources(), R.drawable.p1)));
 
@@ -358,5 +356,74 @@ public class Timeline extends Activity {
         Database.initDatabase();
     }
 
+    private void initLeftDrawer() {
+        ListView drawerList = (ListView) findViewById(R.id.left_drawer_timeline);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_timeline);
+        drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
+        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                drawerItemOnClickAction(i);
+            }
+        });
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                invalidateOptionsMenu();
+            }
+        };
+        drawerLayout.setDrawerListener(toggle);
+    }
+
+    private void drawerItemOnClickAction(int i) {
+        Intent intent = new Intent();
+        switch (i) {
+            case 1:
+                break;
+            case 2:
+                intent.setClass(this, MyFriends.class);
+                startActivity(intent);
+                break;
+            case 3:
+                intent.setClass(this, PEditor.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent.setClass(this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_TEXT);
+                startActivity(intent);
+                break;
+            case 5:
+                intent.setClass(this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_IMAGE);
+                startActivity(intent);
+                break;
+            case 6:
+                intent.setClass(this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_VIDEO);
+                startActivity(intent);
+                break;
+            case 7:
+                intent.setClass(this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_AUDIO);
+                startActivity(intent);
+                break;
+            case 8:
+                intent.setClass(this, JEditor.class);
+                intent.putExtra("type", PostalDataItem.TYPE_WEB);
+                startActivity(intent);
+                break;
+            case 9:
+                break;
+            case 10:
+                finish();
+                break;
+        }
+    }
 
 }

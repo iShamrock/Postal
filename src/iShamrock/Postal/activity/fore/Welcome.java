@@ -37,6 +37,7 @@ public class Welcome extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(Welcome.this, Login.class);
                 Welcome.this.startActivity(intent);
+                finish();
             }
         });
 
@@ -61,6 +62,7 @@ public class Welcome extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(Welcome.this, Signup.class);
                 Welcome.this.startActivity(intent);
+                finish();
             }
         });
 

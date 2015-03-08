@@ -1,19 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/drawer_layout">
+              android:layout_height="50dp"
+              android:id="@+id/drawer_title_layout"
+              android:background="#e84e40"
+              android:focusableInTouchMode="true">
 
     <TextView
             android:layout_width="fill_parent"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:text="Hello world"
-            android:id="@+id/drawer_text"
+            android:id="@+id/drawer_title_text"
             android:layout_gravity="center_vertical"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:gravity="center_vertical"
-            android:textColor="#ffe84e40"
+            android:textColor="#fff"
             android:typeface="sans"
             android:textStyle="bold"
-            android:paddingLeft="20dp"/>
+            android:paddingLeft="10dp"/>
 </LinearLayout>
