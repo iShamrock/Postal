@@ -45,7 +45,6 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: iShamrock.Postal" />
   </component>
   <component name="BookmarkManager">
@@ -54,12 +53,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ca57ca9-588e-4922-b083-fabddb995649" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/database/Database.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/database/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/DrawerAdapter.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/DrawerAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/timeline.xml" afterPath="$PROJECT_DIR$/res/layout/timeline.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="60646984-7466-4188-b0c7-8f0f847557e8" name="gitignore" comment="" />
@@ -132,7 +126,7 @@
     <favorites_list name="Postal" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.24412856">
+    <splitter split-orientation="horizontal" split-proportion="0.4326154">
       <split-first>
         <leaf>
           <file leaf-file-name="login.xml" pinned="false" current-in-tab="false">
@@ -181,9 +175,11 @@
           <file leaf-file-name="PEditor.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/publishers/PEditor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.36752138" vertical-offset="98" max-vertical-offset="3510">
-                  <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-                  <folding />
+                <state vertical-scroll-proportion="0.5197368" vertical-offset="692" max-vertical-offset="3510">
+                  <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -251,7 +247,7 @@
             <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="1297" max-vertical-offset="2610">
-                  <caret line="118" column="51" selection-start-line="118" selection-start-column="51" selection-end-line="118" selection-end-column="51" />
+                  <caret line="113" column="11" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -260,8 +256,8 @@
           <file leaf-file-name="Timeline.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.23076923" vertical-offset="864" max-vertical-offset="3132">
-                  <caret line="256" column="0" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.7763158" vertical-offset="3560" max-vertical-offset="4608">
+                  <caret line="457" column="58" selection-start-line="457" selection-start-column="58" selection-end-line="457" selection-end-column="58" />
                   <folding>
                     <element signature="method#onCreate#0;class#Timeline#0" expanded="false" />
                     <element signature="method#initThread#0;class#Timeline#0" expanded="false" />
@@ -271,7 +267,8 @@
                     <element signature="method#onBackPressed#0;class#Timeline#0" expanded="false" />
                     <element signature="method#initDatabase#0;class#Timeline#0" expanded="false" />
                     <element signature="method#initLeftDrawer#0;class#Timeline#0" expanded="false" />
-                    <element signature="method#drawerItemOnClickAction#0;class#Timeline#0" expanded="false" />
+                    <element signature="e#16371#16391#0" expanded="true" />
+                    <element signature="e#16393#16414#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -1240,7 +1237,7 @@
       <workItem from="1425706910846" duration="3058000" />
       <workItem from="1425798362111" duration="612000" />
       <workItem from="1425799133817" duration="40407000" />
-      <workItem from="1425912635672" duration="9810000" />
+      <workItem from="1425912635672" duration="13356000" />
     </task>
     <task id="LOCAL-00001" summary="Modified project structure. Separated to several packages.">
       <created>1417012284879</created>
@@ -1398,11 +1395,17 @@
       <option name="project" value="LOCAL" />
       <updated>1425912778657</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Fix Timeline FC.">
+      <created>1425923356256</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1425923356256</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313764000" />
+    <option name="totallyTimeSpent" value="317310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-197" width="1936" height="1096" extended-state="6" />
@@ -1429,7 +1432,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3256785" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3180873" sideWeight="0.33963692" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2993763" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46881497" sideWeight="0.5250533" order="12" side_tool="false" content_ui="tabs" x="-1969" y="682" width="1876" height="258" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32328483" sideWeight="0.5250533" order="12" side_tool="false" content_ui="tabs" x="-1969" y="682" width="1876" height="258" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1337953" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3097713" sideWeight="0.4749467" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1515,7 +1518,8 @@
     <MESSAGE value="Add drawer back." />
     <MESSAGE value="Hello, deadline." />
     <MESSAGE value="Fix login and sign up logic. Fix FC on PEditor." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix login and sign up logic. Fix FC on PEditor." />
+    <MESSAGE value="Fix Timeline FC." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Timeline FC." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1564,31 +1568,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java</url>
-          <line>299</line>
+          <line>302</line>
           <properties />
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java</url>
-          <line>287</line>
+          <line>290</line>
           <properties />
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java</url>
-          <line>314</line>
+          <line>317</line>
           <properties />
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java</url>
-          <line>245</line>
+          <line>248</line>
           <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java</url>
-          <line>313</line>
+          <line>316</line>
           <properties />
           <option name="timeStamp" value="95" />
         </line-breakpoint>
@@ -1990,6 +1994,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6314" max-vertical-offset="6912">
+          <caret line="398" column="0" selection-start-line="398" selection-start-column="0" selection-end-line="398" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="1278">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/DrawerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1656">
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1297" max-vertical-offset="2610">
+          <caret line="113" column="11" selection-start-line="113" selection-start-column="11" selection-end-line="113" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-135.29033" vertical-offset="0" max-vertical-offset="9180">
@@ -2010,50 +2046,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6314" max-vertical-offset="6912">
-          <caret line="398" column="0" selection-start-line="398" selection-start-column="0" selection-end-line="398" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1297" max-vertical-offset="2610">
-          <caret line="118" column="51" selection-start-line="118" selection-start-column="51" selection-end-line="118" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="1278">
-          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/publishers/PEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36752138" vertical-offset="98" max-vertical-offset="3510">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/DrawerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1656">
-          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-          <folding />
+        <state vertical-scroll-proportion="0.5197368" vertical-offset="692" max-vertical-offset="3510">
+          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23076923" vertical-offset="864" max-vertical-offset="3132">
-          <caret line="256" column="0" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7763158" vertical-offset="3560" max-vertical-offset="4608">
+          <caret line="457" column="58" selection-start-line="457" selection-start-column="58" selection-end-line="457" selection-end-column="58" />
           <folding>
             <element signature="method#onCreate#0;class#Timeline#0" expanded="false" />
             <element signature="method#initThread#0;class#Timeline#0" expanded="false" />
@@ -2063,7 +2069,8 @@
             <element signature="method#onBackPressed#0;class#Timeline#0" expanded="false" />
             <element signature="method#initDatabase#0;class#Timeline#0" expanded="false" />
             <element signature="method#initLeftDrawer#0;class#Timeline#0" expanded="false" />
-            <element signature="method#drawerItemOnClickAction#0;class#Timeline#0" expanded="false" />
+            <element signature="e#16371#16391#0" expanded="true" />
+            <element signature="e#16393#16414#0" expanded="true" />
           </folding>
         </state>
       </provider>

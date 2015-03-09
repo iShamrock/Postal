@@ -29,6 +29,9 @@ import iShamrock.Postal.items.Painting;
 import iShamrock.Postal.items.PaintingsAdapter;
 import iShamrock.Postal.util.SystemUtil;
 
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
 /**
  * Created by lifengshuang on 2/14/15.
  */
@@ -432,6 +435,40 @@ public class Timeline extends Activity {
                 startActivity(intent);
                 break;
             case 9:
+
+                new Thread("ss") {
+                    @Override
+                    public void run() {
+                        try {
+                            DatagramSocket udpSocket = new DatagramSocket(8003);
+                            byte[] data = new byte[256];
+                            DatagramPacket udpPacket = new DatagramPacket(data, 256);
+
+                            while (true)
+
+                            {
+                                try {
+                                    udpSocket.receive(udpPacket);
+                                } catch (Exception e) {
+                                    System.out.println(e.toString());
+                                }
+
+                                if (udpPacket.getLength() != 0) {
+                                    String codeString = new String(data, 0, udpPacket.getLength());
+                                    System.out.println(codeString);
+                                    PostalDataItem dataItem = new PostalDataItem(PostalDataItem.TYPE_TEXT, "", codeString, "time", "", new double[]{1.0, 1.0}, Database.me.getPhone(), Database.me.getPhone(), "");
+                                    Database.addPostal(dataItem);
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                }.start();
+
+
                 break;
             case 10:
                 intent.setClass(this, Welcome.class);
@@ -439,6 +476,7 @@ public class Timeline extends Activity {
                 finish();
                 break;
         }
+
         drawerLayout.closeDrawer(Gravity.LEFT);
     }
 
