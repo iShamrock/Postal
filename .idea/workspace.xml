@@ -50,53 +50,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ca57ca9-588e-4922-b083-fabddb995649" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_audio.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_exit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_friends.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_postal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_text.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_timeline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_video.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_wear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/drawer_web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_menu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/timeline_none.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/zhihu.png" />
-      <change type="DELETED" beforePath="D:\Users\Tong\workspace\Postal\res\drawable-hdpi\p1.JPG" afterPath="" />
-      <change type="DELETED" beforePath="D:\Users\Tong\workspace\Postal\res\drawable-hdpi\p2.JPG" afterPath="" />
-      <change type="DELETED" beforePath="D:\Users\Tong\workspace\Postal\res\drawable-hdpi\p3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Users\Tong\workspace\Postal\res\drawable-hdpi\p4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Users\Tong\workspace\Postal\res\drawable-hdpi\p5.JPG" afterPath="" />
-      <change type="DELETED" beforePath="D:\Users\Tong\workspace\Postal\res\drawable-hdpi\zhihu.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Users\Tong\workspace\Postal\res\values\paintings.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_add_friend.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_add_friend.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_add_red.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_add_red.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_delete.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_delete.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_friend.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_friend.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_mail.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_mail.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_more_red.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_more_red.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_send.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_send.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/icon_web_red.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/icon_web_red.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/postal_cover.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/postal_cover.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/postal_node.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/postal_node.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/database/Database.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/database/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/DrawerAdapter.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/DrawerAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/database/photo/FileDownload.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/database/photo/FileDownload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Postal.iml" afterPath="$PROJECT_DIR$/Postal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/add_friend.xml" afterPath="$PROJECT_DIR$/res/layout/add_friend.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/add_friend_item.xml" afterPath="$PROJECT_DIR$/res/layout/add_friend_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/drawer_list_item.xml" afterPath="$PROJECT_DIR$/res/layout/drawer_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/drawer_list_title.xml" afterPath="$PROJECT_DIR$/res/layout/drawer_list_title.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/friends.xml" afterPath="$PROJECT_DIR$/res/layout/friends.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/friends_item.xml" afterPath="$PROJECT_DIR$/res/layout/friends_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/list_item.xml" afterPath="$PROJECT_DIR$/res/layout/list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/login.xml" afterPath="$PROJECT_DIR$/res/layout/login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/timeline.xml" afterPath="$PROJECT_DIR$/res/layout/timeline.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/cover_frame.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/cover_frame.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/default_postal_cover.PNG" afterPath="$PROJECT_DIR$/res/drawable-hdpi/default_postal_cover.PNG" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/paper.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/paper.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Signup.java" afterPath="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Signup.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="60646984-7466-4188-b0c7-8f0f847557e8" name="gitignore" comment="" />
@@ -172,51 +130,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.6130856">
       <split-first>
         <leaf>
-          <file leaf-file-name="Splash.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Splash.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-                  <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Connect.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="1791" max-vertical-offset="9108">
-                  <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#7344#7359#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Connect1.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Connect1.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.036809817" vertical-offset="198" max-vertical-offset="1818">
-                  <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="timeline.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/res/layout/timeline.xml">
-              <provider selected="true" editor-type-id="android-designer">
-                <state />
-              </provider>
-              <provider editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="3996" max-vertical-offset="5742">
-                  <caret line="237" column="39" selection-start-line="237" selection-start-column="39" selection-end-line="237" selection-end-column="39" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="login.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/res/layout/login.xml">
               <provider selected="true" editor-type-id="android-designer">
@@ -230,34 +143,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Welcome.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Welcome.java">
+          <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1080">
-                  <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="1278">
+                  <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PaintingsAdapter.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/items/PaintingsAdapter.java">
+          <file leaf-file-name="Signup.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Signup.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="2610">
-                  <caret line="49" column="84" selection-start-line="49" selection-start-column="84" selection-end-line="49" selection-end-column="84" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="list_item.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/res/layout/list_item.xml">
-              <provider selected="true" editor-type-id="android-designer">
-                <state />
-              </provider>
-              <provider editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="2196">
-                  <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="2376">
+                  <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
@@ -266,18 +166,23 @@
           <file leaf-file-name="PEditor.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/publishers/PEditor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="3510">
-                  <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-                  <folding />
+                <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="3510">
+                  <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ItemsAdapter.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/commons/adapters/ItemsAdapter.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="1296">
-                  <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <file leaf-file-name="peditor.xml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/res/layout/peditor.xml">
+              <provider selected="true" editor-type-id="android-designer">
+                <state />
+              </provider>
+              <provider editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="2610">
+                  <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -287,53 +192,12 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="add_friend_item.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/res/layout/add_friend_item.xml">
-              <provider selected="true" editor-type-id="android-designer">
-                <state />
-              </provider>
-              <provider editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1008">
-                  <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="friends_item.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/res/layout/friends_item.xml">
-              <provider selected="true" editor-type-id="android-designer">
-                <state />
-              </provider>
-              <provider editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="756">
-                  <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="friends.xml" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/res/layout/friends.xml">
-              <provider selected="true" editor-type-id="android-designer">
-                <state />
-              </provider>
-              <provider editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1242">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+          <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2124">
+                <state vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="2124">
                   <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#3878#3896#0" expanded="true" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -348,7 +212,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/iShamrock/Postal/util/SysInfoUtil.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduMapUtil.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/util/BaiduLocUtil.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/PostalNearby.java" />
@@ -372,9 +235,7 @@
         <option value="$PROJECT_DIR$/res/layout/geo_encoding.xml" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/publishers/ChooseFriendToSendTo.java" />
         <option value="$PROJECT_DIR$/res/layout/choose_friend.xml" />
-        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Splash.java" />
-        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Signup.java" />
         <option value="$PROJECT_DIR$/res/layout/signup.xml" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/MyFriends.java" />
         <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/publishers/PEditor.java" />
@@ -399,6 +260,9 @@
         <option value="$PROJECT_DIR$/res/layout/add_friend.xml" />
         <option value="$PROJECT_DIR$/res/layout/login.xml" />
         <option value="$PROJECT_DIR$/res/layout/timeline.xml" />
+        <option value="$PROJECT_DIR$/src/iShamrock/Postal/database/Connect1.java" />
+        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java" />
+        <option value="$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Signup.java" />
       </list>
     </option>
   </component>
@@ -409,8 +273,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1366" />
-    <option name="height" value="768" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-197" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -922,7 +788,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1055" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="SearchEverywhereHistoryKey" value="Connect&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Connect1.java&#10;Conne&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Connect.java&#10;login.&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/login.xml&#10;add&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/add_friend.xml&#10;drawerti&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/drawer_list_title.xml&#10;drawer&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/drawer_list_item.xml&#10;draw&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/drawer_list_item.xml&#10;friends&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/friends.xml&#10;friend_it&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/friends_item.xml&#10;time&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/timeline.xml&#10;Add&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/AddFriend.java&#10;list&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/list_item.xml&#10;Dra&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/DrawerAdapter.java&#10;loxml&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/login.xml&#10;logi&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Login.java&#10;Pain&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/items/PaintingsAdapter.java&#10;dat&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;Conn&#9;PSI&#9;JAVA://iShamrock.Postal.database.Connect&#10;login&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/login.xml&#10;log&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Login.java&#10;data&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;item&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/list_item.xml&#10;adapter&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/items/PaintingsAdapter.java&#10;Welcome&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Welcome.java&#10;Welc&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Welcome.java&#10;Login&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Login.java&#10;addfr&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/AddFriend.java&#10;timeli&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/timeline.xml&#10;splash&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Splash.java&#10;splas&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/drawable-hdpi/splash.png&#10;PA&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/items/PaintingsAdapter.java&#10;JE&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/publishers/JEditor.java&#10;PE&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/publishers/PEditor.java&#10;myfri&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/MyFriends.java&#10;unfoldable&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/foldablelayout/UnfoldableView.java&#10;tim&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/timeline.xml&#10;AddFr&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/AddFriend.java&#10;ad&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/add_friend.xml&#10;splasj&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Splash.java&#10;Spla&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Splash.java&#10;Sign&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/signup.xml&#10;Sig&#9;PSI&#9;JAVA://iShamrock.Postal.activity.fore.Signup&#10;JED&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/publishers/JEditor.java&#10;DA&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;dA&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;Data&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java" />
+    <property name="SearchEverywhereHistoryKey" value="Signu&#9;PSI&#9;JAVA://iShamrock.Postal.activity.fore.Signup&#10;Login&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Login.java&#10;Timelin.&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/Timeline.java&#10;Time&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/timeline.xml&#10;Connect&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Connect1.java&#10;Conne&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Connect.java&#10;login.&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/login.xml&#10;add&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/add_friend.xml&#10;drawerti&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/drawer_list_title.xml&#10;drawer&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/drawer_list_item.xml&#10;draw&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/drawer_list_item.xml&#10;friends&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/friends.xml&#10;friend_it&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/friends_item.xml&#10;time&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/timeline.xml&#10;Add&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/AddFriend.java&#10;list&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/list_item.xml&#10;Dra&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/DrawerAdapter.java&#10;loxml&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/login.xml&#10;logi&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Login.java&#10;Pain&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/items/PaintingsAdapter.java&#10;dat&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;Conn&#9;PSI&#9;JAVA://iShamrock.Postal.database.Connect&#10;login&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/login.xml&#10;log&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Login.java&#10;data&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;item&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/list_item.xml&#10;adapter&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/items/PaintingsAdapter.java&#10;Welcome&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Welcome.java&#10;Welc&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Welcome.java&#10;addfr&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/AddFriend.java&#10;timeli&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/timeline.xml&#10;splash&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Splash.java&#10;splas&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/drawable-hdpi/splash.png&#10;PA&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/items/PaintingsAdapter.java&#10;JE&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/publishers/JEditor.java&#10;PE&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/publishers/PEditor.java&#10;myfri&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/MyFriends.java&#10;unfoldable&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/foldablelayout/UnfoldableView.java&#10;tim&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/timeline.xml&#10;AddFr&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/AddFriend.java&#10;ad&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/add_friend.xml&#10;splasj&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Splash.java&#10;Spla&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/fore/Splash.java&#10;Sign&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/res/layout/signup.xml&#10;Sig&#9;PSI&#9;JAVA://iShamrock.Postal.activity.fore.Signup&#10;JED&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/activity/publishers/JEditor.java&#10;DA&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;dA&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java&#10;Data&#9;FILE&#9;file://D:/Users/Tong/workspace/Postal/src/iShamrock/Postal/database/Database.java" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="AndroidTargetDevices" value="5d73d07b" />
   </component>
@@ -1291,7 +1157,8 @@
       <workItem from="1425654649537" duration="641000" />
       <workItem from="1425706910846" duration="3058000" />
       <workItem from="1425798362111" duration="612000" />
-      <workItem from="1425799133817" duration="33579000" />
+      <workItem from="1425799133817" duration="40407000" />
+      <workItem from="1425912635672" duration="104000" />
     </task>
     <task id="LOCAL-00001" summary="Modified project structure. Separated to several packages.">
       <created>1417012284879</created>
@@ -1437,47 +1304,53 @@
       <option name="project" value="LOCAL" />
       <updated>1425807003754</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Hello, deadline.">
+      <created>1425894525845</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1425894525845</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="297126000" />
+    <option name="totallyTimeSpent" value="304058000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1928" y="-197" width="1936" height="1096" extended-state="6" />
+    <editor active="false" />
     <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14241165" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20628998" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3256785" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3180873" sideWeight="0.33963692" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2993763" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3097713" sideWeight="0.5250533" order="12" side_tool="false" content_ui="tabs" x="-1969" y="682" width="1876" height="258" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1337953" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3097713" sideWeight="0.4749467" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29009902" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14241165" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20990099" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24840085" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3256785" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3188119" sideWeight="0.33963692" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2993763" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23782235" sideWeight="0.5250533" order="12" side_tool="false" content_ui="tabs" x="-1969" y="682" width="1876" height="258" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18986385" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28939545" sideWeight="0.4749467" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4128713" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33367983" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20990099" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24840085" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4128713" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1552,7 +1425,8 @@
     <MESSAGE value="finish a lot of front-end work" />
     <MESSAGE value="Optimize the UI of Timeline, and Add Friend." />
     <MESSAGE value="Add drawer back." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add drawer back." />
+    <MESSAGE value="Hello, deadline." />
+    <option name="LAST_COMMIT_MESSAGE" value="Hello, deadline." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1599,8 +1473,20 @@
           <properties />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="85" />
+      <option name="time" value="87" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="main1">
@@ -1617,30 +1503,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/abandomed/FoldableListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41240478" vertical-offset="521" max-vertical-offset="1458">
-          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
-          <folding>
-            <element signature="e#2972#2973#0" expanded="false" />
-            <element signature="e#3027#3028#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/abandomed/PostalNearby.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1231527" vertical-offset="810" max-vertical-offset="1710">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/publishers/ChooseFriendToSendTo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="957" max-vertical-offset="1674">
           <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1648,7 +1514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3460925" vertical-offset="11843" max-vertical-offset="20124">
           <caret line="711" column="16" selection-start-line="711" selection-start-column="16" selection-end-line="711" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1698,7 +1563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.73413897" vertical-offset="0" max-vertical-offset="954">
           <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1706,10 +1570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3451464" vertical-offset="18676" max-vertical-offset="22500">
           <caret line="1831" column="21" selection-start-line="1831" selection-start-column="21" selection-end-line="1831" selection-end-column="21" />
-          <folding>
-            <element signature="e#51456#51457#0" expanded="true" />
-            <element signature="e#51507#51508#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1717,18 +1577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.76" vertical-offset="0" max-vertical-offset="8226">
           <caret line="54" column="28" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/adt-bundle-windows-x86_64-20131030/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-16/android.jar!/android/os/Handler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.16" vertical-offset="77" max-vertical-offset="1638">
-          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-          <folding>
-            <element signature="e#753#754#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1736,10 +1584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40785497" vertical-offset="0" max-vertical-offset="702">
           <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="e#587#588#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1759,10 +1603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.16" vertical-offset="1481" max-vertical-offset="2970">
           <caret line="156" column="16" selection-start-line="156" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding>
-            <element signature="e#3901#3902#0" expanded="true" />
-            <element signature="e#3952#3953#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1770,7 +1610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="923" max-vertical-offset="2142">
           <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1786,7 +1625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1794,7 +1632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="59" max-vertical-offset="2070">
           <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1802,12 +1639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.8" vertical-offset="968" max-vertical-offset="2448">
           <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-          <folding>
-            <element signature="e#462#463#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-            <element signature="e#2049#2050#0" expanded="true" />
-            <element signature="e#2100#2101#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1815,7 +1646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1823,10 +1653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1162" max-vertical-offset="6858">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <element signature="e#10269#10542#0" expanded="true" />
-            <element signature="e#10541#10542#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1838,19 +1664,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34855404" vertical-offset="527" max-vertical-offset="1260">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/util/SystemUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="1278">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1874,27 +1691,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="5130">
-          <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
-          <folding>
-            <element signature="method#initThread#0;class#Timeline#0" expanded="false" />
-            <element signature="method#foldAddButtons#0;class#Timeline#0" expanded="false" />
-            <element signature="method#initUnfoldableDetailsActivity#0;class#Timeline#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#Timeline#0" expanded="false" />
-            <element signature="method#initLeftDrawer#0;class#Timeline#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/DrawerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="1854">
           <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1902,7 +1702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="417" max-vertical-offset="2268">
           <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1925,38 +1724,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/friends_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="738">
-          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/add_friend_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="990">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2124">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#3878#3896#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1986,7 +1753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="1296">
           <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1994,7 +1760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="2610">
           <caret line="49" column="84" selection-start-line="49" selection-start-column="84" selection-end-line="49" selection-end-column="84" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2009,22 +1774,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/login.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="742" max-vertical-offset="1242">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Splash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Welcome.java">
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1080">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1791" max-vertical-offset="9108">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2039,36 +1799,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Connect1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1818">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/Timeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="807" max-vertical-offset="5130">
+          <caret line="131" column="33" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/adt-bundle-windows-x86_64-20131030/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-16/android.jar!/android/os/Handler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33259913" vertical-offset="857" max-vertical-offset="1638">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Welcome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7093496" vertical-offset="11" max-vertical-offset="1080">
+          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/login.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="742" max-vertical-offset="1242">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/friends_item.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="738">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/add_friend_item.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="990">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="2124">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="1278">
+          <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Signup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="2376">
+          <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/publishers/PEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="3510">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/activity/fore/Splash.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Connect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1791" max-vertical-offset="9108">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="3510">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
           <folding>
-            <element signature="e#7344#7359#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iShamrock/Postal/database/Connect1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.036809817" vertical-offset="198" max-vertical-offset="1818">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+    <entry file="file://$PROJECT_DIR$/res/layout/peditor.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="2610">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding />
         </state>
       </provider>

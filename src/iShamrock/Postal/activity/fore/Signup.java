@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Looper;
 import android.telephony.TelephonyManager;
 import android.view.MotionEvent;
 import android.view.View;
@@ -71,17 +72,18 @@ public class Signup extends Activity {
                 String photoUri = avatarUri.toString();
                 final User user = new User(name, phone, photoUri, "");
                 boolean legal = !name.isEmpty() && !password.isEmpty() && !phone.isEmpty();
-                if (legal){
+                if (legal) {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
                                 Connect.signUp(user, password);
                                 User user1 = Connect.login(user.getPhone(), password);
-                                if (user1 == null){
+                                if (user1 == null || !txtPorE.getText().toString().equals(user.getPhone())) {
+                                    Looper.prepare();
                                     Toast.makeText(Signup.this, "Sign up failed!", Toast.LENGTH_SHORT).show();
-                                }
-                                else {
+                                    Looper.loop();
+                                } else {
                                     Database.me = user1;
                                     Intent intent = new Intent(Signup.this, Timeline.class);
                                     startActivity(intent);
@@ -94,8 +96,7 @@ public class Signup extends Activity {
                             }
                         }
                     }).start();
-                }
-                else {
+                } else {
                     Toast.makeText(Signup.this, "Please fill your basic information", Toast.LENGTH_SHORT).show();
                 }
             }

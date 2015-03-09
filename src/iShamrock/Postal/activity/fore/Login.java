@@ -3,6 +3,7 @@ package iShamrock.Postal.activity.fore;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.telephony.TelephonyManager;
 import android.view.MotionEvent;
 import android.view.View;
@@ -65,12 +66,13 @@ public class Login extends Activity {
                             user = Connect.login(phone.getText().toString(), txtPorE.getText().toString());
                         } catch (IOException e) {
                             e.printStackTrace();
-                            System.out.println("Login Exception");
+//                            Toast.makeText(Login.this, "Login timeout(0, -1). Try again.", Toast.LENGTH_SHORT).show();
                         }
-                        if (user == null){
-                            Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        if (user == null || !phone.getText().toString().equals(user.getPhone())) {
+                            Looper.prepare();
+                            Toast.makeText(Login.this, "Login failed. Wrong user signature.", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        } else {
                             Database.me = user;
                             Intent intent = new Intent(Login.this, Timeline.class);
                             startActivity(intent);
@@ -82,7 +84,7 @@ public class Login extends Activity {
         });
 
         // Auto acquire phone number if possible.
-        String mPhoneNumber = ((TelephonyManager)getSystemService(TELEPHONY_SERVICE)).getLine1Number();
+        String mPhoneNumber = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE)).getLine1Number();
         if (mPhoneNumber != null) txtPorE.setText(mPhoneNumber);
     }
 }
