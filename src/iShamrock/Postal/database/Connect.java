@@ -30,11 +30,10 @@ import java.util.List;
  * View the "User" and "PostalDataItem" class
  */
 public class Connect {
-    public static final String server="http://121.40.155.146:8080/postalservermine/data/";
-    public static final String urlserver="http://121.40.155.146:8080/postalservermine/";
-    static String ALBUM_PATH= Environment.getExternalStorageDirectory() + "/download_test/";
-    static FileImageUpload f=new FileImageUpload();
-
+    public static final String server = "http://121.40.155.146:8080/postalservermine/data/";
+    public static final String urlserver = "http://121.40.155.146:8080/postalservermine/";
+    static String ALBUM_PATH = Environment.getExternalStorageDirectory() + "/download_test/";
+    static FileImageUpload f = new FileImageUpload();
 
 
     /**
@@ -64,20 +63,20 @@ public class Connect {
 
         StringBuffer result = new StringBuffer();
         String line = "";
-        String name=rd.readLine();
-        String phone=rd.readLine();
-        String photoURI=rd.readLine();
-        String coverURI=rd.readLine();
-        name=(name.equals("null"))?null:name;
-        phone=(phone.equals("null"))?null:phone;
-        photoURI=(photoURI.equals("null"))?null:photoURI;
-        coverURI=(coverURI.equals("null"))?null:coverURI;
+        String name = rd.readLine();
+        String phone = rd.readLine();
+        String photoURI = rd.readLine();
+        String coverURI = rd.readLine();
+        name = (name.equals("null")) ? null : name;
+        phone = (phone.equals("null")) ? null : phone;
+        photoURI = (photoURI.equals("null")) ? null : photoURI;
+        coverURI = (coverURI.equals("null")) ? null : coverURI;
 
 
-        User u=new User(name,phone,photoURI,coverURI);
+        User u = new User(name, phone, photoURI, coverURI);
 
-        String uri=u.getCoverURI();
-        if(uri!=null) {
+        String uri = u.getCoverURI();
+        if (uri != null) {
             int pos = uri.split("/").length - 1;
             File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
 
@@ -87,12 +86,12 @@ public class Connect {
             fileDownload.start();
         }
         uri = u.getPhotoURI();
-        if(uri!=null) {
+        if (uri != null) {
 
-            int  pos = uri.split("/").length - 1;
+            int pos = uri.split("/").length - 1;
             File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
             u.setPhotoURI(Uri.fromFile(file).toString());
-            Thread  fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+            Thread fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
             fileDownload.start();
         }
 
@@ -143,12 +142,12 @@ public class Connect {
             double locationx = 0.0, locationy = 0.0;
             try {
                 locationx = Double.valueOf(rd.readLine());
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Double parse failed");
             }
             try {
                 locationy = Double.valueOf(rd.readLine());
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Double parse failed");
             }
             String from_user = rd.readLine();
@@ -169,37 +168,29 @@ public class Connect {
             apid.add(pdi);
 
 
-
-
-
-
         }
 
-        for( PostalDataItem pdi: apid){
-            int pos=pdi.uri.split("/").length-1;
-            File f=new File(ALBUM_PATH+pdi.from_user+"/"+pdi.uri.split("/")[pos]);
-            if(f.exists()){
+        for (PostalDataItem pdi : apid) {
+            if (pdi.type != pdi.TYPE_IMAGE) continue;
+            int pos = pdi.uri.split("/").length - 1;
+            File f = new File(ALBUM_PATH + pdi.from_user + "/" + pdi.uri.split("/")[pos]);
+            if (f.exists()) {
                 continue;
             }
 
-            Thread fileDownload=new FileDownload(pdi.uri.split("/")[pos],
-                    urlserver+"img/"+pdi.from_user+""+"/"+pdi.uri.split("/")[pos],
+            Thread fileDownload = new FileDownload(pdi.uri.split("/")[pos],
+                    urlserver + "img/" + pdi.from_user + "" + "/" + pdi.uri.split("/")[pos],
                     pdi.from_user);
             fileDownload.start();
 
             pdi.uri(Uri.fromFile(new File(ALBUM_PATH + pdi.from_user + "/" + pdi.uri.split("/")[pos])).toString());
 
 
-
         }
-
-
 
 
         return apid;
     }
-
-
 
 
     public static void addPostal(PostalDataItem postalDataItem) throws IOException {
@@ -213,13 +204,13 @@ public class Connect {
         post.setHeader("User-Agent", "android");
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
-        urlParameters.add(new BasicNameValuePair("type", postalDataItem.type+""));
+        urlParameters.add(new BasicNameValuePair("type", postalDataItem.type + ""));
         urlParameters.add(new BasicNameValuePair("uri", postalDataItem.uri));
         urlParameters.add(new BasicNameValuePair("text", postalDataItem.text));
         urlParameters.add(new BasicNameValuePair("time", postalDataItem.time));
         urlParameters.add(new BasicNameValuePair("title", postalDataItem.title));
-        urlParameters.add(new BasicNameValuePair("locationx", postalDataItem.location[0]+""));
-        urlParameters.add(new BasicNameValuePair("locationy", postalDataItem.location[1]+""));
+        urlParameters.add(new BasicNameValuePair("locationx", postalDataItem.location[0] + ""));
+        urlParameters.add(new BasicNameValuePair("locationy", postalDataItem.location[1] + ""));
         urlParameters.add(new BasicNameValuePair("from", postalDataItem.from_user));
         urlParameters.add(new BasicNameValuePair("to", postalDataItem.to_user));
         urlParameters.add(new BasicNameValuePair("locationtext", postalDataItem.location_text));
@@ -236,8 +227,8 @@ public class Connect {
 
         rd.close();
 
-        if (postalDataItem.type != PostalDataItem.TYPE_TEXT) {
-            File myCaptureFile = new File(postalDataItem.uri.replace("file:",""));
+        if (postalDataItem.type == PostalDataItem.TYPE_IMAGE) {
+            File myCaptureFile = new File(postalDataItem.uri.replace("file:", ""));
             if (myCaptureFile.exists()) {
 
                 f.uploadFile(myCaptureFile, server + "OkServletUp", postalDataItem.from_user);
@@ -276,7 +267,7 @@ public class Connect {
     }
 
 
-    public static void signUp(User user,String password) throws IOException {
+    public static void signUp(User user, String password) throws IOException {
         //todo:
         String url = server + "UserRegister";
         HttpClient client = new DefaultHttpClient();
@@ -302,12 +293,11 @@ public class Connect {
 
         rd.close();
 
-        if(user.getNickname()!=null){
-            updateUserInformation(user,user);
+        if (user.getNickname() != null) {
+            updateUserInformation(user, user);
         }
 
     }
-
 
 
     /**
@@ -340,24 +330,24 @@ public class Connect {
         int n = Integer.valueOf(rd.readLine());
         for (int i = 0; i < n; i++) {
 
-            String name=rd.readLine();
-            String phone=rd.readLine();
-            String photoURI=rd.readLine();
-            String coverURI=rd.readLine();
-            name=(name.equals("null"))?null:name;
-            phone=(phone.equals("null"))?null:phone;
-            photoURI=(photoURI.equals("null"))?null:photoURI;
-            coverURI=(coverURI.equals("null"))?null:coverURI;
+            String name = rd.readLine();
+            String phone = rd.readLine();
+            String photoURI = rd.readLine();
+            String coverURI = rd.readLine();
+            name = (name.equals("null")) ? null : name;
+            phone = (phone.equals("null")) ? null : phone;
+            photoURI = (photoURI.equals("null")) ? null : photoURI;
+            coverURI = (coverURI.equals("null")) ? null : coverURI;
 
-            User u=new User(name,phone,photoURI,coverURI);
+            User u = new User(name, phone, photoURI, coverURI);
             auser.add(u);
         }
 
-        for(User u:auser) {
+        for (User u : auser) {
 
 
-            String uri=u.getCoverURI();
-            if(uri!=null) {
+            String uri = u.getCoverURI();
+            if (uri != null) {
                 int pos = uri.split("/").length - 1;
                 File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
                 u.setCoverURI(Uri.fromFile(file).toString());
@@ -365,12 +355,12 @@ public class Connect {
                 fileDownload.start();
             }
             uri = u.getPhotoURI();
-            if(uri!=null) {
+            if (uri != null) {
 
-                int  pos = uri.split("/").length - 1;
+                int pos = uri.split("/").length - 1;
                 File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
                 u.setPhotoURI(Uri.fromFile(file).toString());
-                Thread  fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+                Thread fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
                 fileDownload.start();
             }
 
@@ -378,7 +368,6 @@ public class Connect {
         return auser;
 
     }
-
 
 
     public static ArrayList<User> getAllUser() throws IOException {
@@ -389,10 +378,6 @@ public class Connect {
 
         // add header
         post.setHeader("User-Agent", "android");
-
-
-
-
 
 
         HttpResponse response = client.execute(post);
@@ -406,23 +391,23 @@ public class Connect {
         int n = Integer.valueOf(rd.readLine());
         for (int i = 0; i < n; i++) {
 
-            String name=rd.readLine();
-            String phone=rd.readLine();
-            String photoURI=rd.readLine();
-            String coverURI=rd.readLine();
-            name=(name.equals("null"))?null:name;
-            phone=(phone.equals("null"))?null:phone;
-            photoURI=(photoURI.equals("null"))?null:photoURI;
-            coverURI=(coverURI.equals("null"))?null:coverURI;
+            String name = rd.readLine();
+            String phone = rd.readLine();
+            String photoURI = rd.readLine();
+            String coverURI = rd.readLine();
+            name = (name.equals("null")) ? null : name;
+            phone = (phone.equals("null")) ? null : phone;
+            photoURI = (photoURI.equals("null")) ? null : photoURI;
+            coverURI = (coverURI.equals("null")) ? null : coverURI;
 
-            User u=new User(name,phone,photoURI,coverURI);
+            User u = new User(name, phone, photoURI, coverURI);
             auser.add(u);
         }
-        for(User u:auser) {
+        for (User u : auser) {
 
 
-            String uri=u.getCoverURI();
-            if(uri!=null) {
+            String uri = u.getCoverURI();
+            if (uri != null) {
                 int pos = uri.split("/").length - 1;
                 File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
                 u.setCoverURI(Uri.fromFile(file).toString());
@@ -430,12 +415,12 @@ public class Connect {
                 fileDownload.start();
             }
             uri = u.getPhotoURI();
-            if(uri!=null) {
+            if (uri != null) {
 
-                int  pos = uri.split("/").length - 1;
+                int pos = uri.split("/").length - 1;
                 File file = new File(ALBUM_PATH + u.getPhone() + "/" + uri.split("/")[pos]);
                 u.setPhotoURI(Uri.fromFile(file).toString());
-                Thread  fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
+                Thread fileDownload = new FileDownload(uri.split("/")[pos], urlserver + "img/" + u.getPhone() + "" + "/" + uri.split("/")[pos], u.getPhone());
                 fileDownload.start();
             }
 
@@ -456,7 +441,6 @@ public class Connect {
     /*The following methods are not important*/
 
 
-
     public static void updateUserInformation(User user, User updatedUser) throws IOException {
         String url = server + "UpdateUserInformation";
         HttpClient client = new DefaultHttpClient();
@@ -473,7 +457,6 @@ public class Connect {
         urlParameters.add(new BasicNameValuePair("coverURI2", updatedUser.getCoverURI()));
 
 
-
         post.setEntity(new UrlEncodedFormEntity(urlParameters));
 
         HttpResponse response = client.execute(post);
@@ -486,12 +469,11 @@ public class Connect {
         rd.close();
 
 
+        File myPhotoImg = new File(updatedUser.getPhotoURI().replace("file:", ""));
+        if (myPhotoImg.exists()) {
 
-            File myPhotoImg = new File(updatedUser.getPhotoURI().replace("file:",""));
-            if (myPhotoImg.exists()) {
-
-                f.uploadFile(myPhotoImg, server + "OkServletUp",user.getPhone() );
-            }
+            f.uploadFile(myPhotoImg, server + "OkServletUp", user.getPhone());
+        }
 
 /*        File myCoverImg = null;
         try {
@@ -503,14 +485,17 @@ public class Connect {
 
 
     }
-    public void deleteFriend(User user, User friend){
+
+    public void deleteFriend(User user, User friend) {
         //todo
     }
+
     /**
      * Delete the item from the server
+     *
      * @param postalDataItem
      */
-    public void deletePostal(PostalDataItem postalDataItem){
+    public void deletePostal(PostalDataItem postalDataItem) {
         //todo
     }
 

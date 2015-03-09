@@ -227,14 +227,14 @@
                                 android:id="@+id/timeline_media"
                                 android:gravity="center_vertical">
 
-                            <ImageView
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/timeline_action"
-                                    android:src="@drawable/default_postal_cover"
-                                    android:adjustViewBounds="true"
+                            <!--<ImageView-->
+                                    <!--android:layout_width="fill_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:id="@+id/timeline_action"-->
+                                    <!--android:src="@drawable/default_postal_cover"-->
+                                    <!--android:adjustViewBounds="true"-->
 
-                                    android:layout_gravity="center"/>
+                                    <!--android:layout_gravity="center"/>-->
                         </LinearLayout>
 
                         <TextView

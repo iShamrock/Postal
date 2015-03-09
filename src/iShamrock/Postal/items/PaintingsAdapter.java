@@ -91,7 +91,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
                         Uri.parse(Database.getPhotoURIWithName(item.getItem().from_user)));
                 vh.profile.setImageBitmap(SystemUtil.toRoundCorner(bitmap));
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
         String text = item.getItem().text;
@@ -105,7 +105,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
                 try {
                     vh.imageView2.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().uri)));
                 } catch (Exception e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
                 vh.text.setText(text);
                 vh.name.setText(Database.getNameWithPhone(item.getItem().from_user));

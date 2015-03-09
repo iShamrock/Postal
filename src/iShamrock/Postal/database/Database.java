@@ -227,6 +227,7 @@ public class Database {
      * @param postalDataItem
      */
     public static void addPostal(PostalDataItem postalDataItem) {
+        System.out.println("uri:" + postalDataItem.uri);
         ContentValues contentValues = new ContentValues();
         contentValues.put(postal_from_user, postalDataItem.from_user);
         contentValues.put(postal_title, postalDataItem.title);
@@ -286,9 +287,14 @@ public class Database {
         System.out.println("get Postal from database");
         while (cursor.moveToNext()) {
             System.out.println(    "text is: " + cursor.getString(cursor.getColumnIndex(postal_text)));
+            String str = cursor.getString(cursor.getColumnIndex(postal_uri));
+            int type = cursor.getInt(cursor.getColumnIndex(postal_type));
+            if (str.contains("download_test") && type == 0) {
+                str = str.substring(0, str.indexOf("emulated")) + "emulated/0/" + str.substring(str.indexOf("cache"), str.length());
+            }
             PostalDataItem item = new PostalDataItem(
-                    cursor.getInt(cursor.getColumnIndex(postal_type)),
-                    cursor.getString(cursor.getColumnIndex(postal_uri)),
+                    type,
+                    str,
                     cursor.getString(cursor.getColumnIndex(postal_text)),
                     cursor.getString(cursor.getColumnIndex(postal_time)),
                     cursor.getString(cursor.getColumnIndex(postal_title)),

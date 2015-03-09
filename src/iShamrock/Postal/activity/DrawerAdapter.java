@@ -39,7 +39,7 @@ public class DrawerAdapter extends BaseAdapter {
         drawerList.add("FRIENDS");
         drawerList.add("SEND POSTAL");
         drawerList.add("TAKE A NOTE");
-        drawerList.add("TAKE AN IMAGE");
+        drawerList.add("TAKE A PHOTO");
         drawerList.add("TAKE A VIDEO");
         drawerList.add("TAKE AN AUDIO");
         drawerList.add("TAKE A WEB PART");

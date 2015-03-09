@@ -243,7 +243,7 @@ public class Timeline extends Activity {
 
         PostalDataItem item = painting.getItem();
         LinearLayout timeline_media = Views.find(mDetailsLayout, R.id.timeline_media);
-        ImageView timeline_action = Views.find(mDetailsLayout, R.id.timeline_action);
+//        ImageView timeline_action = Views.find(mDetailsLayout, R.id.timeline_action);
         TextView timeline_text = Views.find(mDetailsLayout, R.id.timeline_text);
         TextView timeline_loc = Views.find(mDetailsLayout, R.id.timeline_loc);
         TextView timeline_time = Views.find(mDetailsLayout, R.id.timeline_time);
@@ -279,16 +279,18 @@ public class Timeline extends Activity {
                 ViewGroup.LayoutParams params = timeline_media.getLayoutParams();
                 params.height = getWindowManager().getDefaultDisplay().getWidth() / 6;
                 timeline_media.setLayoutParams(params);
-                timeline_media.removeView(timeline_action);
+                timeline_media.removeAllViews();
                 timeline_media.addView(audioImageview);
                 break;
             }
 
             case PostalDataItem.TYPE_VIDEO: {
-                final VideoView videoView = new VideoView(this);
+                VideoView videoView = new VideoView(this);
                 videoView.setVideoURI(Uri.parse(item.uri));
+                int screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                lp.height = screenWidth / 16 * 9;
                 lp.gravity = Gravity.CENTER;
 
                 videoView.setLayoutParams(lp);
@@ -296,12 +298,21 @@ public class Timeline extends Activity {
                 videoView.setMediaController(mediaController);
                 videoView.requestFocus();
                 timeline_media.setBackgroundColor(0xff000000);
-                timeline_media.removeView(timeline_action);
+                timeline_media.removeAllViews();
                 timeline_media.addView(videoView);
                 break;
             }
 
             case PostalDataItem.TYPE_IMAGE: {
+                ImageView timeline_action = new ImageView(this);
+                ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                timeline_action.setImageDrawable(getResources().getDrawable(R.drawable.default_postal_cover));
+                timeline_action.setAdjustViewBounds(true);
+                timeline_action.setLayoutParams(lp);
+
+                timeline_media.removeAllViews();
+                timeline_media.addView(timeline_action);
                 int screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
                 ViewGroup.LayoutParams params = timeline_action.getLayoutParams();
                 params.height = screenWidth / 16 * 9;
