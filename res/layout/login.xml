@@ -41,7 +41,8 @@
             android:layout_alignBottom="@+id/login_title"
             android:layout_marginBottom="112dp"
             android:hint="@string/phone_or_email"
-            android:textColor="#66666666"/>
+            android:textColor="#66666666"
+            />
 
     <EditText
             android:layout_width="fill_parent"
@@ -57,6 +58,7 @@
             android:layout_alignBottom="@+id/login_title"
             android:layout_marginBottom="57dp"
             android:hint="@string/password"
-            android:textColor="#66666666"/>
+            android:textColor="#66666666"
+            />
 
 </RelativeLayout>

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import iShamrock.Postal.R;
+import iShamrock.Postal.activity.fore.Welcome;
 import iShamrock.Postal.activity.publishers.ButtonTouchAnimationListener;
 import iShamrock.Postal.activity.publishers.JEditor;
 import iShamrock.Postal.activity.publishers.PEditor;
@@ -38,8 +39,10 @@ public class Timeline extends Activity {
     private View mDetailsLayout;
     private UnfoldableView mUnfoldableView;
 
-    private ImageView postal_friend, postal_user_avatar, postal_add, postal_add_text, postal_add_image, postal_add_video, postal_add_audio, postal_add_web, postal_edit;
+    private ImageView postal_friend, postal_user_avatar, postal_add, postal_add_text, postal_add_image,
+            postal_add_video, postal_add_audio, postal_add_web, postal_edit;
     private RelativeLayout postal_cover_container;
+    private DrawerLayout drawerLayout;
     private PaintingsAdapter adapter;
     private Runnable run;
     private Thread refreshThread;
@@ -97,7 +100,8 @@ public class Timeline extends Activity {
         postal_friend.setOnTouchListener(new ButtonTouchAnimationListener(postal_friend));
 
 
-        postal_user_avatar.setImageBitmap(SystemUtil.toRoundCorner(BitmapFactory.decodeResource(getResources(), R.drawable.p1)));
+        postal_user_avatar.setImageBitmap(SystemUtil.toRoundCorner(BitmapFactory.decodeResource(
+                getResources(), R.drawable.zhihu)));
 
         postal_add = (ImageView) findViewById(R.id.postal_add);
         postal_add_text = (ImageView) findViewById(R.id.postal_add_text);
@@ -168,9 +172,7 @@ public class Timeline extends Activity {
         postal_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Timeline.this, PEditor.class);
-                startActivity(intent);
-                foldAddButtons();
+                drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
     }
@@ -358,7 +360,7 @@ public class Timeline extends Activity {
 
     private void initLeftDrawer() {
         ListView drawerList = (ListView) findViewById(R.id.left_drawer_timeline);
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_timeline);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_timeline);
         drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -421,9 +423,12 @@ public class Timeline extends Activity {
             case 9:
                 break;
             case 10:
+                intent.setClass(this, Welcome.class);
+                startActivity(intent);
                 finish();
                 break;
         }
+        drawerLayout.closeDrawer(Gravity.LEFT);
     }
 
 }

@@ -2,44 +2,24 @@ package iShamrock.Postal.database;
 
 import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
-
+import iShamrock.Postal.database.photo.FileDownload;
+import iShamrock.Postal.database.photo.FileImageUpload;
+import iShamrock.Postal.entity.PostalDataItem;
+import iShamrock.Postal.entity.User;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import iShamrock.Postal.database.photo.FileDownload;
-import iShamrock.Postal.database.photo.FileImageUpload;
-import iShamrock.Postal.entity.PostalData;
-import iShamrock.Postal.entity.PostalDataItem;
-import iShamrock.Postal.entity.User;
-
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by lifengshuang on 2/16/15.
@@ -257,13 +237,9 @@ public class Connect {
         rd.close();
 
         if (postalDataItem.type != PostalDataItem.TYPE_TEXT) {
-            File myCaptureFile = new File(postalDataItem.uri);
+            File myCaptureFile = new File(postalDataItem.uri.replace("file:",""));
             if (myCaptureFile.exists()) {
-                try {
-                    myCaptureFile = new File(new URI(postalDataItem.uri));
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
+
                 f.uploadFile(myCaptureFile, server + "OkServletUp", postalDataItem.from_user);
             }
         }
@@ -509,14 +485,14 @@ public class Connect {
 
         rd.close();
 
-        try {
-            File myPhotoImg = new File(new URI(updatedUser.getPhotoURI()));
 
-            f.uploadFile(myPhotoImg, server + "OkServletUp", user.getPhone());
 
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+            File myPhotoImg = new File(updatedUser.getPhotoURI().replace("file:",""));
+            if (myPhotoImg.exists()) {
+
+                f.uploadFile(myPhotoImg, server + "OkServletUp",user.getPhone() );
+            }
+
 /*        File myCoverImg = null;
         try {
             myCoverImg = new File(new URI(updatedUser.getCoverURI()));

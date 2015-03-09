@@ -3,11 +3,9 @@ package iShamrock.Postal.database;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import iShamrock.Postal.activity.abandomed.Postal;
-import iShamrock.Postal.entity.User;
 import iShamrock.Postal.entity.PostalDataItem;
+import iShamrock.Postal.entity.User;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -161,6 +159,19 @@ public class Database {
         }
         return "name not found";
     }
+
+    public static String getPhotoURIWithName(String name){
+        if (me.getNickname().equals(name)){
+            return me.getPhotoURI();
+        }
+        for (User i : allUsers){
+            if (i.getNickname().equals(name)){
+                return i.getPhotoURI();
+            }
+        }
+        return "";
+    }
+
 /*
     public static boolean login(String phone, String password){
         if (local){

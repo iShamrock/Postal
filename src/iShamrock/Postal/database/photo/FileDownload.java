@@ -4,17 +4,8 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.widget.Toast;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -140,7 +131,7 @@ public class FileDownload extends Thread {
         @Override
         public void run() {
             try {
-                String filePath=urladdress+mFileName;
+                String filePath=urladdress;//+mFileName;
                 //    String filePath = "http://img.my.csdn.net/uploads/201402/24/1393242467_3999.jpg";
 
 

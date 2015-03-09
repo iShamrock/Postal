@@ -20,9 +20,8 @@ import iShamrock.Postal.commons.adapters.ItemsAdapter;
 import iShamrock.Postal.commons.utils.Views;
 import iShamrock.Postal.database.Database;
 import iShamrock.Postal.entity.PostalDataItem;
+import iShamrock.Postal.util.SystemUtil;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 //import com.squareup.picasso.Picasso;
@@ -59,6 +58,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
         vh.imageView = Views.find(view, R.id.list_item_image);
         vh.imageView2 = Views.find(view, R.id.list_item_image_2);
         vh.cover = Views.find(view, R.id.list_cover);
+        vh.profile = Views.find(view, R.id.profile_photo);
         view.setTag(vh);
         return view;
     }
@@ -66,13 +66,14 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
     /**
      * modify all the view's things about UI here
      * It's preferred to change thing only in switch/case, or you debug yourself when something unexpected happens
+     *
      * @param item:
      */
     @Override
     protected void bindView(Painting item, int pos, View convertView) {
         ViewHolder vh = (ViewHolder) convertView.getTag();
         vh.linearLayout.setTag(item);
-        if (item.getItem().time.equals("cover")){
+        if (item.getItem().time.equals("cover")) {
             vh.total.removeAllViews();
             vh.total.addView(vh.cover);
             vh.total.setOnClickListener(new View.OnClickListener() {
@@ -82,22 +83,28 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
                 }
             });
             return;
-        }
-        else {
+        } else {
             vh.total.removeAllViews();
             vh.total.addView(vh.contents);
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(contentResolver,
+                        Uri.parse(Database.getPhotoURIWithName(item.getItem().from_user)));
+                vh.profile.setImageBitmap(SystemUtil.toRoundCorner(bitmap));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         String text = item.getItem().text;
-        if (text.length() > 50){
+        if (text.length() > 50) {
             text = text.substring(0, 50) + "......";
         }
         vh.imageView2.setImageBitmap(null);
         vh.imageView.setImageBitmap(null);
-        switch (item.getItem().type){
+        switch (item.getItem().type) {
             case PostalDataItem.TYPE_IMAGE:
                 try {
                     vh.imageView2.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(item.getItem().uri)));
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 vh.text.setText(text);
@@ -153,6 +160,7 @@ public class PaintingsAdapter extends ItemsAdapter<Painting> implements View.OnC
         ImageView imageView;
         ImageView imageView2;
         TextView text;
+        ImageView profile;
     }
 
 }

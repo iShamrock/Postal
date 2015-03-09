@@ -4,16 +4,25 @@
               android:layout_height="wrap_content"
               android:id="@+id/drawer_layout">
 
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:id="@+id/drawer_icon"
+            android:src="@drawable/drawer_timeline"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"/>
+
     <TextView
             android:layout_width="fill_parent"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:text="Hello world"
             android:id="@+id/drawer_text"
             android:layout_gravity="center_vertical"
-            android:textSize="20dp"
+            android:textSize="19dp"
             android:gravity="center_vertical"
             android:textColor="#ffe84e40"
             android:typeface="sans"
             android:textStyle="bold"
-            android:paddingLeft="20dp"/>
+            />
 </LinearLayout>
