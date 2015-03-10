@@ -33,7 +33,8 @@
             android:id="@+id/welcome_title"
             android:src="@drawable/title"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="40dp"/>
 
 
 

@@ -104,7 +104,7 @@ public class Timeline extends Activity {
 
 
         postal_user_avatar.setImageBitmap(SystemUtil.toRoundCorner(BitmapFactory.decodeResource(
-                getResources(), R.drawable.zhihu)));
+                this.getResources(), R.drawable.zhihu)));
 
         postal_add = (ImageView) findViewById(R.id.postal_add);
         postal_add_text = (ImageView) findViewById(R.id.postal_add_text);
