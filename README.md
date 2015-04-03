@@ -1,9 +1,56 @@
-信友(Postal)
+iShamrock 2015 - Postal Android
+Postal(信友)
 ======
+>Postal is a private sharing social service, learning from the postal elements in the real world. It is designed to be anti-excessive-sharing, and only have one-to-one communication between users and all the journals are private for the user self. Users send postal to each other and keep journals as notes, videos, images, audios and web parts.  
+>
+>- We wish friends to have a longer connection.
+>- We wish moments to be taken as memories.
+>- We wish sharing be and only be an expression of miss.
+>- We wish journals to be kept to to yourself.
+>
+*See a Chinese version at the end of this document.
 
-iShamrock 2015
-项目设计目标
----------------------
+#Idea matters
+![enter image description here](https://lh3.googleusercontent.com/0n1xCxG3Trp3ssbofkulc0UrTdUkAzVYxiuYLV79Z1A=s0 "Slide3.JPG")
+
+![enter image description here](https://lh3.googleusercontent.com/ooPcCmR6z1UOv6PUSSDMZksn3ru_yqb--ZT3juweqSE=s0 "Slide4.JPG")
+
+#Screenshots(Postal Android)
+![enter image description here](https://lh3.googleusercontent.com/CQ1ZiCxOCytAU-nDGOzeHIA4PgoEA33pQGdHsL9-wes=s0 "sc1.jpg")
+![enter image description here](https://lh3.googleusercontent.com/5ZMiKLC8SO_Tx8_zCj3xtqH5ae1tcellT78SqujkUBM=s0 "sc2.jpg")
+>**Connect with friends cross platforms. **
+>
+>On March 10, 2015, which is today, Apple officially released their new product – Apple Watch. Together came with a new Xcode with WatchKit. With this tool, we built Postal Wear for Apple Watch. On the watch, logics are simplified. Just press the screen, you can record your reading, sleeping, running that easy. The activities recorded on your phone will be transferred to your phone and then be uploaded into the server.
+
+>As for the Android team, we choose Geak Watch II to be the device supported by Postal. The device carries Android 4.3 and sells well over the world. The logics here are similar to that on Apple Watch.
+
+*See respective repo to reach [Postal iOS](https://github.com/iShamrock/Postal-iOS)/ [Postal for Apple Watch](https://github.com/iShamrock/Postal-iOS)/ [Postal for Geak Watch II](https://github.com/iShamrock/PostalWearAndroid).
+
+# Teamwork
+Our team are consisted of three developers, Zhongyi TONG, Fengshuang LI and Qi ZHANG. A minimum team and a clear division of work maximize the efficiency of the whole project.
+
+----------------
+MEMBERS	|       RESPONSIBILITY  
+---|----
+ZHONGYI TONG|Product management.
+.|Art design.
+.|Geak watch development
+.|Android front-end development.
+FENGSHUANG LI|Android back-end development.
+.|Server-to-local interface and local data persistence.
+.|	iOS development.
+.|	Apple watch development.
+QI ZHANG	|	Aliyun server and database deployment.
+.|	Database interface design and implementation.
+
+We use Github as a collaborative tool, so that our development can go parallel on individual devices. The Postal project has five repos under organization iShamrock.
+
+
+#Architecture
+![enter image description here](https://lh3.googleusercontent.com/w0zF8nT3h31YBtsuXF0fZHLkSfx9Fuzmb_ZKzG401x0=s0 "Slide17.JPG")
+* See respective repo to reach [Postal Server](https://github.com/iShamrock/PostalServer).
+
+#Chinese version
 有了QQ微信，我们直达世界上任何一个角落，但依旧活跃在身边的小圈子中，每天与同样的人聊天。曾经亲密无比的小伙伴，抑或是某次聚会相识的好友，也随着时间渐渐淡忘，变成了通讯录中上千名片中的一个。或许，你经历过一个人的旅行，火车上遇到了志同道合的TA，一起度过了那段旅途，过后剩下的却只有美好的回忆？
 
 其实，这些遗憾也可以不再有。在信息科技瞬息万变的今天，明信片这一怀旧复古的情感表达方式，其实从未被彻底抛弃。朋友好久不联系，点开微信却不知聊些什么，为何不寄一张明信片呢？一面之缘的匆匆过客，为何不能成为笔友，分享你们的生活呢？真正的友情，不需要仪式般的聊天，不需要频繁的见面，只要沟通的纽带还在。
@@ -12,42 +59,3 @@ Postal就是这条纽带。文字、照片、短视频，甚至是暗藏惊喜�
 
 Postal，不仅连接你和好友，也连接你和自己。掌握了新技能，每天起床晨跑，到了新地方，就给自己盖一个戳。“连续晨跑100天”“坚持阅读7天”，每天都有新的成就。记录你的生活，戳一下手表，就是这么简单。
 
-
-总体架构
----------
-Postal是一个通过明信片等怀旧复古的邮政元素连接好友和记录生活的社交软件。我们期待它能成为连接用户和因为地缘关系弱化的好友之间的纽带，乃至一面之缘的匆匆过客。
-业务将在以下终端实现。
-### 终端
-* 智能手表：基于Android 4.3的iGeak Watch II 或Android Wear Device。手表只承担盖戳和时间轴等附属职责。
-*	Android/iOS手机：承担手表与手机及应用与服务器通信的职能。应用的主要业务都在移动端实现。
-*	服务端：服务器+数据库(Mongo DB)
-
-###	业务
-*	时间轴（信息流）：List view，将明信片通过卡片式布局显示在时间轴
-*	地图：LBS，将明信片的邮戳按照地点分布
-*	发布：文本、照片、音频…多媒体明信片，通过html制作
-*	其他……
-
-###	团队协作
-*	项目将会新建Github仓库，通过git实现协同开发
-*	规范接口说明等文档，定期更新
-
-
-人员组成与分工
---------------
-姓名	|所在院系	|电子邮件	|手机	|项目分工
-------|---------|---------|------|-----------------------------------------------
-童仲毅	|软件学院	|13302010039@fudan.edu.cn	|***********	|产品、前端、安卓开发
-李逢双	|软件学院	|13302010002@fudan.edu.cn	|***********	|安卓开发、iOS开发(筹)
-张琪	|软件学院	|13302010011@fudan.edu.cn	|***********	|服务端开发、html技术
-
-
-项目进度安排
---------------
-项目周期*	|进度安排
------------|------------
-2014.11.11 – 2014.11.30	|产品设计，架构设计 
-2014.12.01 – 2014.12.31	|智能手表端应用开发，安卓端应用开发
-2015.01.01 – 2015.02.14	|MVP验证，快速迭代开发；服务器、数据库对接；强化社交功能，增加预置素材
-2105.02.15 – 提交截止日期	|产品测试并发布，渠道分发
-* 项目开发周期将根据提交截止日期和具体开发进程调整
