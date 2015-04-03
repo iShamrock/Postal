@@ -1,6 +1,6 @@
 iShamrock 2015 - Postal Android
 Postal(信友)
-======
+========
 >Postal is a private sharing social service, learning from the postal elements in the real world. It is designed to be anti-excessive-sharing, and only have one-to-one communication between users and all the journals are private for the user self. Users send postal to each other and keep journals as notes, videos, images, audios and web parts.  
 >
 >- We wish friends to have a longer connection.
